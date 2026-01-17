@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://76wxr7e03ud3"]
+
+[ext_resource type="FontFile" uid="uid://earhysx7khgj" path="res://Fonts/KOMIKJ__.ttf" id="1_0houh"]
+
+[resource]
+default_font = ExtResource("1_0houh")

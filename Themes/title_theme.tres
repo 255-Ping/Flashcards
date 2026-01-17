@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://rrawxxlfxo8h"]
+
+[ext_resource type="FontFile" uid="uid://b6tpy2c6jadey" path="res://Fonts/KOMIKAH_.ttf" id="1_7bdce"]
+
+[resource]
+default_font = ExtResource("1_7bdce")

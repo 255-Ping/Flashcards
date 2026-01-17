@@ -1,0 +1,93 @@
+[gd_scene load_steps=5 format=3 uid="uid://btcww6voi61dv"]
+
+[ext_resource type="Script" uid="uid://bk3njdsomp3xo" path="res://Scripts/deck_ui.gd" id="1_ukesx"]
+[ext_resource type="Texture2D" uid="uid://dwss8wp8sp0cd" path="res://Textures/delete.png" id="2_io7pv"]
+[ext_resource type="Texture2D" uid="uid://dtkkmu5a67lm3" path="res://Textures/add.png" id="3_nlncs"]
+[ext_resource type="Texture2D" uid="uid://uboxunhwhjg1" path="res://Textures/select.png" id="4_xvpt4"]
+
+[node name="Deck" type="Control"]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 3
+anchor_right = 0.99200004
+anchor_bottom = 0.15400001
+offset_right = 0.21594238
+offset_bottom = 0.20799255
+script = ExtResource("1_ukesx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2509804, 0.2509804, 0.2509804, 0.47843137)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -45.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.998
+anchor_bottom = 0.8
+offset_left = 2.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DeleteButton" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = 975.0
+offset_top = 81.0
+offset_right = 1039.0
+offset_bottom = 97.0
+texture_normal = ExtResource("2_io7pv")
+
+[node name="AddButton" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = 850.0
+offset_top = 81.0
+offset_right = 914.0
+offset_bottom = 97.0
+texture_normal = ExtResource("3_nlncs")
+
+[node name="AddLine" type="LineEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 916.0
+offset_top = 81.0
+offset_right = 1030.0
+offset_bottom = 112.0
+scale = Vector2(0.5, 0.5)
+tooltip_text = "Card to Add, Example: 1+1"
+
+[node name="SelectButton" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = 784.0
+offset_top = 81.0
+offset_right = 848.0
+offset_bottom = 97.0
+texture_normal = ExtResource("4_xvpt4")
+
+[node name="DeckName" type="LineEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 83.0
+offset_right = 370.0
+offset_bottom = 114.0
+scale = Vector2(0.5, 0.5)
+
+[connection signal="pressed" from="Panel/DeleteButton" to="." method="_on_delete_button_pressed"]
+[connection signal="pressed" from="Panel/AddButton" to="." method="_on_add_button_pressed"]
+[connection signal="pressed" from="Panel/SelectButton" to="." method="_on_select_button_pressed"]
+[connection signal="text_changed" from="Panel/DeckName" to="." method="_on_deck_name_text_changed"]
+[connection signal="text_submitted" from="Panel/DeckName" to="." method="_on_deck_name_text_submitted"]
