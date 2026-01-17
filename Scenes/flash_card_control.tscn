@@ -192,6 +192,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RestartRound" type="Control" parent="."]
+visible = false
 z_index = 1000
 anchors_preset = 0
 offset_right = 40.0
@@ -663,7 +664,6 @@ scale = Vector2(2, 2)
 tooltip_text = "Filter for Failures"
 
 [node name="DeckEditor" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
