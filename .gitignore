@@ -1,16 +1,20 @@
 # Godot
 .import/
 .export/
-*.translation
-*.mono
-.mono/
-addons/godot-git-plugin/
+*.tmp
+*.log
+*.cfg
+*.godot/
+*.mono/
+*.user/
+*.vs/
+*.gd.uid
 
-# Builds
-build/
-dist/
-
-# OS files
+# OS-specific
 .DS_Store
 Thumbs.db
+
+# Backup files
+*.bak
+*.swp
 
