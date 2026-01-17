@@ -1,0 +1,15 @@
+AudioStreamPlayer2D
+Control
+FileDialog
+TextureButton
+TextureRect
+OptionButton
+LineEdit
+Button
+TextEdit
+CanvasLayer
+Label
+ScrollContainer
+HBoxContainer
+Container
+Panel

@@ -1,3 +1,16 @@
-# Godot 4+ specific ignores
-.godot/
-/android/
+# Godot
+.import/
+.export/
+*.translation
+*.mono
+.mono/
+addons/godot-git-plugin/
+
+# Builds
+build/
+dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+
