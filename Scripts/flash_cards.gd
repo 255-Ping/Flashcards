@@ -103,29 +103,50 @@ var style: String
 #AUDIO CONTROLLER
 @onready var audio = $AudioStreamPlayer2D
 
+#------------------------------
+#READY FUNCTION
+#------------------------------
+
 func _ready() -> void:
 	print("Flash cards starting...")
 	
+#Print USERDATA locations
 	print("USER DATA DIR:", OS.get_user_data_dir())
 	print("SAVE DIR:", ProjectSettings.globalize_path("user://FlashCards"))
+	
+#Connecting Quit
+	get_tree().connect("about_to_quit", Callable(self, "_on_quit"))
 	
 #Add RoundManager to scene
 	round_manager = RoundManager.new(self)
 	add_child(round_manager)
 	print("RoundManager Initialized")
 
+#Load password
 	var loaded = save.load_json("password.json")
+	#Set new password if no password
 	if !loaded:
+		#Create file structure
 		loaded = {
 			"password":"password"
 		}
 		save.save_json("password.json", loaded)
+	#set variable to password from file
 	admin_password = loaded["password"]
+	#Update textbox with password(obsfucated)
 	$Settings/Password.text = admin_password
 	
+#Load student list
 	loaded = save.load_json("student_list.json")
 	for i in loaded.size():
 		student_list.append(loaded[str(i + 1)])
+	
+#Update student list visuals
+	for s in student_list:
+		$Statistics/StudentStatistics.add_item(s)
+		$Settings/Student.add_item(s)
+	$Statistics/StudentStatistics.select(-1)
+	$Settings/Student.select(-1)
 	
 #Settings Defaults
 	operator = "+"
@@ -149,18 +170,17 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	print("Mouse Settings Updated")
 	
+#Reloads decks in deck ui
 	reload_deck_list()
 	print("Deck list reloaded")
-	
-	for s in student_list:
-		$Statistics/StudentStatistics.add_item(s)
-		$Settings/Student.add_item(s)
-	$Statistics/StudentStatistics.select(-1)
-	$Settings/Student.select(-1)
-		
+
+#Start Popup
 	create_popup("Welcome, press Start to play, Settings to customize, Statistics to view data, and Decks to view, create, or change a deck.", 10)
 	
-	
+#------------------------------
+#PROCESS FUNCTION
+#------------------------------
+
 func _process(delta: float) -> void:
 
 #Key Input Detection
@@ -171,14 +191,18 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("new_flash_card") and debug_mode:
 		_reset_flash_card()
 		print("[DEBUG] New Flash Card Generated")
+	#Debug test popup
 	if Input.is_action_just_pressed("test_popup") and debug_mode:
 		create_popup("test popup")
 		print("[DEBUG] Popup Tested")
+	#Exit application
 	if Input.is_action_just_pressed("exit"):
 		close_program()
+	#Debug forcible end round
 	if Input.is_action_just_pressed("end_round") and debug_mode:
 		round_manager.force_end_round("Debug Force End")
 		print("[DEBUG] Round Force Ended")
+	#Enable mouse after round has completed
 	if Input.is_action_just_pressed("complete_round"):
 		if !admin_present:
 			admin_present = true
@@ -195,7 +219,11 @@ func _process(delta: float) -> void:
 	failures_summary.text = str("Times Incorrect: ", failures)
 	if admin_present == false:
 		warp_mouse(Vector2(700, 100))
-		
+
+#------------------------------
+#CLOSE PROGRAM FUNCTION
+#------------------------------
+
 func close_program():
 	create_popup("Goodbye :)")
 	await get_tree().create_timer(0.5).timeout
@@ -215,6 +243,14 @@ func close_program():
 	save.save_json("student_list.json", students_dict)
 	print("Goodbye :)")
 	get_tree().quit()
+	
+func _on_quit():
+	print("alt quit")
+	close_program()
+
+#------------------------------
+#SELECT/GENERATE NEW FLASHCARD IN GAME
+#------------------------------
 
 func _reset_flash_card():
 	print("Selecting New Flash Card")
@@ -263,6 +299,9 @@ func _reset_flash_card():
 			print("Column negative check flagged, retrying")
 			_reset_flash_card()
 			return
+			
+			
+#Deck card generation
 	else:
 		if !selected_deck:
 			round_manager.force_end_round("No deck selected")
@@ -286,13 +325,17 @@ func _reset_flash_card():
 		answer = value_1 / value_2
 	print("Flashcard Answer Calulated")
 		
-#Update Visuals
+#Update Flashcard Visuals
 	print(str("Answer: ", answer))
 	equation_label.text = str(int(value_1), " ", operator, " ", int(value_2), " = ")
 	column_value_1.text = str(int(value_1))
 	column_value_2.text = str(int(value_2))
 	column_operator.text = str(operator)
 	print("Visuals Updated to Match Data")
+	
+#------------------------------
+#SUBMIT ANSWER
+#------------------------------
 
 func _submit_answer():
 	print("Answer Submitted")
@@ -347,6 +390,10 @@ func _on_answer_box_text_changed() -> void:
 	if !playing:
 		answer_box.text = ""
 
+#------------------------------
+#MAIN MENU BUTTONS
+#------------------------------
+
 #Start Round Button
 func _on_start_button_pressed() -> void:
 	round_manager.start_round()
@@ -367,14 +414,16 @@ func open_statistics_menu():
 	restart_round_menu.visible = false
 	statistics_menu.visible = true
 	graph.queue_redraw()
-	
+
+#Decks button
 func _on_decks_button_pressed() -> void:
 	create_password("decks")
 	
 func open_decks_menu():
 	restart_round_menu.visible = false
 	decks_menu.visible = true
-	
+
+#Sequence button
 func _on_sequence_button_pressed() -> void:
 	create_password("sequence")
 	
@@ -382,6 +431,10 @@ func open_sequence_menu():
 	restart_round_menu.visible = false
 	sequence_menu.visible = true
 
+
+#------------------------------
+#SETTINGS BUTTONS
+#------------------------------
 
 #Settings Go Back Button
 func _on_go_back_button_pressed() -> void:
@@ -447,9 +500,9 @@ func _on_student_item_selected(index: int) -> void:
 		$Settings/RequiredNumber.text = ""
 		$Settings/Operator.select(0)
 
-#
-#GRAPH SETTINGS AND FUNCTIONS
-#
+#------------------------------
+#LINE GRAPH BUTTONS
+#------------------------------
 #func _on_student_statistics_text_changed(new_text: String) -> void:
 #	graph_lookup = new_text
 #	_update_graph()
@@ -487,6 +540,9 @@ func _on_show_grid_toggled(toggled_on: bool) -> void:
 func _on_show_legend_toggled(toggled_on: bool) -> void:
 	graph.set_show_legend(toggled_on)
 
+#------------------------------
+#UPDATE LINE GRAPH WITH DATA FUNCTION
+#------------------------------
 #Function to update the line graph for Statistics
 func _update_graph():
 	var loaded = save.load_json(graph_lookup + ".json")
@@ -526,9 +582,9 @@ func _update_graph():
 		graph.set_divisions(10,10)
 
 
-#
-#DECK EDITOR CONTROLS
-#
+#------------------------------
+#DECK EDITOR BUTTONS
+#------------------------------
 
 func _submit_deck():
 	if " " in editing_deck:
@@ -560,7 +616,11 @@ func _on_editing_deck_text_changed(new_text: String) -> void:
 	
 func _on_editing_deck_text_submitted(_new_text: String) -> void:
 	_submit_deck()
-	
+
+#------------------------------
+#RELOAD DECK VISUALS FUNCTION
+#------------------------------
+
 func reload_deck_list():
 	for child in $DeckEditor/ScrollContainer/VBoxContainer.get_children():
 		child.queue_free()
@@ -585,21 +645,26 @@ func reload_deck_list():
 		
 		
 	
-#PopUp Creator Function
+#------------------------------
+#POPUP CREATOR FUNCTIONS
+#------------------------------
 
+#regular popup
 func create_popup(message: String, auto_hide_time: float = -1.0, type: String = "general"):
 	var instance = popup.instantiate()
 	instance.message = message
 	instance.auto_hide_time = auto_hide_time
 	instance.type = type
 	add_child(instance)
-	
+
+#password popup
 func create_password(menu: String):
 	var instance = password.instantiate()
 	instance.menu = menu
 	instance.connect("password_correct", Callable(self, "_on_password_correct"))
 	add_child(instance)
-	
+
+#Password correct event/detection
 func _on_password_correct(menu: String):
 	if menu == "settings":
 		open_settings_menu()
@@ -610,6 +675,7 @@ func _on_password_correct(menu: String):
 	if menu == "sequence":
 		open_sequence_menu()
 
+#Update password, sets password to something else in settings ui
 func _on_password_text_submitted(new_text: String) -> void:
 	if new_text == "":
 		create_popup("Password cannot be blank!", -1.0, "error")
@@ -619,10 +685,13 @@ func _on_password_text_submitted(new_text: String) -> void:
 	admin_password = new_text
 	create_popup("Password Changed!")
 
-
+#Sets visiblity of password text
 func _on_password_vision_button_pressed() -> void:
 	$Settings/Password.secret = !$Settings/Password.secret
 
+#------------------------------
+#IMPORT NEW DECK
+#------------------------------
 
 func _on_import_dialog_file_selected(path: String) -> void:
 	var file := FileAccess.open(path, FileAccess.READ)
