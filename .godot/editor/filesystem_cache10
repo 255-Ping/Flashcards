@@ -1,14 +1,7 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1768671142
+::res://::1768673684
 export_presets.cfg::TextFile::-1::1768628872::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D/CompressedTexture2D::4793144639677568912::1762821698::1762835472::1::::<><><>0<>0<>fa02fd539aafde3ccf76cee32f6ffa01<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-::res://addons/::1768628439
-::res://addons/godot-git-plugin/::1768628439
-git_plugin.gdextension::GDExtension::6181635323328969849::1768628439::0::1::::<><><>0<>0<><>::
-THIRDPARTY.md::TextFile::-1::1768628439::0::1::::<><><>0<>0<><>::
-::res://addons/godot-git-plugin/linux/::1768628439
-::res://addons/godot-git-plugin/macos/::1768628439
-::res://addons/godot-git-plugin/windows/::1768628439
 ::res://Fonts/::1768330394
 KOMIKAH_.ttf::FontFile::4602453050385046684::1766442910::1766442910::1::::<><><>0<>0<>5d63300a52eb10532465edd1bb860f8b<>res://.godot/imported/KOMIKAH_.ttf-5ae92a5f32223a7ce9c858df4a70b3bf.fontdata::
 KOMIKJ__.ttf::FontFile::281801353441555489::1766443238::1766443240::1::::<><><>0<>0<>41a105cb77b8f912bbcb2e567c960f39<>res://.godot/imported/KOMIKJ__.ttf-d2dbc7ea23538cbcafe11713b9ec5e39.fontdata::
