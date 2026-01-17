@@ -6,7 +6,7 @@ A classroom-focused flashcard application built in Godot, designed to help stude
 
 ## Features
 
-- Create and review flashcards with ease
+- Create and review flashcards
 - Track progress across study sessions
 - Multiple decks support
 - Simple, distraction-free interface
@@ -17,10 +17,12 @@ A classroom-focused flashcard application built in Godot, designed to help stude
 ## Getting Started
 
 ### Prerequisites
-- Godot Engine (version 4 recommended)
+
+- Godot Engine (version 4+ recommended)
 - Basic familiarity with running Godot projects
 
-### Running the App
+### Running from Godot
+
 1. Clone this repository:
    ```bash
    git clone git@github.com:255-Ping/Flashcards.git
