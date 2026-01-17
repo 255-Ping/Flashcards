@@ -1,20 +1,46 @@
-# Godot
-.import/
-.export/
-*.tmp
-*.log
-*.cfg
-*.godot/
-*.mono/
-*.user/
-*.vs/
+#################################
+# Godot 4 generated files
+#################################
+
+# Godot editor data (DO NOT COMMIT)
+.godot/
 *.gd.uid
 
-# OS-specific
-.DS_Store
-Thumbs.db
+#################################
+# Imports / caches (Godot 3 fallback)
+#################################
 
-# Backup files
+.import/
+
+#################################
+# Build / export folders
+#################################
+
+FLASHCARDS/
+export/
+build/
+
+#################################
+# Temporary & log files
+#################################
+
+*.log
+*.tmp
 *.bak
 *.swp
+
+#################################
+# IDE / editor junk
+#################################
+
+.vscode/
+.idea/
+.vs/
+
+#################################
+# OS junk
+#################################
+
+.DS_Store
+Thumbs.db
 
