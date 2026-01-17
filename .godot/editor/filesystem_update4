@@ -1,2 +1,13 @@
 res://Scenes/flash_card_control.tscn
 res://README.md
+res://Scripts/card.gd
+res://Scripts/DataManagement/deck_manager.gd
+res://Scripts/deck_ui.gd
+res://Scripts/DataManagement/excel_api.gd
+res://Scripts/flash_cards.gd
+res://Scripts/line_graph.gd
+res://Scripts/Popups/password_manager.gd
+res://Scripts/Popups/popup_manager.gd
+res://Scripts/round_manager.gd
+res://Scripts/DataManagement/save_manager.gd
+res://Scripts/DataManagement/sequence_manager.gd

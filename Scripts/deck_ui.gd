@@ -1,3 +1,7 @@
+# Flashcards - Godot Project
+# Copyright (C) 2026 Mr. Winans
+# Licensed under GPLv3 - https://www.gnu.org/licenses/gpl-3.0.txt
+
 extends Control
 class_name DeckUi
 
