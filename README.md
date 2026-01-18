@@ -1,28 +1,48 @@
-# Flashcards
+# Flashcard Program
 
-A classroom-focused flashcard application built in Godot, designed to help students study efficiently and track their progress over time. This project has been actively used in a real classroom environment to facilitate interactive learning.
+A cross-platform flashcard application built with **Godot**, designed for real classroom use.  
+This program supports studying, review, and progress tracking, and has been actively used by students across multiple devices without issues.
 
----
+## 🚀 Features
 
-## Features
+- Create and review flashcards quickly
+- Simple, distraction-free UI
+- Keyboard shortcuts for fast studying
+- Persistent save system (progress is remembered)
+- Designed for use on multiple computers
+- Lightweight and fast
 
-- Create and review flashcards
-- Track progress across study sessions
-- Multiple decks support
-- Simple, distraction-free interface
-- Designed for both students and teachers
+## 📖 Documentation
 
----
+Full usage instructions, controls, and explanations are available here:
 
-## Getting Started
+👉 **[Flashcard Program – User Guide](https://docs.google.com/document/d/1fbUxYh6ffeberwQp6U5fvy9oFO2EHrU73z2c17AO7bc/edit?usp=sharing)**
 
-### Prerequisites
+This document explains:
+- How to use the program
+- Keybinds and controls
+- File structure and saves
+- Tips for classroom use
 
-- Godot Engine (version 4+ recommended)
-- Basic familiarity with running Godot projects
+## 🛠 Built With
 
-### Running from Godot
+- **Godot Engine**
+- **GDScript**
 
-1. Clone this repository:
-   ```bash
-   git clone git@github.com:255-Ping/Flashcards.git
+## 📂 Project Status
+
+This project is **actively used in a classroom environment** and has been tested on multiple laptops simultaneously with no major bugs or crashes encountered.
+
+Future improvements may include:
+- Additional study modes
+- UI polish
+- Expanded statistics/graphs
+- Export/import options
+
+## 📸 Screenshots / Demo
+
+_(Add screenshots or a short demo GIF here when available — highly recommended for GitHub!)_
+
+## 📄 License
+
+This project is licensed under the **GNU General Public License v3.0**.
