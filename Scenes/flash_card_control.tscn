@@ -551,6 +551,8 @@ offset_top = -3.0
 offset_right = 277.0
 offset_bottom = 85.0
 scale = Vector2(0.75, 0.75)
+tooltip_text = "Remove selected student name from student list"
+mouse_filter = 1
 theme_override_font_sizes/font_size = 48
 text = "Remove"
 
@@ -568,6 +570,8 @@ offset_top = -2.0
 offset_right = 261.0
 offset_bottom = 86.0
 scale = Vector2(0.75, 0.75)
+tooltip_text = "Click to add name to the student list"
+mouse_filter = 1
 theme_override_font_sizes/font_size = 48
 text = "Add"
 
@@ -577,6 +581,7 @@ offset_left = 326.0
 offset_top = 120.0
 offset_right = 601.0
 offset_bottom = 172.0
+tooltip_text = "Student name to add to student list"
 placeholder_text = "Student Name"
 
 [node name="DecksMenuFromSettingsButton" type="Button" parent="Settings"]
@@ -654,15 +659,19 @@ offset_top = 562.0
 offset_right = 172.0
 offset_bottom = 622.0
 texture_normal = ExtResource("6_k8tfb")
+texture_pressed = ExtResource("13_nnl2m")
+texture_hover = ExtResource("14_cv30d")
 
 [node name="GoBackButtonLabel" type="Label" parent="Statistics/GoBackButton"]
 layout_mode = 0
-offset_left = 13.0
-offset_top = 7.0
-offset_right = 76.0
-offset_bottom = 30.0
-scale = Vector2(2, 2)
-text = "Go Back"
+offset_left = 24.999998
+offset_top = 9.0
+offset_right = 343.0
+offset_bottom = 188.0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("11_mpp0x")
+theme_override_font_sizes/font_size = 64
+text = "Go back"
 
 [node name="FilterLabel" type="Label" parent="Statistics"]
 layout_mode = 0

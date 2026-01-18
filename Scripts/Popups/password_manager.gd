@@ -12,6 +12,14 @@ class_name PasswordManager
 @onready var password_box = $Control/Panel/PasswordBox
 @onready var wrong_password = $Control/WrongPassword
 
+#TEXTURES
+@onready var eye = preload("res://Textures/eye.png")
+@onready var eye_hover = preload("res://Textures/eye_hover.png")
+@onready var eye_pressed = preload("res://Textures/eye_pressed.png")
+@onready var closed_eye = preload("res://Textures/closed_eye.png")
+@onready var closed_eye_hover = preload("res://Textures/closed_eye_hover.png")
+@onready var closed_eye_pressed = preload("res://Textures/closed_eye_pressed.png")
+
 var main
 
 var menu
@@ -52,6 +60,17 @@ func _on_password_box_text_submitted(_new_text: String) -> void:
 
 func _on_secret_button_pressed() -> void:
 	password_box.secret = !password_box.secret
+	_update_eye_textures(password_box.secret)
+	
+func _update_eye_textures(secret: bool):
+	if secret:
+		$Control/Panel/SecretButton.texture_normal = closed_eye
+		$Control/Panel/SecretButton.texture_hover = closed_eye_hover
+		$Control/Panel/SecretButton.texture_pressed = closed_eye_pressed
+	else:
+		$Control/Panel/SecretButton.texture_normal = eye
+		$Control/Panel/SecretButton.texture_hover = eye_hover
+		$Control/Panel/SecretButton.texture_pressed = eye_pressed
 
 func _on_x_button_pressed() -> void:
 	clear_all_password_popups()

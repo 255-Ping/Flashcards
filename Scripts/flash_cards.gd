@@ -118,7 +118,8 @@ func _ready() -> void:
 	print("SAVE DIR:", ProjectSettings.globalize_path("user://FlashCards"))
 	
 #Connecting Quit
-	get_tree().connect("about_to_quit", Callable(self, "_on_quit"))
+	#get_tree().tree_exiting.connect(_on_quit)
+	get_tree().root.tree_exiting.connect(_on_quit)
 	
 #Add RoundManager to scene
 	round_manager = RoundManager.new(self)
@@ -196,7 +197,7 @@ func _process(delta: float) -> void:
 		print("[DEBUG] Popup Tested")
 	#Exit application
 	if Input.is_action_just_pressed("exit"):
-		close_program()
+		close_program(true)
 	#Debug forcible end round
 	if Input.is_action_just_pressed("end_round") and debug_mode:
 		round_manager.force_end_round("Debug Force End")
@@ -223,9 +224,8 @@ func _process(delta: float) -> void:
 #CLOSE PROGRAM FUNCTION
 #------------------------------
 
-func close_program():
+func close_program(safe: bool):
 	create_popup("Goodbye :)")
-	await get_tree().create_timer(0.5).timeout
 
 #Save password
 	var password_dict = {
@@ -241,11 +241,21 @@ func close_program():
 		student_counter += 1
 	save.save_json("student_list.json", students_dict)
 	print("Goodbye :)")
-	get_tree().quit()
+	if safe:
+		await get_tree().create_timer(0.5).timeout
+		get_tree().quit()
+		return
+	else:
+		#get_tree().quit()
+		return
 	
-func _on_quit():
+func _exit_tree() -> void:
 	print("alt quit")
-	close_program()
+	close_program(false)
+	
+func _on_quit() -> void:
+	print("alt quit")
+	close_program(false)
 
 #------------------------------
 #SELECT/GENERATE NEW FLASHCARD IN GAME
