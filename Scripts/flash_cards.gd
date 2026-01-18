@@ -10,6 +10,7 @@ var rng = RandomNumberGenerator.new()
 var round_manager: RoundManager
 var save = SaveManager.new()
 var deck = DeckManager.new()
+var excel = ExcelAPI.new()
 
 #Var "Persistent" Data
 var student_list: Array
@@ -471,6 +472,17 @@ func _on_max_questions_text_changed(_new_text: String) -> void:
 	max_questions = int($Settings/MaxQuestions.text)
 
 func _on_student_item_selected(index: int) -> void:
+	var loaded = save.load_json(student_name + ".json")
+	print(loaded)
+	var new_rounds_completed: int
+	if loaded:
+		if !loaded.has("Rounds Completed"):
+			new_rounds_completed = 1
+		else:
+			new_rounds_completed = loaded["Rounds Completed"] + 1
+	else:
+		new_rounds_completed += 1
+	save_student_data(loaded,new_rounds_completed)
 	student_name = student_list[index]
 	update_settings_from_data(student_name)
 
@@ -491,6 +503,10 @@ func _on_add_student_button_pressed() -> void:
 	student_list.append($Settings/StudentNameToAdd.text)
 	update_student_list_visuals(student_list)
 	$Settings/StudentNameToAdd.text = ""
+	
+func _on_decks_menu_from_settings_button_pressed() -> void:
+	$Settings.visible = false
+	$DeckEditor.visible = true
 
 #------------------------------
 #UPDATE SETTINGS/STUDENT_LIST VISUALS
@@ -744,3 +760,41 @@ func _on_import_dialog_file_selected(path: String) -> void:
 
 func _on_import_button_pressed() -> void:
 	$DeckEditor/ImportDialog.visible = true
+	
+	
+#------------------------------
+#SAVE STUDENT DATA
+#------------------------------
+	
+func save_student_data(loaded, new_rounds_completed):
+	var data = {
+		"Name": student_name,
+		"Operator": operator,
+		"Required Number": required_number,
+		"Incorrect Questions": failures,
+		"Max Questions": max_questions,
+		"Questions Per Minute": qpm,
+		"Time Taken": roundf(time_passed),
+		"Rounds Completed": new_rounds_completed
+	}
+	for i in new_rounds_completed:
+		
+		if !loaded.has(str(i, "qpm")):
+			data[str(i, "qpm")] = qpm
+		else:
+			data[str(i, "qpm")] = loaded[str(i, "qpm")]
+		
+		if !loaded.has(str(i, "failures")):
+			data[str(i, "failures")] = failures
+		else:
+			data[str(i, "failures")] = loaded[str(i, "failures")]
+			
+		if !loaded.has(str(i, "deck")):
+			data[str(i, "deck")] = selected_deck
+		else:
+			data[str(i, "deck")] = loaded[str(i, "deck")]
+			
+	if !student_name == "":
+		save.save_json(str(student_name + ".json"), data)
+		if send_data:
+			excel.send_round_data(student_name, String(operator), required_number, failures, max_questions, qpm, roundf(time_passed))

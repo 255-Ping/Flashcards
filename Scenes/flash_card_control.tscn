@@ -552,6 +552,22 @@ offset_right = 601.0
 offset_bottom = 172.0
 placeholder_text = "Student Name"
 
+[node name="DecksMenuFromSettingsButton" type="Button" parent="Settings"]
+layout_mode = 0
+offset_left = 816.0
+offset_top = 375.0
+offset_right = 966.0
+offset_bottom = 427.0
+
+[node name="DecksButtonLabel" type="Label" parent="Settings/DecksMenuFromSettingsButton"]
+layout_mode = 0
+offset_left = 22.0
+offset_right = 270.0
+offset_bottom = 88.0
+scale = Vector2(0.75, 0.75)
+theme_override_font_sizes/font_size = 48
+text = "Decks"
+
 [node name="Statistics" type="Control" parent="."]
 visible = false
 anchors_preset = 0
@@ -862,6 +878,7 @@ stream = ExtResource("16_svhce")
 [connection signal="pressed" from="Settings/AddStudentButton" to="." method="_on_add_student_button_pressed"]
 [connection signal="text_changed" from="Settings/StudentNameToAdd" to="." method="_on_student_name_to_add_text_changed"]
 [connection signal="text_submitted" from="Settings/StudentNameToAdd" to="." method="_on_student_name_to_add_text_submitted"]
+[connection signal="pressed" from="Settings/DecksMenuFromSettingsButton" to="." method="_on_decks_menu_from_settings_button_pressed"]
 [connection signal="item_selected" from="Statistics/StudentStatistics" to="." method="_on_student_statistics_item_selected"]
 [connection signal="pressed" from="Statistics/GoBackButton" to="." method="_on_go_back_button_pressed"]
 [connection signal="item_selected" from="Statistics/Filter" to="." method="_on_filter_item_selected"]

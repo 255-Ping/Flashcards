@@ -57,39 +57,7 @@ func end_round():
 	else:
 		new_rounds_completed += 1
 		
-func save_student_data(loaded, new_rounds_completed):
-	var data = {
-		"Name": main.student_name,
-		"Operator": main.operator,
-		"Required Number": main.required_number,
-		"Incorrect Questions": main.failures,
-		"Max Questions": main.max_questions,
-		"Questions Per Minute": main.qpm,
-		"Time Taken": roundf(main.time_passed),
-		"Rounds Completed": new_rounds_completed
-	}
-	for i in new_rounds_completed:
-		
-		if !loaded.has(str(i, "qpm")):
-			data[str(i, "qpm")] = main.qpm
-		else:
-			data[str(i, "qpm")] = loaded[str(i, "qpm")]
-		
-		if !loaded.has(str(i, "failures")):
-			data[str(i, "failures")] = main.failures
-		else:
-			data[str(i, "failures")] = loaded[str(i, "failures")]
-			
-		if !loaded.has(str(i, "deck")):
-			data[str(i, "deck")] = main.selected_deck
-		else:
-			data[str(i, "deck")] = loaded[str(i, "deck")]
-			
-	if !main.student_name == "":
-		save.save_json(str(main.student_name + ".json"), data)
-		if main.send_data:
-			excel.send_round_data(main.student_name, String(main.operator), main.required_number, main.failures, main.max_questions, main.qpm, roundf(main.time_passed))
-	
+	main.save_student_data(loaded,new_rounds_completed)
 	main.playing = false
 	main.create_popup("Round Complete! Wait for Help.", -1, "round_complete")
 
