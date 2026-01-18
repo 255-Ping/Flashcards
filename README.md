@@ -42,7 +42,7 @@ Future improvements may include:
 ## 📸 Screenshots
 
 ### Main Interface
-![Main Interface](screenshots/main_screen.png)
+![Main Interface](Screenshots/scmainui.png)
 
 ## 📄 License
 
