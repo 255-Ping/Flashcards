@@ -192,7 +192,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RestartRound" type="Control" parent="."]
-visible = false
 z_index = 1000
 anchors_preset = 0
 offset_right = 40.0
@@ -332,6 +331,7 @@ scale = Vector2(2, 2)
 text = "Seq Edit"
 
 [node name="Settings" type="Control" parent="."]
+visible = false
 z_index = 1000
 anchors_preset = 0
 offset_right = 40.0

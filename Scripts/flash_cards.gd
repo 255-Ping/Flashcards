@@ -477,11 +477,11 @@ func _on_student_item_selected(index: int) -> void:
 	var new_rounds_completed: int
 	if loaded:
 		if !loaded.has("Rounds Completed"):
-			new_rounds_completed = 1
+			new_rounds_completed = 0
 		else:
-			new_rounds_completed = loaded["Rounds Completed"] + 1
+			new_rounds_completed = loaded["Rounds Completed"]
 	else:
-		new_rounds_completed += 1
+		new_rounds_completed = 0
 	save_student_data(loaded,new_rounds_completed)
 	student_name = student_list[index]
 	update_settings_from_data(student_name)
@@ -514,6 +514,7 @@ func _on_decks_menu_from_settings_button_pressed() -> void:
 
 func update_student_list_visuals(new_student_list):
 	$Settings/Student.clear()
+	$Statistics/StudentStatistics.clear()
 	for s in new_student_list:
 		$Statistics/StudentStatistics.add_item(s)
 		$Settings/Student.add_item(s)
