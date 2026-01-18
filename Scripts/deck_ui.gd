@@ -85,7 +85,7 @@ func _on_add_button_pressed() -> void:
 
 func _on_select_button_pressed() -> void:
 	main.selected_deck = deck
-	main.create_popup(str("Deck Selected: ", deck), 0.5)
+	main.create_popup(str("Deck Selected: ", deck), 1.5)
 
 func _on_deck_name_text_submitted(new_text: String) -> void:
 	if new_text == "":

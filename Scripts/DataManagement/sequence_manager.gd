@@ -38,4 +38,35 @@ func add_deck_to_sequence(filename: String, deckname: String):
 		loaded[str(loaded.size())] = deckname
 	save.save_json(str(filename, ".seq"), loaded)
 	
-			
+func delete_sequence(filename: String):
+	var loaded = save.load_json("sequence_names.seq")
+	if !loaded.has(filename):
+		push_error("No sequence by the name ", filename, ", aborting deletion")
+		return
+	var file_path = SAVE_DIR + "/" + filename + ".seq"
+	if !FileAccess.file_exists(file_path):
+		push_error("Sequence doesn't exist aborting deletion")
+		return
+	if save.delete_file(str(filename + ".seq")):
+		print("Successfully Deleted Sequence")
+		loaded.erase(filename)
+		if loaded.size() > 0:
+			save.save_json("sequence_names.seq", loaded)
+		else:
+			save.delete_file("sequence_names.seq")
+	else:
+		print("Failed to Delete Sequence")
+		
+func rename_sequence(sequence: String, new_name: String):
+	var sequence_names = save.load_json("sequence_names.seq")
+	if sequence_names.has(new_name):
+		push_error("Sequence with name exists already")
+		return
+	#var loaded = save.load_json("deck_" + deck + ".deck")
+	sequence_names.erase(sequence)
+	sequence_names[new_name] = new_name
+	save.save_json("sequence_names.seq", sequence_names)
+	#delete_deck(deck)
+	#save.save_json("deck_" + new_name + ".deck", loaded)
+	save.rename_file(sequence + ".seq", new_name + ".seq")
+	

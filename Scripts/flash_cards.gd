@@ -11,6 +11,7 @@ var round_manager: RoundManager
 var save = SaveManager.new()
 var deck = DeckManager.new()
 var excel = ExcelAPI.new()
+var sequence = SequenceManager.new()
 
 #Var "Persistent" Data
 var student_list: Array
@@ -28,6 +29,9 @@ var editing_cards: String
 var selected_deck: String
 var card_generation: String
 var card_number: int
+
+#Sequence Editing Variables
+var selected_sequence: String
 
 #Graph Variables
 var graph_lookup: String
@@ -63,6 +67,7 @@ var student_to_add: String
 
 #DeckManager Node Variables
 @onready var deck_entry = preload("res://Scenes/deck.tscn")
+@onready var sequence_entry = preload("res://Scenes/sequence.tscn")
 
 #PopUp Node Variables
 @onready var popup = preload("res://Scenes/popup_manager.tscn")
@@ -173,6 +178,10 @@ func _ready() -> void:
 #Reloads decks in deck ui
 	reload_deck_list()
 	print("Deck list reloaded")
+	
+#Reloads sequences in sequence ui
+	reload_sequence_list()
+	print("Sequence list reloaded")
 
 #Start Popup
 	create_popup("Welcome, press Start to play, Settings to customize, Statistics to view data, and Decks to view, create, or change a deck.", 10)
@@ -267,7 +276,7 @@ func _reset_flash_card():
 #Does not currently work, will probably never work.
 	if card_generation == "random":
 		if operator == "/":
-			push_error("Division Operator Selected, Deselect or the Program may Crash")
+			push_warning("Division Operator Selected, Deselect or the Program may Crash")
 			value_1 = rng.randi_range(0,12)
 			value_2 = rng.randi_range(0,12)
 			if !allow_divided_by_1 and value_2 == 1:
@@ -440,6 +449,9 @@ func open_sequence_menu():
 	restart_round_menu.visible = false
 	sequence_menu.visible = true
 
+func _on_open_folder_button_pressed() -> void:
+	create_password("open_folder")
+
 
 #------------------------------
 #SETTINGS BUTTONS
@@ -451,6 +463,7 @@ func _on_go_back_button_pressed() -> void:
 	settings_menu.visible = false
 	statistics_menu.visible = false
 	decks_menu.visible = false
+	sequence_menu.visible = false
 
 #Operator Selector Button
 func _on_operator_item_selected(index: int) -> void:
@@ -680,29 +693,64 @@ func _on_editing_deck_text_submitted(_new_text: String) -> void:
 #------------------------------
 
 func reload_deck_list():
+#Deletes children in deck list
 	for child in $DeckEditor/ScrollContainer/VBoxContainer.get_children():
 		child.queue_free()
+#Loads deck names data and checks if it exists
 	var loaded_deck_names = save.load_json("deck_names.deck")
 	if !loaded_deck_names:
-		
 		return
+#Loops through decks
 	for i in loaded_deck_names:
+	#Creates a deck data var and makes sure it has data
 		var loaded_deck = save.load_json(str(i, ".deck"))
-		#var
 		if !loaded_deck:
 			push_error("Data fault, deck_names contains a name with no data.")
 			create_popup("Data fault, deck_names contains a name with no data.", -1.0, "error")
 			return
-		#for i in loaded_deck:
+	#Adds the deck to the visual list
 		var instance = deck_entry.instantiate()
 		instance.text = str(loaded_deck)
 		instance.deck = i
 		instance.cards = loaded_deck
 		$DeckEditor/ScrollContainer/VBoxContainer.add_child(instance)
-			
 		
 		
-	
+#------------------------------
+#SEQUENCE EDITOR BUTTONS
+#------------------------------
+
+func _on_create_blank_sequence_button_pressed() -> void:
+	sequence.create_blank_sequence("blank")
+	reload_sequence_list()
+
+#------------------------------
+#RELOAD SEQUENCE VISUALS FUNCTION
+#------------------------------
+
+func reload_sequence_list():
+#Deletes children in sequence list
+	for child in $SequenceEditor/ScrollContainer/VBoxContainer.get_children():
+		child.queue_free()
+#Loads sequence names data and checks if it exists
+	var loaded_sequence_names = save.load_json("sequence_names.seq")
+	if !loaded_sequence_names:
+		return
+#Loops through sequences
+	for i in loaded_sequence_names:
+	#Creates a deck data var and makes sure it has data
+		var loaded_sequence = save.load_json(str(i, ".seq"))
+		if !loaded_sequence:
+			push_warning("Data fault, sequence_names contains a name with no data.")
+			#create_popup("Data fault, deck_names contains a name with no data.", -1.0, "error")
+			#return
+	#Adds the deck to the visual list
+		var instance = sequence_entry.instantiate()
+		instance.text = str(loaded_sequence)
+		instance.sequence = i
+		instance.decks = loaded_sequence
+		$SequenceEditor/ScrollContainer/VBoxContainer.add_child(instance)
+
 #------------------------------
 #POPUP CREATOR FUNCTIONS
 #------------------------------
@@ -732,6 +780,8 @@ func _on_password_correct(menu: String):
 		open_decks_menu()
 	if menu == "sequence":
 		open_sequence_menu()
+	if menu == "open_folder":
+		open_flashcards_folder()
 
 #Update password, sets password to something else in settings ui
 func _on_password_text_submitted(new_text: String) -> void:
@@ -755,6 +805,7 @@ func _on_import_dialog_file_selected(path: String) -> void:
 	var file := FileAccess.open(path, FileAccess.READ)
 	if file == null:
 		push_error("Could not open file.")
+		create_popup("Could not open file.", -1, "error")
 		return
 
 	var text := file.get_as_text()
@@ -762,6 +813,7 @@ func _on_import_dialog_file_selected(path: String) -> void:
 	var data = JSON.parse_string(text)
 	if data == null or not data is Dictionary:
 		push_error("Invalid flashcard JSON format.")
+		create_popup("Invalid flashcard JSON format. This file will not work!", -1, "error")
 		return
 	var filename = path.get_file()
 	filename = filename.replace(".deck", "")
@@ -809,3 +861,19 @@ func save_student_data(loaded, new_rounds_completed):
 		save.save_json(str(student_name + ".json"), data)
 		if send_data:
 			excel.send_round_data(student_name, String(operator), required_number, failures, max_questions, qpm, roundf(time_passed))
+
+
+#------------------------------
+#OPEN FLASHCARDS DATA FOLDER
+#------------------------------
+
+func open_flashcards_folder():
+	var path = ProjectSettings.globalize_path("user://FlashCards")
+	
+	# Create the folder if it doesn't exist
+	var dir = DirAccess.open(path)
+	if dir == null:
+		DirAccess.open(ProjectSettings.globalize_path("user://")).make_dir_recursive("FlashCards")
+	
+	# Open it in the OS file explorer
+	OS.shell_open(path)

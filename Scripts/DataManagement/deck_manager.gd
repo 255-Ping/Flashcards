@@ -130,12 +130,15 @@ func delete_deck(filename: String):
 func rename_deck(deck: String, new_name: String):
 	var deck_names = save.load_json("deck_names.deck")
 	#var loaded = save.load_json("deck_" + deck + ".deck")
+	if deck_names.has(new_name):
+		push_error("Deck with name exists already")
+		return
 	deck_names.erase(deck)
 	deck_names[new_name] = new_name
 	save.save_json("deck_names.deck", deck_names)
 	#delete_deck(deck)
 	#save.save_json("deck_" + new_name + ".deck", loaded)
-	save.rename_file("deck_" + deck + ".deck", "deck_" + new_name + ".deck")
+	save.rename_file(deck + ".deck", new_name + ".deck")
 		
 func find_card_answer(value_1: int, value_2: int, operator: String) -> int:
 	if operator == "+":
