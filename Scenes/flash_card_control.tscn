@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://4v16l0ldovhh"]
+[gd_scene load_steps=19 format=3 uid="uid://4v16l0ldovhh"]
 
 [ext_resource type="Script" uid="uid://ca8oo1whw6s2d" path="res://Scripts/flash_cards.gd" id="1_xyf0l"]
 [ext_resource type="Texture2D" uid="uid://c5crq66joib64" path="res://Textures/background.png" id="2_80326"]
@@ -15,6 +15,8 @@
 [ext_resource type="Theme" uid="uid://76wxr7e03ud3" path="res://Themes/general_theme.tres" id="11_mpp0x"]
 [ext_resource type="PackedScene" uid="uid://dsvw5fdkdqmr8" path="res://Scenes/line_graph.tscn" id="12_evyry"]
 [ext_resource type="Texture2D" uid="uid://ddfyoivtl6w2v" path="res://Textures/eye.png" id="12_fiqhk"]
+[ext_resource type="Texture2D" uid="uid://dmg8goruip023" path="res://Textures/button_pressed.png" id="13_nnl2m"]
+[ext_resource type="Texture2D" uid="uid://b7dgn4n3o4o5d" path="res://Textures/button_hover.png" id="14_cv30d"]
 [ext_resource type="AudioStream" uid="uid://bs1k60tqnmy40" path="res://Sounds/ding-sound-effect_2.mp3" id="16_svhce"]
 
 [node name="FlashCardControl" type="Control"]
@@ -251,14 +253,18 @@ offset_top = 565.0
 offset_right = 1134.0
 offset_bottom = 625.0
 texture_normal = ExtResource("6_k8tfb")
+texture_pressed = ExtResource("13_nnl2m")
+texture_hover = ExtResource("14_cv30d")
 
 [node name="StartButtonLabel" type="Label" parent="RestartRound/StartButton"]
 layout_mode = 0
-offset_left = 37.0
-offset_top = 6.0
-offset_right = 94.0
-offset_bottom = 29.0
-scale = Vector2(2, 2)
+offset_left = 39.999996
+offset_top = 11.0
+offset_right = 358.0
+offset_bottom = 190.0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("11_mpp0x")
+theme_override_font_sizes/font_size = 64
 text = "Start"
 
 [node name="SettingsButton" type="TextureButton" parent="RestartRound"]
@@ -267,15 +273,20 @@ offset_left = 831.0
 offset_top = 565.0
 offset_right = 981.0
 offset_bottom = 625.0
+theme = ExtResource("11_mpp0x")
 texture_normal = ExtResource("6_k8tfb")
+texture_pressed = ExtResource("13_nnl2m")
+texture_hover = ExtResource("14_cv30d")
 
 [node name="SettingsButtonLabel" type="Label" parent="RestartRound/SettingsButton"]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 6.0
-offset_right = 77.0
-offset_bottom = 29.0
-scale = Vector2(2, 2)
+offset_left = 20.999998
+offset_top = 10.0
+offset_right = 339.0
+offset_bottom = 189.0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("11_mpp0x")
+theme_override_font_sizes/font_size = 64
 text = "Settings"
 
 [node name="StatisticsButton" type="TextureButton" parent="RestartRound"]
@@ -285,14 +296,18 @@ offset_top = 565.0
 offset_right = 829.0
 offset_bottom = 625.0
 texture_normal = ExtResource("6_k8tfb")
+texture_pressed = ExtResource("13_nnl2m")
+texture_hover = ExtResource("14_cv30d")
 
 [node name="StatisticsButtonLabel" type="Label" parent="RestartRound/StatisticsButton"]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 6.0
-offset_right = 75.0
-offset_bottom = 55.0
-scale = Vector2(2, 2)
+offset_left = 10.999998
+offset_top = 10.0
+offset_right = 329.0
+offset_bottom = 189.0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("11_mpp0x")
+theme_override_font_sizes/font_size = 64
 text = "Statistics
 "
 
@@ -303,15 +318,19 @@ offset_top = 566.0
 offset_right = 676.0
 offset_bottom = 626.0
 texture_normal = ExtResource("6_k8tfb")
+texture_pressed = ExtResource("13_nnl2m")
+texture_hover = ExtResource("14_cv30d")
 
-[node name="DecksLabel" type="Label" parent="RestartRound/DecksButton"]
+[node name="DeckEditorButtonLabel" type="Label" parent="RestartRound/DecksButton"]
 layout_mode = 0
-offset_left = 30.0
-offset_top = 4.0
-offset_right = 100.0
-offset_bottom = 53.0
-scale = Vector2(2, 2)
-text = "Decks"
+offset_left = 6.9999986
+offset_top = 11.0
+offset_right = 361.0
+offset_bottom = 190.0
+scale = Vector2(0.385, 0.385)
+theme = ExtResource("11_mpp0x")
+theme_override_font_sizes/font_size = 64
+text = "Deck Editor"
 
 [node name="SequenceButton" type="TextureButton" parent="RestartRound"]
 layout_mode = 0
@@ -320,15 +339,19 @@ offset_top = 566.0
 offset_right = 520.0
 offset_bottom = 626.0
 texture_normal = ExtResource("6_k8tfb")
+texture_pressed = ExtResource("13_nnl2m")
+texture_hover = ExtResource("14_cv30d")
 
-[node name="DecksLabel" type="Label" parent="RestartRound/SequenceButton"]
+[node name="SeqButtonLabel" type="Label" parent="RestartRound/SequenceButton"]
 layout_mode = 0
-offset_left = 9.0
-offset_top = 5.0
-offset_right = 84.0
-offset_bottom = 54.0
-scale = Vector2(2, 2)
-text = "Seq Edit"
+offset_left = 15.999998
+offset_top = 10.0
+offset_right = 334.0
+offset_bottom = 189.0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("11_mpp0x")
+theme_override_font_sizes/font_size = 64
+text = "Sequencer"
 
 [node name="Settings" type="Control" parent="."]
 visible = false
@@ -358,15 +381,19 @@ offset_top = 562.0
 offset_right = 172.0
 offset_bottom = 622.0
 texture_normal = ExtResource("6_k8tfb")
+texture_pressed = ExtResource("13_nnl2m")
+texture_hover = ExtResource("14_cv30d")
 
 [node name="GoBackButtonLabel" type="Label" parent="Settings/GoBackButton"]
 layout_mode = 0
-offset_left = 13.0
-offset_top = 7.0
-offset_right = 76.0
-offset_bottom = 30.0
-scale = Vector2(2, 2)
-text = "Go Back"
+offset_left = 26.999998
+offset_top = 10.0
+offset_right = 345.0
+offset_bottom = 189.0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("11_mpp0x")
+theme_override_font_sizes/font_size = 64
+text = "Go back"
 
 [node name="Operator" type="OptionButton" parent="Settings"]
 layout_mode = 0
@@ -799,15 +826,19 @@ offset_top = 562.0
 offset_right = 172.0
 offset_bottom = 622.0
 texture_normal = ExtResource("6_k8tfb")
+texture_pressed = ExtResource("13_nnl2m")
+texture_hover = ExtResource("14_cv30d")
 
 [node name="GoBackButtonLabel" type="Label" parent="DeckEditor/GoBackButton"]
 layout_mode = 0
-offset_left = 13.0
-offset_top = 7.0
-offset_right = 76.0
-offset_bottom = 30.0
-scale = Vector2(2, 2)
-text = "Go Back"
+offset_left = 26.999998
+offset_top = 10.0
+offset_right = 345.0
+offset_bottom = 189.0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("11_mpp0x")
+theme_override_font_sizes/font_size = 64
+text = "Go back"
 
 [node name="ImportDialog" type="FileDialog" parent="DeckEditor"]
 oversampling_override = 1.0
@@ -827,15 +858,19 @@ offset_top = 561.0
 offset_right = 1127.0
 offset_bottom = 621.0
 texture_normal = ExtResource("6_k8tfb")
+texture_pressed = ExtResource("13_nnl2m")
+texture_hover = ExtResource("14_cv30d")
 
-[node name="ImportLabel" type="Label" parent="DeckEditor/ImportButton"]
+[node name="ImportButtonLabel" type="Label" parent="DeckEditor/ImportButton"]
 layout_mode = 0
-offset_left = 13.0
-offset_top = 7.0
-offset_right = 76.0
-offset_bottom = 30.0
-scale = Vector2(2, 2)
-text = " Import"
+offset_left = 34.999996
+offset_top = 10.0
+offset_right = 353.0
+offset_bottom = 189.0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("11_mpp0x")
+theme_override_font_sizes/font_size = 64
+text = "Import"
 
 [node name="SequenceEditor" type="Control" parent="."]
 visible = false

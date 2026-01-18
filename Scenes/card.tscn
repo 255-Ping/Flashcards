@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://chabdb0glnxnc"]
+[gd_scene load_steps=7 format=3 uid="uid://chabdb0glnxnc"]
 
 [ext_resource type="Texture2D" uid="uid://bf5g00s7jx617" path="res://Textures/card.png" id="1_0qqmn"]
 [ext_resource type="Script" uid="uid://x45thbeas74m" path="res://Scripts/card.gd" id="1_wf8id"]
 [ext_resource type="Texture2D" uid="uid://dsuxck67simbi" path="res://Textures/bar.png" id="3_brehn"]
 [ext_resource type="Texture2D" uid="uid://c2qws3vie5tnn" path="res://Textures/x.png" id="4_eumee"]
+[ext_resource type="Texture2D" uid="uid://ckfyoxsggc05i" path="res://Textures/x_pressed.png" id="5_bnspj"]
+[ext_resource type="Texture2D" uid="uid://c6aa5fwy0i3nc" path="res://Textures/x_hover.png" id="6_xnv4g"]
 
 [node name="Card" type="Control"]
 custom_minimum_size = Vector2(56, 76)
@@ -100,5 +102,7 @@ offset_top = 2.0
 offset_right = 20.0
 offset_bottom = 18.0
 texture_normal = ExtResource("4_eumee")
+texture_pressed = ExtResource("5_bnspj")
+texture_hover = ExtResource("6_xnv4g")
 
 [connection signal="pressed" from="DeleteCard" to="." method="_on_delete_card_pressed"]
