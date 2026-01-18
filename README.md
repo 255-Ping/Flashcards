@@ -39,9 +39,10 @@ Future improvements may include:
 - Expanded statistics/graphs
 - Export/import options
 
-## 📸 Screenshots / Demo
+## 📸 Screenshots
 
-_(Add screenshots or a short demo GIF here when available — highly recommended for GitHub!)_
+### Main Interface
+![Main Interface](screenshots/main_screen.png)
 
 ## 📄 License
 
