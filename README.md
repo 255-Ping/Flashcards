@@ -48,7 +48,7 @@ Future improvements may include:
 ![Flashcard Question](Screenshots/scingame.png)
 
 ### Progress Tracking
-![Statistics View](Screenshots/scstatsui.png)
+![Statistics View](Screenshots/scstatsui2.png)
 
 ### Creating Decks
 ![Decks View](Screenshots/scdeckui.png)
