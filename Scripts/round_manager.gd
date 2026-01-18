@@ -56,6 +56,8 @@ func end_round():
 			new_rounds_completed = loaded["Rounds Completed"] + 1
 	else:
 		new_rounds_completed += 1
+		
+func save_student_data(loaded, new_rounds_completed):
 	var data = {
 		"Name": main.student_name,
 		"Operator": main.operator,

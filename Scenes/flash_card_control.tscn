@@ -332,7 +332,6 @@ scale = Vector2(2, 2)
 text = "Seq Edit"
 
 [node name="Settings" type="Control" parent="."]
-visible = false
 z_index = 1000
 anchors_preset = 0
 offset_right = 40.0
@@ -511,6 +510,48 @@ offset_bottom = 21.714241
 scale = Vector2(4, 4)
 texture_normal = ExtResource("12_fiqhk")
 
+[node name="RemoveStudentButton" type="Button" parent="Settings"]
+layout_mode = 0
+offset_left = 605.0
+offset_top = 120.0
+offset_right = 805.0
+offset_bottom = 172.0
+
+[node name="RemoveStudentLabel" type="Label" parent="Settings/RemoveStudentButton"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = -3.0
+offset_right = 277.0
+offset_bottom = 85.0
+scale = Vector2(0.75, 0.75)
+theme_override_font_sizes/font_size = 48
+text = "Remove"
+
+[node name="AddStudentButton" type="Button" parent="Settings"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 120.0
+offset_right = 321.0
+offset_bottom = 172.0
+
+[node name="AddStudentLabel" type="Label" parent="Settings/AddStudentButton"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = -2.0
+offset_right = 261.0
+offset_bottom = 86.0
+scale = Vector2(0.75, 0.75)
+theme_override_font_sizes/font_size = 48
+text = "Add"
+
+[node name="StudentNameToAdd" type="LineEdit" parent="Settings"]
+layout_mode = 0
+offset_left = 326.0
+offset_top = 120.0
+offset_right = 601.0
+offset_bottom = 172.0
+placeholder_text = "Student Name"
+
 [node name="Statistics" type="Control" parent="."]
 visible = false
 anchors_preset = 0
@@ -664,6 +705,7 @@ scale = Vector2(2, 2)
 tooltip_text = "Filter for Failures"
 
 [node name="DeckEditor" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -816,6 +858,10 @@ stream = ExtResource("16_svhce")
 [connection signal="item_selected" from="Settings/Student" to="." method="_on_student_item_selected"]
 [connection signal="text_submitted" from="Settings/Password" to="." method="_on_password_text_submitted"]
 [connection signal="pressed" from="Settings/Password/PasswordVisionButton" to="." method="_on_password_vision_button_pressed"]
+[connection signal="pressed" from="Settings/RemoveStudentButton" to="." method="_on_remove_student_button_pressed"]
+[connection signal="pressed" from="Settings/AddStudentButton" to="." method="_on_add_student_button_pressed"]
+[connection signal="text_changed" from="Settings/StudentNameToAdd" to="." method="_on_student_name_to_add_text_changed"]
+[connection signal="text_submitted" from="Settings/StudentNameToAdd" to="." method="_on_student_name_to_add_text_submitted"]
 [connection signal="item_selected" from="Statistics/StudentStatistics" to="." method="_on_student_statistics_item_selected"]
 [connection signal="pressed" from="Statistics/GoBackButton" to="." method="_on_go_back_button_pressed"]
 [connection signal="item_selected" from="Statistics/Filter" to="." method="_on_filter_item_selected"]

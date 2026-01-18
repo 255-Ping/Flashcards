@@ -58,6 +58,8 @@ var allow_divided_by_1: bool
 var required_number: String
 var style: String
 
+var student_to_add: String
+
 #DeckManager Node Variables
 @onready var deck_entry = preload("res://Scenes/deck.tscn")
 
@@ -142,11 +144,7 @@ func _ready() -> void:
 		student_list.append(loaded[str(i + 1)])
 	
 #Update student list visuals
-	for s in student_list:
-		$Statistics/StudentStatistics.add_item(s)
-		$Settings/Student.add_item(s)
-	$Statistics/StudentStatistics.select(-1)
-	$Settings/Student.select(-1)
+	update_student_list_visuals(student_list)
 	
 #Settings Defaults
 	operator = "+"
@@ -474,7 +472,40 @@ func _on_max_questions_text_changed(_new_text: String) -> void:
 
 func _on_student_item_selected(index: int) -> void:
 	student_name = student_list[index]
-	var loaded = save.load_json(student_name + ".json")
+	update_settings_from_data(student_name)
+
+func _on_remove_student_button_pressed() -> void:
+	student_list.erase(student_name)
+	student_name = ""
+	update_student_list_visuals(student_list)
+	
+func _on_student_name_to_add_text_changed(new_text: String) -> void:
+	student_to_add = new_text
+	
+func _on_student_name_to_add_text_submitted(new_text: String) -> void:
+	student_list.append(new_text)
+	update_student_list_visuals(student_list)
+	$Settings/StudentNameToAdd.text = ""
+	
+func _on_add_student_button_pressed() -> void:
+	student_list.append($Settings/StudentNameToAdd.text)
+	update_student_list_visuals(student_list)
+	$Settings/StudentNameToAdd.text = ""
+
+#------------------------------
+#UPDATE SETTINGS/STUDENT_LIST VISUALS
+#------------------------------
+
+func update_student_list_visuals(new_student_list):
+	$Settings/Student.clear()
+	for s in new_student_list:
+		$Statistics/StudentStatistics.add_item(s)
+		$Settings/Student.add_item(s)
+	$Statistics/StudentStatistics.select(-1)
+	$Settings/Student.select(-1)
+	
+func update_settings_from_data(new_student_name: String):
+	var loaded = save.load_json(new_student_name + ".json")
 	print(loaded)
 	if loaded:
 		if int(loaded["Max Questions"]):
