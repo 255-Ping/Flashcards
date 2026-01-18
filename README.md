@@ -44,6 +44,15 @@ Future improvements may include:
 ### Main Interface
 ![Main Interface](Screenshots/scmainui.png)
 
+### Studying a Flashcard
+![Flashcard Question](Screenshots/scingame.png)
+
+### Progress Tracking
+![Statistics View](Screenshots/scstatsui.png)
+
+### Creating Decks
+![Decks View](Screenshots/scdeckui.png)
+
 ## 📄 License
 
 This project is licensed under the **GNU General Public License v3.0**.
