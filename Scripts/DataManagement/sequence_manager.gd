@@ -35,7 +35,7 @@ func add_deck_to_sequence(filename: String, deckname: String):
 	if !loaded.has(deckname):
 		loaded[str(loaded.size())] = deckname
 	else:
-		push_error("Error")
+		push_error("Sequence already has deck")
 	save.save_json(str(filename, ".seq"), loaded)
 	
 func delete_sequence(filename: String):

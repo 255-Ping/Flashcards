@@ -49,6 +49,8 @@ func reload_deck_list():
 		var instance = sequence_deck.instantiate()
 		instance.parent_ui = self
 		instance.deck = decks[d]
-		instance.scale = Vector2(0.5,0.5)
-		instance.custom_minimum_size = Vector2(70.0, 120.0)
+		instance.new_scale = 0.5
+		instance.select_button = false
+		#instance.scale = Vector2(0.5,0.5)
+		#instance.custom_minimum_size = Vector2(70.0, 120.0)
 		scroll_box_1.add_child(instance)

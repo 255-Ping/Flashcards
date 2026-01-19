@@ -9,30 +9,32 @@
 [ext_resource type="Texture2D" uid="uid://y37g71f1p6yp" path="res://Textures/Buttons/select_hover.png" id="10_se0cs"]
 
 [node name="Sequence" type="Control"]
-custom_minimum_size = Vector2(1000, 100)
+custom_minimum_size = Vector2(1140, 200)
 layout_mode = 3
-anchor_right = 0.99200004
-anchor_bottom = 0.15400001
-offset_right = 0.21594238
-offset_bottom = 0.20799255
+anchor_right = 1.0
+anchor_bottom = 0.30900002
+offset_right = -12.0
+offset_bottom = -0.23200989
 script = ExtResource("1_pec0k")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 1.567
 offset_right = -46.0
+offset_bottom = -109.72
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.2509804, 0.2509804, 0.2509804, 0.47843137)
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -45.0
+anchors_preset = -1
+anchor_right = 0.961
+anchor_bottom = 1.57
+offset_right = -0.42297363
+offset_bottom = -112.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -42,6 +44,7 @@ anchors_preset = -1
 anchor_right = 0.998
 anchor_bottom = 0.8
 offset_left = 2.0
+offset_bottom = 20.399994
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer"]
 layout_mode = 2
@@ -50,20 +53,20 @@ size_flags_vertical = 3
 
 [node name="DeleteButton" type="TextureButton" parent="Panel"]
 layout_mode = 0
-offset_left = 980.0
-offset_top = 82.0
-offset_right = 1044.0
-offset_bottom = 98.0
+offset_left = 1027.0
+offset_top = 184.0
+offset_right = 1091.0
+offset_bottom = 200.0
 texture_normal = ExtResource("2_txpqf")
 texture_pressed = ExtResource("3_mai06")
 texture_hover = ExtResource("4_4idx5")
 
 [node name="SelectButton" type="TextureButton" parent="Panel"]
 layout_mode = 0
-offset_left = 914.0
-offset_top = 82.0
-offset_right = 978.0
-offset_bottom = 98.0
+offset_left = 958.0
+offset_top = 184.0
+offset_right = 1022.0
+offset_bottom = 200.0
 texture_normal = ExtResource("8_ro2pu")
 texture_pressed = ExtResource("9_t4fva")
 texture_hover = ExtResource("10_se0cs")
@@ -71,9 +74,9 @@ texture_hover = ExtResource("10_se0cs")
 [node name="SequenceName" type="LineEdit" parent="Panel"]
 layout_mode = 0
 offset_left = 2.0
-offset_top = 83.0
+offset_top = 185.0
 offset_right = 370.0
-offset_bottom = 114.0
+offset_bottom = 216.0
 scale = Vector2(0.5, 0.5)
 
 [connection signal="pressed" from="Panel/DeleteButton" to="." method="_on_delete_button_pressed"]
