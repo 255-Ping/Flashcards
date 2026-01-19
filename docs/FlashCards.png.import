@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bwi43xo2oiqai"
-path="res://.godot/imported/FlashCards.png-d2f03b6843e94e16526c2300f87ac479.ctex"
+path="res://.godot/imported/FlashCards.png-7b228192211fbe71ca9736da991f2760.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://docs/WebBuild/FlashCards.png"
-dest_files=["res://.godot/imported/FlashCards.png-d2f03b6843e94e16526c2300f87ac479.ctex"]
+source_file="res://docs/FlashCards.png"
+dest_files=["res://.godot/imported/FlashCards.png-7b228192211fbe71ca9736da991f2760.ctex"]
 
 [params]
 
