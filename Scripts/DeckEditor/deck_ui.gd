@@ -17,7 +17,7 @@ var main
 #@onready var label = $Panel/Label
 @onready var scroll_box = $Panel/ScrollContainer/HBoxContainer
 
-@onready var card = preload("res://Scenes/card.tscn")
+@onready var card = preload("res://Scenes/deck_card.tscn")
 
 func _ready() -> void:
 	main = get_tree().current_scene

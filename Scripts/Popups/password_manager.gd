@@ -13,12 +13,12 @@ class_name PasswordManager
 @onready var wrong_password = $Control/WrongPassword
 
 #TEXTURES
-@onready var eye = preload("res://Textures/eye.png")
-@onready var eye_hover = preload("res://Textures/eye_hover.png")
-@onready var eye_pressed = preload("res://Textures/eye_pressed.png")
-@onready var closed_eye = preload("res://Textures/closed_eye.png")
-@onready var closed_eye_hover = preload("res://Textures/closed_eye_hover.png")
-@onready var closed_eye_pressed = preload("res://Textures/closed_eye_pressed.png")
+@onready var eye = preload("res://Textures/Buttons/EyeballButton/eye.png")
+@onready var eye_hover = preload("res://Textures/Buttons/EyeballButton/eye_hover.png")
+@onready var eye_pressed = preload("res://Textures/Buttons/EyeballButton/eye_pressed.png")
+@onready var closed_eye = preload("res://Textures/Buttons/EyeballButton/closed_eye.png")
+@onready var closed_eye_hover = preload("res://Textures/Buttons/EyeballButton/closed_eye_hover.png")
+@onready var closed_eye_pressed = preload("res://Textures/Buttons/EyeballButton/closed_eye_pressed.png")
 
 var main
 
