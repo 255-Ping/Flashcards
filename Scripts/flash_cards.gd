@@ -68,6 +68,7 @@ var student_to_add: String
 #DeckManager Node Variables
 @onready var deck_entry = preload("res://Scenes/deck.tscn")
 @onready var sequence_entry = preload("res://Scenes/sequence.tscn")
+@onready var sequence_deck_entry = preload("res://Scenes/sequence_deck.tscn")
 
 #PopUp Node Variables
 @onready var popup = preload("res://Scenes/popup_manager.tscn")
@@ -182,6 +183,8 @@ func _ready() -> void:
 #Reloads sequences in sequence ui
 	reload_sequence_list()
 	print("Sequence list reloaded")
+	reload_sequence_deck_list()
+	print("Sequence Deck list reloaded")
 
 #Start Popup
 	create_popup("Welcome, press Start to play, Settings to customize, Statistics to view data, and Decks to view, create, or change a deck.", 10)
@@ -750,6 +753,29 @@ func reload_sequence_list():
 		instance.sequence = i
 		instance.decks = loaded_sequence
 		$SequenceEditor/ScrollContainer/VBoxContainer.add_child(instance)
+		
+func reload_sequence_deck_list():
+#Deletes children in sequence list
+	for child in $SequenceEditor/ScrollContainerDeck/HBoxContainer.get_children():
+		child.queue_free()
+#Loads sequence names data and checks if it exists
+	var loaded_deck_names = save.load_json("deck_names.deck")
+	if !loaded_deck_names:
+		return
+#Loops through sequences
+	for i in loaded_deck_names:
+	#Creates a deck data var and makes sure it has data
+		var loaded_deck = save.load_json(str(i, ".deck"))
+		if !loaded_deck:
+			push_error("Data fault, deck_names contains a name with no data.")
+			create_popup("Data fault, deck_names contains a name with no data.", -1.0, "error")
+			return
+	#Adds the deck to the visual list
+		var instance = sequence_deck_entry.instantiate()
+		instance.text = i
+		#instance.deck = i
+		#instance.cards = loaded_deck
+		$SequenceEditor/ScrollContainerDeck/HBoxContainer.add_child(instance)
 
 #------------------------------
 #POPUP CREATOR FUNCTIONS

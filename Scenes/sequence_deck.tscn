@@ -7,20 +7,22 @@
 [ext_resource type="Texture2D" uid="uid://c6aa5fwy0i3nc" path="res://Textures/Buttons/x_hover.png" id="6_7kuid"]
 
 [node name="SequenceDeck" type="Control"]
-custom_minimum_size = Vector2(56, 76)
+custom_minimum_size = Vector2(165, 190)
 layout_mode = 3
-anchor_right = 0.049000002
-anchor_bottom = 0.117000006
-offset_right = -0.44800186
-offset_bottom = 0.18399811
+anchor_right = 0.143
+anchor_bottom = 0.293
+offset_right = 0.2639923
+offset_bottom = 0.13598633
+size_flags_horizontal = 3
 script = ExtResource("1_pqw84")
 
 [node name="Card" type="Sprite2D" parent="."]
-position = Vector2(28, 45)
-scale = Vector2(0.5, 0.5)
+position = Vector2(82, 123)
+scale = Vector2(1.65, 1.65)
 texture = ExtResource("2_pqw84")
 
 [node name="DeleteSequence" type="TextureButton" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 4.0
 offset_top = 2.0
@@ -30,14 +32,15 @@ texture_normal = ExtResource("4_56j2a")
 texture_pressed = ExtResource("5_y1u10")
 texture_hover = ExtResource("6_7kuid")
 
-[node name="SequenceName" type="Label" parent="."]
+[node name="DeckName" type="Label" parent="."]
 layout_mode = 0
-offset_left = 7.0
-offset_top = 30.0
-offset_right = 280.33334
-offset_bottom = 236.66666
+offset_left = 17.0
+offset_top = 79.0
+offset_right = 877.0
+offset_bottom = 725.6666
 scale = Vector2(0.15, 0.15)
 theme_override_font_sizes/font_size = 64
 autowrap_mode = 3
+script = ExtResource("1_pqw84")
 
 [connection signal="pressed" from="DeleteSequence" to="." method="_on_delete_card_pressed"]
