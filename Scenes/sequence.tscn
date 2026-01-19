@@ -68,7 +68,7 @@ texture_normal = ExtResource("8_ro2pu")
 texture_pressed = ExtResource("9_t4fva")
 texture_hover = ExtResource("10_se0cs")
 
-[node name="SecquenceName" type="LineEdit" parent="Panel"]
+[node name="SequenceName" type="LineEdit" parent="Panel"]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 83.0
@@ -78,5 +78,5 @@ scale = Vector2(0.5, 0.5)
 
 [connection signal="pressed" from="Panel/DeleteButton" to="." method="_on_delete_button_pressed"]
 [connection signal="pressed" from="Panel/SelectButton" to="." method="_on_select_button_pressed"]
-[connection signal="text_changed" from="Panel/SecquenceName" to="." method="_on_deck_name_text_changed"]
-[connection signal="text_submitted" from="Panel/SecquenceName" to="." method="_on_secquence_name_text_submitted"]
+[connection signal="text_changed" from="Panel/SequenceName" to="." method="_on_deck_name_text_changed"]
+[connection signal="text_submitted" from="Panel/SequenceName" to="." method="_on_sequence_name_text_submitted"]

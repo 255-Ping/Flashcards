@@ -19,7 +19,8 @@ var main
 
 func _ready() -> void:
 	main = get_tree().current_scene
-	$Panel/SecquenceName.text = sequence
+	$Panel/SequenceName.text = sequence
+	reload_deck_list()
 	
 func _on_delete_button_pressed() -> void:
 	sequence_manager.delete_sequence(sequence)
@@ -29,7 +30,7 @@ func _on_select_button_pressed() -> void:
 	main.selected_sequence = sequence
 	main.create_popup(str("Sequence Selected: ", sequence), 1.5)
 	
-func _on_secquence_name_text_submitted(new_text: String) -> void:
+func _on_sequence_name_text_submitted(new_text: String) -> void:
 	if new_text == "":
 		push_error("Sequence name cannot be blank")
 		main.create_popup("Sequence name cannot be blank", -1.0, "error")
@@ -47,4 +48,7 @@ func reload_deck_list():
 	for d in decks:
 		var instance = sequence_deck.instantiate()
 		instance.parent_ui = self
+		instance.deck = decks[d]
+		instance.scale = Vector2(0.5,0.5)
+		instance.custom_minimum_size = Vector2(70.0, 120.0)
 		scroll_box_1.add_child(instance)

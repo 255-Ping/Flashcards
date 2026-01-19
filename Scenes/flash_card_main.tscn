@@ -197,6 +197,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RestartRound" type="Control" parent="."]
+visible = false
 z_index = 1000
 anchors_preset = 0
 offset_right = 40.0
@@ -806,6 +807,7 @@ offset_left = 28.0
 offset_top = 181.0
 offset_right = 1127.0
 offset_bottom = 563.0
+vertical_scroll_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="DeckEditor/ScrollContainer"]
 layout_mode = 2
@@ -906,7 +908,6 @@ theme_override_font_sizes/font_size = 64
 text = "Import"
 
 [node name="SequenceEditor" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -968,11 +969,12 @@ theme_override_font_sizes/font_size = 64
 text = "Go back"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SequenceEditor"]
+z_index = 1
 layout_mode = 0
 offset_left = 28.0
 offset_top = 121.0
 offset_right = 1127.0
-offset_bottom = 329.0
+offset_bottom = 367.0
 vertical_scroll_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SequenceEditor/ScrollContainer"]
@@ -983,7 +985,7 @@ size_flags_vertical = 3
 [node name="ScrollContainerDeck" type="ScrollContainer" parent="SequenceEditor"]
 layout_mode = 0
 offset_left = 28.0
-offset_top = 345.0
+offset_top = 359.0
 offset_right = 1127.0
 offset_bottom = 553.0
 horizontal_scroll_mode = 2

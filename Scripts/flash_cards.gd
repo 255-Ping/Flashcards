@@ -772,7 +772,7 @@ func reload_sequence_deck_list():
 			return
 	#Adds the deck to the visual list
 		var instance = sequence_deck_entry.instantiate()
-		instance.text = i
+		instance.deck = i
 		#instance.deck = i
 		#instance.cards = loaded_deck
 		$SequenceEditor/ScrollContainerDeck/HBoxContainer.add_child(instance)

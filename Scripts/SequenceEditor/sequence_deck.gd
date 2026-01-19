@@ -3,9 +3,20 @@
 # Licensed under GPLv3 - https://www.gnu.org/licenses/gpl-3.0.txt
 
 extends Control
+class_name SequenceDeck
 
-var text: String
+var sequence_manager = SequenceManager.new()
+var deck: String
+var parent_ui
+
+var main
 
 # Called when the node enters the scene tree for the first time.
-#func _ready() -> void:
-#	$DeckName.text = text
+func _ready() -> void:
+	main = get_tree().current_scene
+	$DeckName.text = deck
+
+
+func _on_select_button_pressed() -> void:
+	sequence_manager.add_deck_to_sequence(main.selected_sequence,deck)
+	main.reload_sequence_list()

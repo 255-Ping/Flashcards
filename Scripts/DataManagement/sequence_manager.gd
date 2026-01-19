@@ -28,14 +28,14 @@ func create_blank_sequence(filename: String):
 	
 func add_deck_to_sequence(filename: String, deckname: String):
 	var file_path = SAVE_DIR + "/" + filename + ".seq"
-	if FileAccess.file_exists(file_path):
-		push_error("Sequence already exists, aborting creation")
+	if !FileAccess.file_exists(file_path):
+		push_error("Sequence does not exist, aborting addition")
 		return
 	var loaded = save.load_json(str(filename, ".seq"))
-	if loaded["0"] == null:
-		loaded["0"] = deckname
-	else:
+	if !loaded.has(deckname):
 		loaded[str(loaded.size())] = deckname
+	else:
+		push_error("Error")
 	save.save_json(str(filename, ".seq"), loaded)
 	
 func delete_sequence(filename: String):
