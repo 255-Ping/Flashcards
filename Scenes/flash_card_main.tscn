@@ -1,0 +1,1032 @@
+[gd_scene load_steps=22 format=3 uid="uid://4v16l0ldovhh"]
+
+[ext_resource type="Script" uid="uid://ca8oo1whw6s2d" path="res://Scripts/flash_cards.gd" id="1_xyf0l"]
+[ext_resource type="Texture2D" uid="uid://c5crq66joib64" path="res://Textures/Backgrounds/background.png" id="2_80326"]
+[ext_resource type="Theme" uid="uid://cx7d5srujqm4h" path="res://Themes/theme_1.tres" id="3_wndv7"]
+[ext_resource type="Texture2D" uid="uid://cax33j0lr50c3" path="res://Textures/wcslogo.png" id="4_nwxjg"]
+[ext_resource type="Texture2D" uid="uid://c2qws3vie5tnn" path="res://Textures/Buttons/x.png" id="5_drbu0"]
+[ext_resource type="Texture2D" uid="uid://bf5g00s7jx617" path="res://Textures/card.png" id="5_fuemt"]
+[ext_resource type="Texture2D" uid="uid://dsuxck67simbi" path="res://Textures/bar.png" id="5_lur1s"]
+[ext_resource type="Texture2D" uid="uid://bk5a3odfui5v" path="res://Textures/check_mark.png" id="5_wndv7"]
+[ext_resource type="Texture2D" uid="uid://dmqu5f1kpwctv" path="res://Textures/Buttons/GeneralButtons/button.png" id="6_k8tfb"]
+[ext_resource type="Texture2D" uid="uid://wlsvj7wbjf8c" path="res://Textures/Backgrounds/main_menu_background.png" id="8_nwxjg"]
+[ext_resource type="Theme" uid="uid://rrawxxlfxo8h" path="res://Themes/title_theme.tres" id="10_5cpbb"]
+[ext_resource type="Texture2D" uid="uid://1teaumk705j2" path="res://Textures/Backgrounds/settings_menu_background.png" id="11_mbu2p"]
+[ext_resource type="Theme" uid="uid://76wxr7e03ud3" path="res://Themes/general_theme.tres" id="11_mpp0x"]
+[ext_resource type="PackedScene" uid="uid://dsvw5fdkdqmr8" path="res://Scenes/line_graph.tscn" id="12_evyry"]
+[ext_resource type="Texture2D" uid="uid://ddfyoivtl6w2v" path="res://Textures/Buttons/EyeballButton/eye.png" id="12_fiqhk"]
+[ext_resource type="Texture2D" uid="uid://dmg8goruip023" path="res://Textures/Buttons/GeneralButtons/button_pressed.png" id="13_nnl2m"]
+[ext_resource type="Texture2D" uid="uid://b7dgn4n3o4o5d" path="res://Textures/Buttons/GeneralButtons/button_hover.png" id="14_cv30d"]
+[ext_resource type="AudioStream" uid="uid://bs1k60tqnmy40" path="res://Sounds/ding-sound-effect_2.mp3" id="16_svhce"]
+[ext_resource type="Texture2D" uid="uid://ifhl71xb05mc" path="res://Textures/Buttons/GeneralButtons/button_long.png" id="18_08bwt"]
+[ext_resource type="Texture2D" uid="uid://fadacekxq7ej" path="res://Textures/Buttons/GeneralButtons/button_long_pressed.png" id="19_3fo7u"]
+[ext_resource type="Texture2D" uid="uid://cv3vu6fmddwph" path="res://Textures/Buttons/GeneralButtons/button_long_hover.png" id="20_iuxwd"]
+
+[node name="FlashCardControl" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_xyf0l")
+
+[node name="AnswerBox" type="TextEdit" parent="."]
+z_index = 20
+layout_direction = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -57.0
+offset_top = 183.0
+offset_right = -1104.0
+offset_bottom = -382.0
+scale = Vector2(3, 3)
+theme = ExtResource("3_wndv7")
+theme_override_font_sizes/font_size = 50
+placeholder_text = "000"
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+text_direction = 2
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("2_80326")
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(60, 579)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_nwxjg")
+
+[node name="CheckMark" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(963, 301)
+scale = Vector2(15, 15)
+texture = ExtResource("5_wndv7")
+
+[node name="XMark" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(997, 404)
+scale = Vector2(15, 15)
+texture = ExtResource("5_drbu0")
+
+[node name="Flat" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Flat"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.121
+anchor_top = 0.356
+anchor_right = 0.662
+anchor_bottom = 0.752
+offset_left = 193.16
+offset_top = 216.76
+offset_right = 234.52
+offset_bottom = 223.92
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+theme_override_font_sizes/font_size = 50
+text = "0 + 0 ="
+horizontal_alignment = 3
+
+[node name="Column" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 44.0
+offset_right = 84.0
+offset_bottom = 40.0
+
+[node name="Card" type="Sprite2D" parent="Column"]
+position = Vector2(529, 345)
+scale = Vector2(3, 3)
+texture = ExtResource("5_fuemt")
+
+[node name="Value1" type="Label" parent="Column"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.121
+anchor_top = 0.356
+anchor_right = 0.662
+anchor_bottom = 0.752
+offset_left = 481.16
+offset_top = 67.76
+offset_right = 516.52
+offset_bottom = 120.92
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+theme_override_font_sizes/font_size = 50
+text = "10"
+horizontal_alignment = 2
+
+[node name="Value2" type="Label" parent="Column"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.121
+anchor_top = 0.356
+anchor_right = 0.662
+anchor_bottom = 0.752
+offset_left = 480.16
+offset_top = 204.76
+offset_right = 515.52
+offset_bottom = 257.92
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+theme_override_font_sizes/font_size = 50
+text = "10"
+horizontal_alignment = 2
+
+[node name="Operator" type="Label" parent="Column"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.121
+anchor_top = 0.356
+anchor_right = 0.662
+anchor_bottom = 0.752
+offset_left = 319.16
+offset_top = 204.76
+offset_right = 354.52
+offset_bottom = 257.92
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+theme_override_font_sizes/font_size = 50
+text = "+"
+horizontal_alignment = 2
+
+[node name="Bar" type="Sprite2D" parent="Column"]
+position = Vector2(528, 403)
+scale = Vector2(1.69333, 1)
+texture = ExtResource("5_lur1s")
+
+[node name="Counter" type="Label" parent="."]
+layout_mode = 0
+offset_left = 515.0
+offset_top = 2.0
+offset_right = 555.0
+offset_bottom = 25.0
+scale = Vector2(3, 3)
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QPS" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1016.0
+offset_top = 2.0
+offset_right = 1056.0
+offset_bottom = 25.0
+scale = Vector2(3, 3)
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartRound" type="Control" parent="."]
+visible = false
+z_index = 1000
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MenuBackground" type="Sprite2D" parent="RestartRound"]
+position = Vector2(576, 324)
+texture = ExtResource("8_nwxjg")
+
+[node name="RoundSummaryLabel" type="Label" parent="RestartRound"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 12.0
+offset_right = 552.0
+offset_bottom = 100.0
+theme = ExtResource("10_5cpbb")
+theme_override_font_sizes/font_size = 64
+text = "Round Summary"
+
+[node name="QuestionsPerMinuteLabel" type="Label" parent="RestartRound"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 118.0
+offset_right = 763.0
+offset_bottom = 206.0
+scale = Vector2(0.7, 0.7)
+theme = ExtResource("11_mpp0x")
+theme_override_font_sizes/font_size = 64
+text = "Questions Per Minute: 0"
+
+[node name="TimesIncorrectLabel" type="Label" parent="RestartRound"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 174.0
+offset_right = 507.0
+offset_bottom = 262.0
+scale = Vector2(0.7, 0.7)
+theme = ExtResource("11_mpp0x")
+theme_override_font_sizes/font_size = 64
+text = "Times Incorrect"
+
+[node name="TimeTakenLabel" type="Label" parent="RestartRound"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 226.0
+offset_right = 507.0
+offset_bottom = 314.0
+scale = Vector2(0.7, 0.7)
+theme = ExtResource("11_mpp0x")
+theme_override_font_sizes/font_size = 64
+text = "Time Taken: 0s"
+
+[node name="StartButton" type="TextureButton" parent="RestartRound"]
+layout_mode = 0
+offset_left = 984.0
+offset_top = 565.0
+offset_right = 1134.0
+offset_bottom = 625.0
+texture_normal = ExtResource("6_k8tfb")
+texture_pressed = ExtResource("13_nnl2m")
+texture_hover = ExtResource("14_cv30d")
+
+[node name="StartButtonLabel" type="Label" parent="RestartRound/StartButton"]
+layout_mode = 0
+offset_left = 39.999996
+offset_top = 11.0
+offset_right = 358.0
+offset_bottom = 190.0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("11_mpp0x")
+theme_override_font_sizes/font_size = 64
+text = "Start"
+
+[node name="SettingsButton" type="TextureButton" parent="RestartRound"]
+layout_mode = 0
+offset_left = 831.0
+offset_top = 565.0
+offset_right = 981.0
+offset_bottom = 625.0
+theme = ExtResource("11_mpp0x")
+texture_normal = ExtResource("6_k8tfb")
+texture_pressed = ExtResource("13_nnl2m")
+texture_hover = ExtResource("14_cv30d")
+
+[node name="SettingsButtonLabel" type="Label" parent="RestartRound/SettingsButton"]
+layout_mode = 0
+offset_left = 20.999998
+offset_top = 10.0
+offset_right = 339.0
+offset_bottom = 189.0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("11_mpp0x")
+theme_override_font_sizes/font_size = 64
+text = "Settings"
+
+[node name="StatisticsButton" type="TextureButton" parent="RestartRound"]
+layout_mode = 0
+offset_left = 679.0
+offset_top = 565.0
+offset_right = 829.0
+offset_bottom = 625.0
+texture_normal = ExtResource("6_k8tfb")
+texture_pressed = ExtResource("13_nnl2m")
+texture_hover = ExtResource("14_cv30d")
+
+[node name="StatisticsButtonLabel" type="Label" parent="RestartRound/StatisticsButton"]
+layout_mode = 0
+offset_left = 10.999998
+offset_top = 10.0
+offset_right = 329.0
+offset_bottom = 189.0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("11_mpp0x")
+theme_override_font_sizes/font_size = 64
+text = "Statistics
+"
+
+[node name="DecksButton" type="TextureButton" parent="RestartRound"]
+layout_mode = 0
+offset_left = 526.0
+offset_top = 566.0
+offset_right = 676.0
+offset_bottom = 626.0
+texture_normal = ExtResource("6_k8tfb")
+texture_pressed = ExtResource("13_nnl2m")
+texture_hover = ExtResource("14_cv30d")
+
+[node name="DeckEditorButtonLabel" type="Label" parent="RestartRound/DecksButton"]
+layout_mode = 0
+offset_left = 6.9999986
+offset_top = 11.0
+offset_right = 361.0
+offset_bottom = 190.0
+scale = Vector2(0.385, 0.385)
+theme = ExtResource("11_mpp0x")
+theme_override_font_sizes/font_size = 64
+text = "Deck Editor"
+
+[node name="SequenceButton" type="TextureButton" parent="RestartRound"]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 566.0
+offset_right = 520.0
+offset_bottom = 626.0
+texture_normal = ExtResource("6_k8tfb")
+texture_pressed = ExtResource("13_nnl2m")
+texture_hover = ExtResource("14_cv30d")
+
+[node name="SeqButtonLabel" type="Label" parent="RestartRound/SequenceButton"]
+layout_mode = 0
+offset_left = 15.999998
+offset_top = 10.0
+offset_right = 334.0
+offset_bottom = 189.0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("11_mpp0x")
+theme_override_font_sizes/font_size = 64
+text = "Sequencer"
+
+[node name="OpenFolderButton" type="TextureButton" parent="RestartRound"]
+layout_mode = 0
+offset_left = 215.0
+offset_top = 566.0
+offset_right = 365.0
+offset_bottom = 626.0
+texture_normal = ExtResource("6_k8tfb")
+texture_pressed = ExtResource("13_nnl2m")
+texture_hover = ExtResource("14_cv30d")
+
+[node name="OpenFolderButtonLabel" type="Label" parent="RestartRound/OpenFolderButton"]
+layout_mode = 0
+offset_left = 3.999999
+offset_top = 9.0
+offset_right = 353.0
+offset_bottom = 188.0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("11_mpp0x")
+theme_override_font_sizes/font_size = 64
+text = "Open Folder"
+
+[node name="Settings" type="Control" parent="."]
+visible = false
+z_index = 1000
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MenuBackground" type="Sprite2D" parent="Settings"]
+position = Vector2(576, 324)
+texture = ExtResource("11_mbu2p")
+
+[node name="SettingsLabel" type="Label" parent="Settings"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 12.0
+offset_right = 552.0
+offset_bottom = 100.0
+theme = ExtResource("10_5cpbb")
+theme_override_font_sizes/font_size = 64
+text = "Settings"
+
+[node name="GoBackButton" type="TextureButton" parent="Settings"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 562.0
+offset_right = 172.0
+offset_bottom = 622.0
+texture_normal = ExtResource("6_k8tfb")
+texture_pressed = ExtResource("13_nnl2m")
+texture_hover = ExtResource("14_cv30d")
+
+[node name="GoBackButtonLabel" type="Label" parent="Settings/GoBackButton"]
+layout_mode = 0
+offset_left = 26.999998
+offset_top = 10.0
+offset_right = 345.0
+offset_bottom = 189.0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("11_mpp0x")
+theme_override_font_sizes/font_size = 64
+text = "Go back"
+
+[node name="Operator" type="OptionButton" parent="Settings"]
+layout_mode = 0
+offset_left = 992.0
+offset_top = 182.0
+offset_right = 1186.0
+offset_bottom = 257.0
+scale = Vector2(0.7, 0.7)
+theme_override_font_sizes/font_size = 48
+selected = 0
+item_count = 3
+popup/item_0/text = "+"
+popup/item_0/id = 0
+popup/item_1/text = "-"
+popup/item_1/id = 1
+popup/item_2/text = "x"
+popup/item_2/id = 2
+
+[node name="OperatorLabel" type="Label" parent="Settings/Operator"]
+layout_mode = 0
+offset_left = -1385.71
+offset_top = -21.4285
+offset_right = -1137.71
+offset_bottom = 66.5715
+scale = Vector2(1.5, 1.5)
+theme_override_font_sizes/font_size = 48
+text = "Operator"
+
+[node name="RequiredNumber" type="LineEdit" parent="Settings"]
+layout_mode = 0
+offset_left = 996.0
+offset_top = 246.0
+offset_right = 1184.0
+offset_bottom = 321.0
+scale = Vector2(0.7, 0.7)
+theme_override_font_sizes/font_size = 48
+placeholder_text = "00"
+
+[node name="RequiredNumberLabel" type="Label" parent="Settings/RequiredNumber"]
+layout_mode = 0
+offset_left = -1391.43
+offset_top = -20.0
+offset_right = -1143.43
+offset_bottom = 68.0
+scale = Vector2(1.5, 1.5)
+theme_override_font_sizes/font_size = 48
+text = "Req. #"
+
+[node name="MaxQuestions" type="LineEdit" parent="Settings"]
+layout_mode = 0
+offset_left = 997.0
+offset_top = 309.0
+offset_right = 1185.0
+offset_bottom = 384.0
+scale = Vector2(0.7, 0.7)
+theme_override_font_sizes/font_size = 48
+placeholder_text = "00"
+
+[node name="MaxQuestionsLabel" type="Label" parent="Settings/MaxQuestions"]
+layout_mode = 0
+offset_left = -1391.43
+offset_top = -17.1429
+offset_right = -1045.43
+offset_bottom = 70.8571
+scale = Vector2(1.5, 1.5)
+theme_override_font_sizes/font_size = 48
+text = "Max Questions"
+
+[node name="CardGeneration" type="OptionButton" parent="Settings"]
+layout_mode = 0
+offset_left = 970.99994
+offset_top = 374.00003
+offset_right = 1197.0
+offset_bottom = 449.00003
+scale = Vector2(0.7, 0.7)
+theme_override_font_sizes/font_size = 48
+selected = 1
+item_count = 2
+popup/item_0/text = "Random"
+popup/item_0/id = 0
+popup/item_1/text = "Deck"
+popup/item_1/id = 1
+
+[node name="CardGenerationLabel" type="Label" parent="Settings/CardGeneration"]
+layout_mode = 0
+offset_left = -1352.857
+offset_top = -21.42863
+offset_right = -969.85706
+offset_bottom = 66.571365
+scale = Vector2(1.5, 1.5)
+theme_override_font_sizes/font_size = 48
+text = "Card Generation"
+
+[node name="Student" type="OptionButton" parent="Settings"]
+layout_mode = 0
+offset_left = 807.0
+offset_top = 119.999985
+offset_right = 1265.2858
+offset_bottom = 194.99998
+scale = Vector2(0.7, 0.7)
+theme_override_font_sizes/font_size = 48
+fit_to_longest_item = false
+
+[node name="StudentLabel" type="Label" parent="Settings/Student"]
+layout_mode = 0
+offset_left = -1122.8572
+offset_top = -11.428553
+offset_right = -874.8572
+offset_bottom = 76.57145
+scale = Vector2(1.5, 1.5)
+theme_override_font_sizes/font_size = 48
+text = "Student"
+
+[node name="Password" type="LineEdit" parent="Settings"]
+layout_mode = 0
+offset_left = 876.0
+offset_top = 501.00003
+offset_right = 1236.8572
+offset_bottom = 576.0
+scale = Vector2(0.7, 0.7)
+theme_override_font_sizes/font_size = 48
+placeholder_text = "password"
+secret = true
+
+[node name="PasswordLabel" type="Label" parent="Settings/Password"]
+layout_mode = 0
+offset_left = -1214.2858
+offset_top = -15.714285
+offset_right = -868.28577
+offset_bottom = 72.28571
+scale = Vector2(1.5, 1.5)
+theme_override_font_sizes/font_size = 48
+text = "Password"
+
+[node name="PasswordVisionButton" type="TextureButton" parent="Settings/Password"]
+layout_mode = 0
+offset_left = -68.57143
+offset_top = 5.7142415
+offset_right = -52.142838
+offset_bottom = 21.714241
+scale = Vector2(4, 4)
+texture_normal = ExtResource("12_fiqhk")
+
+[node name="RemoveStudentButton" type="Button" parent="Settings"]
+layout_mode = 0
+offset_left = 605.0
+offset_top = 120.0
+offset_right = 805.0
+offset_bottom = 172.0
+
+[node name="RemoveStudentLabel" type="Label" parent="Settings/RemoveStudentButton"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = -3.0
+offset_right = 277.0
+offset_bottom = 85.0
+scale = Vector2(0.75, 0.75)
+tooltip_text = "Remove selected student name from student list"
+mouse_filter = 1
+theme_override_font_sizes/font_size = 48
+text = "Remove"
+
+[node name="AddStudentButton" type="Button" parent="Settings"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 120.0
+offset_right = 321.0
+offset_bottom = 172.0
+
+[node name="AddStudentLabel" type="Label" parent="Settings/AddStudentButton"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = -2.0
+offset_right = 261.0
+offset_bottom = 86.0
+scale = Vector2(0.75, 0.75)
+tooltip_text = "Click to add name to the student list"
+mouse_filter = 1
+theme_override_font_sizes/font_size = 48
+text = "Add"
+
+[node name="StudentNameToAdd" type="LineEdit" parent="Settings"]
+layout_mode = 0
+offset_left = 326.0
+offset_top = 120.0
+offset_right = 601.0
+offset_bottom = 172.0
+tooltip_text = "Student name to add to student list"
+placeholder_text = "Student Name"
+
+[node name="DecksMenuFromSettingsButton" type="Button" parent="Settings"]
+layout_mode = 0
+offset_left = 816.0
+offset_top = 375.0
+offset_right = 966.0
+offset_bottom = 427.0
+
+[node name="DecksButtonLabel" type="Label" parent="Settings/DecksMenuFromSettingsButton"]
+layout_mode = 0
+offset_left = 22.0
+offset_right = 270.0
+offset_bottom = 88.0
+scale = Vector2(0.75, 0.75)
+theme_override_font_sizes/font_size = 48
+text = "Decks"
+
+[node name="Statistics" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MenuBackground2" type="Sprite2D" parent="Statistics"]
+position = Vector2(576, 324)
+texture = ExtResource("8_nwxjg")
+
+[node name="StatisticsLabel" type="Label" parent="Statistics"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 12.0
+offset_right = 552.0
+offset_bottom = 100.0
+theme = ExtResource("10_5cpbb")
+theme_override_font_sizes/font_size = 64
+text = "Statistics"
+
+[node name="StudentStatistics" type="OptionButton" parent="Statistics"]
+layout_mode = 0
+offset_left = 807.0
+offset_top = 119.999985
+offset_right = 1265.2858
+offset_bottom = 194.99998
+scale = Vector2(0.7, 0.7)
+theme_override_font_sizes/font_size = 48
+
+[node name="StudentLabel" type="Label" parent="Statistics/StudentStatistics"]
+layout_mode = 0
+offset_left = -1122.8572
+offset_top = -11.428553
+offset_right = -874.8572
+offset_bottom = 76.57145
+scale = Vector2(1.5, 1.5)
+theme_override_font_sizes/font_size = 48
+text = "Student"
+
+[node name="LineGraph" parent="Statistics" instance=ExtResource("12_evyry")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 4.225
+anchor_right = 28.4
+anchor_bottom = 15.65
+offset_left = 16.0
+offset_top = 7.99998
+offset_right = -16.0
+offset_bottom = -65.0
+line_color = Color(0.301961, 0.27451, 1, 1)
+
+[node name="GoBackButton" type="TextureButton" parent="Statistics"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 562.0
+offset_right = 172.0
+offset_bottom = 622.0
+texture_normal = ExtResource("6_k8tfb")
+texture_pressed = ExtResource("13_nnl2m")
+texture_hover = ExtResource("14_cv30d")
+
+[node name="GoBackButtonLabel" type="Label" parent="Statistics/GoBackButton"]
+layout_mode = 0
+offset_left = 24.999998
+offset_top = 9.0
+offset_right = 343.0
+offset_bottom = 188.0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("11_mpp0x")
+theme_override_font_sizes/font_size = 64
+text = "Go back"
+
+[node name="FilterLabel" type="Label" parent="Statistics"]
+layout_mode = 0
+offset_left = 517.0
+offset_top = 554.0
+offset_right = 765.0
+offset_bottom = 642.0
+theme_override_font_sizes/font_size = 48
+text = "Filter"
+
+[node name="Filter" type="OptionButton" parent="Statistics"]
+visible = false
+layout_mode = 0
+offset_left = 982.0
+offset_top = 570.0
+offset_right = 1196.0
+offset_bottom = 645.0
+scale = Vector2(0.7, 0.7)
+theme_override_font_sizes/font_size = 48
+selected = 0
+item_count = 2
+popup/item_0/text = "QPM"
+popup/item_0/id = 0
+popup/item_1/text = "Failures"
+popup/item_1/id = 1
+
+[node name="ShowPointLabels" type="CheckBox" parent="Statistics"]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 568.0
+offset_right = 194.0
+offset_bottom = 592.0
+scale = Vector2(2, 2)
+tooltip_text = "Show Point Labels"
+button_pressed = true
+
+[node name="ShowAxesLabels" type="CheckBox" parent="Statistics"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 568.0
+offset_right = 245.0
+offset_bottom = 592.0
+scale = Vector2(2, 2)
+tooltip_text = "Show Axes Labels"
+button_pressed = true
+
+[node name="ShowGrid" type="CheckBox" parent="Statistics"]
+layout_mode = 0
+offset_left = 271.0
+offset_top = 568.0
+offset_right = 295.0
+offset_bottom = 592.0
+scale = Vector2(2, 2)
+tooltip_text = "Show Grid"
+button_pressed = true
+
+[node name="ShowLegend" type="CheckBox" parent="Statistics"]
+layout_mode = 0
+offset_left = 323.0
+offset_top = 568.0
+offset_right = 347.0
+offset_bottom = 592.0
+scale = Vector2(2, 2)
+tooltip_text = "Show Legend"
+button_pressed = true
+
+[node name="QPMFilter" type="CheckBox" parent="Statistics"]
+layout_mode = 0
+offset_left = 649.0
+offset_top = 568.0
+offset_right = 673.0
+offset_bottom = 592.0
+scale = Vector2(2, 2)
+tooltip_text = "Filter for QPM"
+
+[node name="FailuresFilter" type="CheckBox" parent="Statistics"]
+layout_mode = 0
+offset_left = 697.0
+offset_top = 568.0
+offset_right = 721.0
+offset_bottom = 592.0
+scale = Vector2(2, 2)
+tooltip_text = "Filter for Failures"
+
+[node name="DeckEditor" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MenuBackground" type="Sprite2D" parent="DeckEditor"]
+position = Vector2(576, 324)
+texture = ExtResource("8_nwxjg")
+
+[node name="DeckEditorLabel" type="Label" parent="DeckEditor"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 12.0
+offset_right = 552.0
+offset_bottom = 100.0
+theme = ExtResource("10_5cpbb")
+theme_override_font_sizes/font_size = 64
+text = "Deck Editor"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="DeckEditor"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 181.0
+offset_right = 1127.0
+offset_bottom = 563.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeckEditor/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="EditingDeck" type="LineEdit" parent="DeckEditor"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 118.0
+offset_right = 471.0
+offset_bottom = 193.0
+scale = Vector2(0.7, 0.7)
+tooltip_text = "Name of the Deck, Cannot contain spaces or _"
+theme_override_font_sizes/font_size = 48
+
+[node name="EditingDeckLabel" type="Label" parent="DeckEditor/EditingDeck"]
+layout_mode = 0
+offset_left = -188.57143
+offset_top = -14.285706
+offset_right = 59.428574
+offset_bottom = 73.714294
+scale = Vector2(1.5, 1.5)
+theme_override_font_sizes/font_size = 48
+text = "Deck"
+
+[node name="Cards" type="LineEdit" parent="DeckEditor"]
+layout_mode = 0
+offset_left = 526.99994
+offset_top = 117.99999
+offset_right = 1385.5714
+offset_bottom = 193.0
+scale = Vector2(0.7, 0.7)
+tooltip_text = "Cards to be added to the newly created deck, Example: 1+1,2+2,3+3"
+theme_override_font_sizes/font_size = 48
+
+[node name="CardsLabel" type="Label" parent="DeckEditor/Cards"]
+layout_mode = 0
+offset_left = -208.57133
+offset_top = -14.285706
+offset_right = 39.428665
+offset_bottom = 73.714294
+scale = Vector2(1.5, 1.5)
+theme_override_font_sizes/font_size = 48
+text = "Cards"
+
+[node name="GoBackButton" type="TextureButton" parent="DeckEditor"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 562.0
+offset_right = 172.0
+offset_bottom = 622.0
+texture_normal = ExtResource("6_k8tfb")
+texture_pressed = ExtResource("13_nnl2m")
+texture_hover = ExtResource("14_cv30d")
+
+[node name="GoBackButtonLabel" type="Label" parent="DeckEditor/GoBackButton"]
+layout_mode = 0
+offset_left = 26.999998
+offset_top = 10.0
+offset_right = 345.0
+offset_bottom = 189.0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("11_mpp0x")
+theme_override_font_sizes/font_size = 64
+text = "Go back"
+
+[node name="ImportDialog" type="FileDialog" parent="DeckEditor"]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+ok_button_text = "Select"
+file_mode = 0
+display_mode = 1
+access = 2
+filters = PackedStringArray("*.deck")
+use_native_dialog = true
+
+[node name="ImportButton" type="TextureButton" parent="DeckEditor"]
+layout_mode = 0
+offset_left = 977.0
+offset_top = 561.0
+offset_right = 1127.0
+offset_bottom = 621.0
+texture_normal = ExtResource("6_k8tfb")
+texture_pressed = ExtResource("13_nnl2m")
+texture_hover = ExtResource("14_cv30d")
+
+[node name="ImportButtonLabel" type="Label" parent="DeckEditor/ImportButton"]
+layout_mode = 0
+offset_left = 34.999996
+offset_top = 10.0
+offset_right = 353.0
+offset_bottom = 189.0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("11_mpp0x")
+theme_override_font_sizes/font_size = 64
+text = "Import"
+
+[node name="SequenceEditor" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MenuBackground" type="Sprite2D" parent="SequenceEditor"]
+position = Vector2(576, 324)
+texture = ExtResource("8_nwxjg")
+
+[node name="SequenceEditorLabel" type="Label" parent="SequenceEditor"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 12.0
+offset_right = 552.0
+offset_bottom = 100.0
+theme = ExtResource("10_5cpbb")
+theme_override_font_sizes/font_size = 64
+text = "Sequence Editor"
+
+[node name="CreateBlankSequenceButton" type="TextureButton" parent="SequenceEditor"]
+layout_mode = 0
+offset_left = 883.0
+offset_top = 558.0
+offset_right = 1133.0
+offset_bottom = 618.0
+texture_normal = ExtResource("18_08bwt")
+texture_pressed = ExtResource("19_3fo7u")
+texture_hover = ExtResource("20_iuxwd")
+
+[node name="CreateBlankSequenceButtonLabel" type="Label" parent="SequenceEditor/CreateBlankSequenceButton"]
+layout_mode = 0
+offset_left = 22.999998
+offset_top = 9.0
+offset_right = 681.0
+offset_bottom = 188.0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("11_mpp0x")
+theme_override_font_sizes/font_size = 64
+text = "Create Blank Seq"
+
+[node name="GoBackButton" type="TextureButton" parent="SequenceEditor"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 562.0
+offset_right = 172.0
+offset_bottom = 622.0
+texture_normal = ExtResource("6_k8tfb")
+texture_pressed = ExtResource("13_nnl2m")
+texture_hover = ExtResource("14_cv30d")
+
+[node name="GoBackButtonLabel" type="Label" parent="SequenceEditor/GoBackButton"]
+layout_mode = 0
+offset_left = 26.999998
+offset_top = 10.0
+offset_right = 345.0
+offset_bottom = 189.0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("11_mpp0x")
+theme_override_font_sizes/font_size = 64
+text = "Go back"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SequenceEditor"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 121.0
+offset_right = 1127.0
+offset_bottom = 329.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SequenceEditor/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScrollContainerDeck" type="ScrollContainer" parent="SequenceEditor"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 345.0
+offset_right = 1127.0
+offset_bottom = 553.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SequenceEditor/ScrollContainerDeck"]
+layout_mode = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_svhce")
+
+[connection signal="text_changed" from="AnswerBox" to="." method="_on_answer_box_text_changed"]
+[connection signal="pressed" from="RestartRound/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="RestartRound/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="RestartRound/StatisticsButton" to="." method="_on_statistics_button_pressed"]
+[connection signal="pressed" from="RestartRound/DecksButton" to="." method="_on_decks_button_pressed"]
+[connection signal="pressed" from="RestartRound/SequenceButton" to="." method="_on_sequence_button_pressed"]
+[connection signal="pressed" from="RestartRound/OpenFolderButton" to="." method="_on_open_folder_button_pressed"]
+[connection signal="pressed" from="Settings/GoBackButton" to="." method="_on_go_back_button_pressed"]
+[connection signal="item_selected" from="Settings/Operator" to="." method="_on_operator_item_selected"]
+[connection signal="text_changed" from="Settings/RequiredNumber" to="." method="_on_required_number_text_changed"]
+[connection signal="text_changed" from="Settings/MaxQuestions" to="." method="_on_max_questions_text_changed"]
+[connection signal="item_selected" from="Settings/CardGeneration" to="." method="_on_card_generation_item_selected"]
+[connection signal="item_selected" from="Settings/Student" to="." method="_on_student_item_selected"]
+[connection signal="text_submitted" from="Settings/Password" to="." method="_on_password_text_submitted"]
+[connection signal="pressed" from="Settings/Password/PasswordVisionButton" to="." method="_on_password_vision_button_pressed"]
+[connection signal="pressed" from="Settings/RemoveStudentButton" to="." method="_on_remove_student_button_pressed"]
+[connection signal="pressed" from="Settings/AddStudentButton" to="." method="_on_add_student_button_pressed"]
+[connection signal="text_changed" from="Settings/StudentNameToAdd" to="." method="_on_student_name_to_add_text_changed"]
+[connection signal="text_submitted" from="Settings/StudentNameToAdd" to="." method="_on_student_name_to_add_text_submitted"]
+[connection signal="pressed" from="Settings/DecksMenuFromSettingsButton" to="." method="_on_decks_menu_from_settings_button_pressed"]
+[connection signal="item_selected" from="Statistics/StudentStatistics" to="." method="_on_student_statistics_item_selected"]
+[connection signal="pressed" from="Statistics/GoBackButton" to="." method="_on_go_back_button_pressed"]
+[connection signal="item_selected" from="Statistics/Filter" to="." method="_on_filter_item_selected"]
+[connection signal="toggled" from="Statistics/ShowPointLabels" to="." method="_on_show_point_labels_toggled"]
+[connection signal="toggled" from="Statistics/ShowAxesLabels" to="." method="_on_show_axes_labels_toggled"]
+[connection signal="toggled" from="Statistics/ShowGrid" to="." method="_on_show_grid_toggled"]
+[connection signal="toggled" from="Statistics/ShowLegend" to="." method="_on_show_legend_toggled"]
+[connection signal="toggled" from="Statistics/QPMFilter" to="." method="_on_qpm_filter_toggled"]
+[connection signal="toggled" from="Statistics/FailuresFilter" to="." method="_on_failures_filter_toggled"]
+[connection signal="text_changed" from="DeckEditor/EditingDeck" to="." method="_on_editing_deck_text_changed"]
+[connection signal="text_submitted" from="DeckEditor/EditingDeck" to="." method="_on_editing_deck_text_submitted"]
+[connection signal="text_changed" from="DeckEditor/Cards" to="." method="_on_cards_text_changed"]
+[connection signal="text_submitted" from="DeckEditor/Cards" to="." method="_on_cards_text_submitted"]
+[connection signal="pressed" from="DeckEditor/GoBackButton" to="." method="_on_go_back_button_pressed"]
+[connection signal="file_selected" from="DeckEditor/ImportDialog" to="." method="_on_import_dialog_file_selected"]
+[connection signal="pressed" from="DeckEditor/ImportButton" to="." method="_on_import_button_pressed"]
+[connection signal="pressed" from="SequenceEditor/CreateBlankSequenceButton" to="." method="_on_create_blank_sequence_button_pressed"]
+[connection signal="pressed" from="SequenceEditor/GoBackButton" to="." method="_on_go_back_button_pressed"]

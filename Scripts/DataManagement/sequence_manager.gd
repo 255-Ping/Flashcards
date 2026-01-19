@@ -70,3 +70,20 @@ func rename_sequence(sequence: String, new_name: String):
 	#save.save_json("deck_" + new_name + ".deck", loaded)
 	save.rename_file(sequence + ".seq", new_name + ".seq")
 	
+func sort_sequence_keys(sequence: String):
+	var loaded = save.load_json(str(sequence, ".seq"))
+
+	var new_loaded = {}
+	var keys = loaded.keys()
+	
+	keys.sort_custom(func(a, b):
+		return int(a) < int(b)
+	)
+	
+	var new_index = 0
+	for k in keys:
+		new_loaded[new_index] = loaded[k]
+		new_index += 1
+		
+	save.save_json(str(sequence, ".seq"), new_loaded)
+	

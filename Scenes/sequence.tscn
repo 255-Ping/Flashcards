@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://cuhvts7q5kw12"]
 
-[ext_resource type="Script" uid="uid://lhx7lmygj1wo" path="res://Scripts/sequence_ui.gd" id="1_pec0k"]
-[ext_resource type="Texture2D" uid="uid://dwss8wp8sp0cd" path="res://Textures/delete.png" id="2_txpqf"]
-[ext_resource type="Texture2D" uid="uid://b3vpgo8qy7odw" path="res://Textures/delete_pressed.png" id="3_mai06"]
-[ext_resource type="Texture2D" uid="uid://btnjxoo5sjc4u" path="res://Textures/delete_hover.png" id="4_4idx5"]
-[ext_resource type="Texture2D" uid="uid://uboxunhwhjg1" path="res://Textures/select.png" id="8_ro2pu"]
-[ext_resource type="Texture2D" uid="uid://cdy0sxx3cq4yc" path="res://Textures/select_pressed.png" id="9_t4fva"]
-[ext_resource type="Texture2D" uid="uid://y37g71f1p6yp" path="res://Textures/select_hover.png" id="10_se0cs"]
+[ext_resource type="Script" uid="uid://lhx7lmygj1wo" path="res://Scripts/SequenceEditor/sequence_ui.gd" id="1_pec0k"]
+[ext_resource type="Texture2D" uid="uid://dwss8wp8sp0cd" path="res://Textures/Buttons/delete.png" id="2_txpqf"]
+[ext_resource type="Texture2D" uid="uid://b3vpgo8qy7odw" path="res://Textures/Buttons/delete_pressed.png" id="3_mai06"]
+[ext_resource type="Texture2D" uid="uid://btnjxoo5sjc4u" path="res://Textures/Buttons/delete_hover.png" id="4_4idx5"]
+[ext_resource type="Texture2D" uid="uid://uboxunhwhjg1" path="res://Textures/Buttons/select.png" id="8_ro2pu"]
+[ext_resource type="Texture2D" uid="uid://cdy0sxx3cq4yc" path="res://Textures/Buttons/select_pressed.png" id="9_t4fva"]
+[ext_resource type="Texture2D" uid="uid://y37g71f1p6yp" path="res://Textures/Buttons/select_hover.png" id="10_se0cs"]
 
 [node name="Sequence" type="Control"]
 custom_minimum_size = Vector2(1000, 100)
