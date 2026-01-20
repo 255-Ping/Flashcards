@@ -1,3 +1,7 @@
+# Flashcards - Godot Project
+# Copyright (C) 2026 Mr. Winans
+# Licensed under GPLv3 - https://www.gnu.org/licenses/gpl-3.0.txt
+
 extends Control
 class_name CommandPanel
 
@@ -6,6 +10,8 @@ var main: Node
 var selected_command_history: int = -1
 var command_history: Array
 
+@onready var line_edit = $LineEdit
+
 var commands: Dictionary = {
 	"help":"",
 	"test_popup":"",
@@ -13,7 +19,10 @@ var commands: Dictionary = {
 	"open_folder":"",
 	"ui_open":"String",
 	"ui_close":"String",
-	"website":""
+	"website":"",
+	"docs":"",
+	"system_perfs":"",
+	"close":""
 }
 
 func _ready() -> void:
@@ -38,7 +47,7 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 	#test_popup COMMAND	
 		elif split_command[0] == "test_popup":
 			main.create_popup("test popup")
-			command_panel_text = str("text popup created" + "\n" + command_panel_text)
+			command_panel_text = str("Command: test popup created" + "\n" + command_panel_text)
 			
 	#set_password COMMAND
 		elif split_command[0] == "set_password":
@@ -46,18 +55,26 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 			if split_args.size() < 2:
 				command_panel_text = str("set_password String" + "\n" + command_panel_text)
 			else:
-				command_panel_text = str("Password set to " + split_args[1] + "\n" + command_panel_text)
+				command_panel_text = str("Command: Password set to " + split_args[1] + "\n" + command_panel_text)
 				main.admin_password = split_args[1]
 				main.update_password_in_settings(split_args[1])
 				
 	#open_folder COMMAND
 		elif split_command[0] == "open_folder":
 			main.open_flashcards_folder()
+			command_panel_text = str("Command: Opened userdata folder" + "\n" + command_panel_text)
 			
 	#website COMMAND
 		elif split_command[0] == "website":
 			var url = "https://github.com/255-Ping/Flashcards"
 			OS.shell_open(url)
+			command_panel_text = str("Command: Opened github website" + "\n" + command_panel_text)
+	
+	#docs COMMAND
+		elif split_command[0] == "docs":
+			var url = "https://docs.google.com/document/d/1fbUxYh6ffeberwQp6U5fvy9oFO2EHrU73z2c17AO7bc/edit?usp=sharing"
+			OS.shell_open(url)
+			command_panel_text = str("Command: Opened documentation" + "\n" + command_panel_text)
 			
 	#ui_open COMMAND
 		elif split_command[0] == "ui_open":
@@ -76,6 +93,16 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 			else:
 				command_panel_text = str("UI Closed: " + split_args[1] + "\n" + command_panel_text)
 				main.ui_close(split_args[1])
+				
+	#system_perf COMMAND
+		elif split_command[0] == "system_perfs":
+			main.perfs_panel.visible = !main.perfs_panel.visible 
+			command_panel_text = str("Command: System perfs toggled" + "\n" + command_panel_text)
+			
+	#close COMMAND
+		elif split_command[0] == "close":
+			main.close_program(true)
+			command_panel_text = str("Command: Goodbye :)" + "\n" + command_panel_text)
 	
 	#unset COMMANDS
 		else:

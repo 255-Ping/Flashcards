@@ -115,11 +115,21 @@ var student_to_add: String
 #COMMAND PANEL
 @onready var commmand_panel = $CommandPanel
 
+#SYSTEM PERFS PANEL
+@onready var perfs_panel = $SystemPerfs
+
 #------------------------------
 #READY FUNCTION
 #------------------------------
 
 func _ready() -> void:
+	log_to_command_panel("Flashcards - Godot Project Version Beta")
+	log_to_command_panel("Copyright (C) 2026 Mr. Winans")
+	log_to_command_panel("Licensed under GPLv3 - https://www.gnu.org/licenses/gpl-3.0.txt")
+	print("Flashcards - Godot Project Version Beta")
+	print("Copyright (C) 2026 Mr. Winans")
+	print("Licensed under GPLv3 - https://www.gnu.org/licenses/gpl-3.0.txt")
+	
 	print("Flash cards starting...")
 	
 #Print USERDATA locations
@@ -197,6 +207,14 @@ func _ready() -> void:
 #------------------------------
 
 func _process(delta: float) -> void:
+	var frame_time_ms = delta * 1000
+	var usage = clamp(frame_time_ms / (1000.0 / 60.0) * 100, 0, 100)
+	$SystemPerfs/CPULabel.text = str("CPU %: ", round(usage))
+	$SystemPerfs/FPSLabel.text = str("Fps: ", Engine.get_frames_per_second())
+	$SystemPerfs/DeltaFLabel.text = str("DeltaF: ", round(frame_time_ms))
+	$SystemPerfs/StaticMemory.text = str("Memory: ", OS.get_static_memory_usage())
+	#$SystemPerfs/DynamicMemory.text = str("Dynamic Memory: ", OS.get_memory_info())
+	#$SystemPerfs/VideoMemory.text = str("Video Memory: ", OS.get_video_memory_usage())
 
 #Key Input Detection
 	#Submit Answer
@@ -225,6 +243,10 @@ func _process(delta: float) -> void:
 	#Toggles command panel
 	if Input.is_action_just_pressed("toggle_command_panel"):
 		$CommandPanel.visible = !$CommandPanel.visible
+		if $CommandPanel.visible == true:
+			$CommandPanel.line_edit.release_focus()
+			await get_tree().create_timer(0.05).timeout
+			$CommandPanel.line_edit.grab_focus()
 
 #Process tracking and function
 	if playing:
@@ -244,6 +266,7 @@ func _process(delta: float) -> void:
 
 func close_program(safe: bool):
 	create_popup("Goodbye :)")
+	log_to_command_panel("Goodbye :)")
 
 #Save password
 	var password_dict = {
@@ -959,3 +982,4 @@ func ui_close(ui: String):
 		$DeckEditor.visible = false
 	if ui == "sequences":
 		$SequenceEditor.visible = false
+		

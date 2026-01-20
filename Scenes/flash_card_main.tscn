@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://4v16l0ldovhh"]
+[gd_scene load_steps=24 format=3 uid="uid://4v16l0ldovhh"]
 
 [ext_resource type="Script" uid="uid://ca8oo1whw6s2d" path="res://Scripts/flash_cards.gd" id="1_xyf0l"]
 [ext_resource type="Texture2D" uid="uid://c5crq66joib64" path="res://Textures/Backgrounds/background.png" id="2_80326"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://ifhl71xb05mc" path="res://Textures/Buttons/GeneralButtons/button_long.png" id="18_08bwt"]
 [ext_resource type="Texture2D" uid="uid://fadacekxq7ej" path="res://Textures/Buttons/GeneralButtons/button_long_pressed.png" id="19_3fo7u"]
 [ext_resource type="Texture2D" uid="uid://cv3vu6fmddwph" path="res://Textures/Buttons/GeneralButtons/button_long_hover.png" id="20_iuxwd"]
+[ext_resource type="FontFile" uid="uid://dbjakyhm1jh0t" path="res://Fonts/LowresPixel-Regular.otf" id="23_yalr5"]
 
 [node name="FlashCardControl" type="Control"]
 layout_mode = 3
@@ -1023,6 +1024,76 @@ offset_left = 25.0
 offset_top = 260.0
 offset_right = 25.0
 offset_bottom = 260.0
+
+[node name="SystemPerfs" type="Control" parent="."]
+visible = false
+z_index = 1000
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="SystemPerfs"]
+layout_mode = 0
+offset_left = 969.0
+offset_top = 3.0
+offset_right = 1149.0
+offset_bottom = 72.0
+
+[node name="FPSLabel" type="Label" parent="SystemPerfs"]
+layout_mode = 0
+offset_left = 973.0
+offset_top = 5.0
+offset_right = 1037.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("23_yalr5")
+text = "FPS: 999"
+
+[node name="CPULabel" type="Label" parent="SystemPerfs"]
+layout_mode = 0
+offset_left = 972.0
+offset_top = 21.0
+offset_right = 1036.0
+offset_bottom = 44.0
+theme_override_fonts/font = ExtResource("23_yalr5")
+text = "CPU: "
+
+[node name="DeltaFLabel" type="Label" parent="SystemPerfs"]
+layout_mode = 0
+offset_left = 973.0
+offset_top = 38.0
+offset_right = 1037.0
+offset_bottom = 61.0
+theme_override_fonts/font = ExtResource("23_yalr5")
+text = "DeltaF: "
+
+[node name="StaticMemory" type="Label" parent="SystemPerfs"]
+layout_mode = 0
+offset_left = 973.0
+offset_top = 54.0
+offset_right = 1037.0
+offset_bottom = 77.0
+theme_override_fonts/font = ExtResource("23_yalr5")
+text = "DeltaF: "
+
+[node name="DynamicMemory" type="Label" parent="SystemPerfs"]
+visible = false
+layout_mode = 0
+offset_left = 973.0
+offset_top = 70.0
+offset_right = 1037.0
+offset_bottom = 93.0
+theme_override_fonts/font = ExtResource("23_yalr5")
+text = "DeltaF: "
+
+[node name="VideoMemory" type="Label" parent="SystemPerfs"]
+visible = false
+layout_mode = 0
+offset_left = 973.0
+offset_top = 85.0
+offset_right = 1037.0
+offset_bottom = 108.0
+theme_override_fonts/font = ExtResource("23_yalr5")
+text = "DeltaF: "
 
 [connection signal="text_changed" from="AnswerBox" to="." method="_on_answer_box_text_changed"]
 [connection signal="pressed" from="RestartRound/StartButton" to="." method="_on_start_button_pressed"]
