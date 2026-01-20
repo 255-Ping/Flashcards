@@ -112,6 +112,9 @@ var student_to_add: String
 #AUDIO CONTROLLER
 @onready var audio = $AudioStreamPlayer2D
 
+#COMMAND PANEL
+@onready var commmand_panel = $CommandPanel
+
 #------------------------------
 #READY FUNCTION
 #------------------------------
@@ -219,6 +222,9 @@ func _process(delta: float) -> void:
 		if !admin_present:
 			admin_present = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	#Toggles command panel
+	if Input.is_action_just_pressed("toggle_command_panel"):
+		$CommandPanel.visible = !$CommandPanel.visible
 
 #Process tracking and function
 	if playing:
@@ -533,6 +539,11 @@ func _on_add_student_button_pressed() -> void:
 func _on_decks_menu_from_settings_button_pressed() -> void:
 	$Settings.visible = false
 	$DeckEditor.visible = true
+	
+
+func _on_seq_menu_from_settings_button_pressed() -> void:
+	$Settings.visible = false
+	$SequenceEditor.visible = true
 
 #------------------------------
 #UPDATE SETTINGS/STUDENT_LIST VISUALS
@@ -546,6 +557,9 @@ func update_student_list_visuals(new_student_list):
 		$Settings/Student.add_item(s)
 	$Statistics/StudentStatistics.select(-1)
 	$Settings/Student.select(-1)
+	
+func update_password_in_settings(new_password: String):
+	$Settings/Password.text = new_password
 	
 func update_settings_from_data(new_student_name: String):
 	var loaded = save.load_json(new_student_name + ".json")
@@ -662,11 +676,13 @@ func _update_graph():
 
 func _submit_deck():
 	if " " in editing_deck:
-		push_error("No spaces in deck names")
+		push_warning("No spaces in deck names")
+		log_to_command_panel("Warning: no spaces in deck names")
 		create_popup("No spaces in deck names", -1.0, "error")
 		return
 	if " " in editing_cards:
-		push_error("No spaces in card list")
+		push_warning("No spaces in card list")
+		log_to_command_panel("Warning: no spaces in card list")
 		create_popup("No spaces in card list", -1.0, "error")
 		return
 	var cards = editing_cards.split(",")
@@ -708,8 +724,9 @@ func reload_deck_list():
 	#Creates a deck data var and makes sure it has data
 		var loaded_deck = save.load_json(str(i, ".deck"))
 		if !loaded_deck:
-			push_error("Data fault, deck_names contains a name with no data.")
-			create_popup("Data fault, deck_names contains a name with no data.", -1.0, "error")
+			push_error("Data fault, deck_names contains a name with no data")
+			log_to_command_panel("Error: Data fault, deck_names contains a name with no data")
+			create_popup("Data fault, deck_names contains a name with no data", -1.0, "error")
 			return
 	#Adds the deck to the visual list
 		var instance = deck_entry.instantiate()
@@ -717,6 +734,8 @@ func reload_deck_list():
 		instance.deck = i
 		instance.cards = loaded_deck
 		$DeckEditor/ScrollContainer/VBoxContainer.add_child(instance)
+	reload_sequence_list()
+	reload_sequence_deck_list()
 		
 		
 #------------------------------
@@ -744,7 +763,8 @@ func reload_sequence_list():
 	#Creates a deck data var and makes sure it has data
 		var loaded_sequence = save.load_json(str(i, ".seq"))
 		if !loaded_sequence:
-			push_warning("Data fault, sequence_names contains a name with no data.")
+			push_warning("Data fault, sequence_names contains a name with no data")
+			log_to_command_panel("Warning: Data fault, sequence_names contains a name with no data")
 			#create_popup("Data fault, deck_names contains a name with no data.", -1.0, "error")
 			#return
 	#Adds the deck to the visual list
@@ -768,6 +788,7 @@ func reload_sequence_deck_list():
 		var loaded_deck = save.load_json(str(i, ".deck"))
 		if !loaded_deck:
 			push_error("Data fault, deck_names contains a name with no data.")
+			log_to_command_panel("Error: Data fault, deck_names contains a name with no data.")
 			create_popup("Data fault, deck_names contains a name with no data.", -1.0, "error")
 			return
 	#Adds the deck to the visual list
@@ -813,6 +834,7 @@ func _on_password_correct(menu: String):
 func _on_password_text_submitted(new_text: String) -> void:
 	if new_text == "":
 		create_popup("Password cannot be blank!", -1.0, "error")
+		log_to_command_panel("Error: Password cannot be blank")
 		return
 	if new_text == admin_password:
 		return
@@ -831,6 +853,7 @@ func _on_import_dialog_file_selected(path: String) -> void:
 	var file := FileAccess.open(path, FileAccess.READ)
 	if file == null:
 		push_error("Could not open file.")
+		log_to_command_panel("Error: Could not open file")
 		create_popup("Could not open file.", -1, "error")
 		return
 
@@ -839,6 +862,7 @@ func _on_import_dialog_file_selected(path: String) -> void:
 	var data = JSON.parse_string(text)
 	if data == null or not data is Dictionary:
 		push_error("Invalid flashcard JSON format.")
+		log_to_command_panel("Error: Invalid flashcard JSON format")
 		create_popup("Invalid flashcard JSON format. This file will not work!", -1, "error")
 		return
 	var filename = path.get_file()
@@ -903,3 +927,35 @@ func open_flashcards_folder():
 	
 	# Open it in the OS file explorer
 	OS.shell_open(path)
+
+
+func log_to_command_panel(text: String):
+	commmand_panel.log_to_command_panel(text)
+	
+#------------------------------
+#UI OPEN AND CLOSE FUNCTION
+#------------------------------
+	
+func ui_open(ui: String):
+	if ui == "main":
+		$RestartRound.visible = true
+	if ui == "settings":
+		$Settings.visible = true
+	if ui == "stats":
+		$Statistics.visible = true
+	if ui == "decks":
+		$DeckEditor.visible = true
+	if ui == "sequences":
+		$SequenceEditor.visible = true
+		
+func ui_close(ui: String):
+	if ui == "main":
+		$RestartRound.visible = false
+	if ui == "settings":
+		$Settings.visible = false
+	if ui == "stats":
+		$Statistics.visible = false
+	if ui == "decks":
+		$DeckEditor.visible = false
+	if ui == "sequences":
+		$SequenceEditor.visible = false

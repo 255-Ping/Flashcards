@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://4v16l0ldovhh"]
+[gd_scene load_steps=23 format=3 uid="uid://4v16l0ldovhh"]
 
 [ext_resource type="Script" uid="uid://ca8oo1whw6s2d" path="res://Scripts/flash_cards.gd" id="1_xyf0l"]
 [ext_resource type="Texture2D" uid="uid://c5crq66joib64" path="res://Textures/Backgrounds/background.png" id="2_80326"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://ddfyoivtl6w2v" path="res://Textures/Buttons/EyeballButton/eye.png" id="12_fiqhk"]
 [ext_resource type="Texture2D" uid="uid://dmg8goruip023" path="res://Textures/Buttons/GeneralButtons/button_pressed.png" id="13_nnl2m"]
 [ext_resource type="Texture2D" uid="uid://b7dgn4n3o4o5d" path="res://Textures/Buttons/GeneralButtons/button_hover.png" id="14_cv30d"]
+[ext_resource type="PackedScene" uid="uid://bi1skjtr4j8no" path="res://Scenes/command_panel.tscn" id="15_6na03"]
 [ext_resource type="AudioStream" uid="uid://bs1k60tqnmy40" path="res://Sounds/ding-sound-effect_2.mp3" id="16_svhce"]
 [ext_resource type="Texture2D" uid="uid://ifhl71xb05mc" path="res://Textures/Buttons/GeneralButtons/button_long.png" id="18_08bwt"]
 [ext_resource type="Texture2D" uid="uid://fadacekxq7ej" path="res://Textures/Buttons/GeneralButtons/button_long_pressed.png" id="19_3fo7u"]
@@ -197,7 +198,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RestartRound" type="Control" parent="."]
-visible = false
 z_index = 1000
 anchors_preset = 0
 offset_right = 40.0
@@ -223,29 +223,29 @@ offset_left = 23.0
 offset_top = 118.0
 offset_right = 763.0
 offset_bottom = 206.0
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.5, 0.5)
 theme = ExtResource("11_mpp0x")
 theme_override_font_sizes/font_size = 64
 text = "Questions Per Minute: 0"
 
 [node name="TimesIncorrectLabel" type="Label" parent="RestartRound"]
 layout_mode = 0
-offset_left = 28.0
-offset_top = 174.0
-offset_right = 507.0
-offset_bottom = 262.0
-scale = Vector2(0.7, 0.7)
+offset_left = 22.0
+offset_top = 153.0
+offset_right = 501.0
+offset_bottom = 241.0
+scale = Vector2(0.5, 0.5)
 theme = ExtResource("11_mpp0x")
 theme_override_font_sizes/font_size = 64
 text = "Times Incorrect"
 
 [node name="TimeTakenLabel" type="Label" parent="RestartRound"]
 layout_mode = 0
-offset_left = 28.0
-offset_top = 226.0
-offset_right = 507.0
-offset_bottom = 314.0
-scale = Vector2(0.7, 0.7)
+offset_left = 23.0
+offset_top = 190.0
+offset_right = 502.0
+offset_bottom = 278.0
+scale = Vector2(0.5, 0.5)
 theme = ExtResource("11_mpp0x")
 theme_override_font_sizes/font_size = 64
 text = "Time Taken: 0s"
@@ -625,6 +625,23 @@ scale = Vector2(0.75, 0.75)
 theme_override_font_sizes/font_size = 48
 text = "Decks"
 
+[node name="SeqMenuFromSettingsButton" type="Button" parent="Settings"]
+layout_mode = 0
+offset_left = 661.0
+offset_top = 375.0
+offset_right = 811.0
+offset_bottom = 427.0
+
+[node name="SeqMenuFromSettingsButtonLabel" type="Label" parent="Settings/SeqMenuFromSettingsButton"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = -1.0
+offset_right = 289.0
+offset_bottom = 87.0
+scale = Vector2(0.75, 0.75)
+theme_override_font_sizes/font_size = 48
+text = "Seq"
+
 [node name="Statistics" type="Control" parent="."]
 visible = false
 anchors_preset = 0
@@ -908,6 +925,7 @@ theme_override_font_sizes/font_size = 64
 text = "Import"
 
 [node name="SequenceEditor" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -997,6 +1015,15 @@ size_flags_horizontal = 3
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_svhce")
 
+[node name="CommandPanel" parent="." instance=ExtResource("15_6na03")]
+visible = false
+z_index = 1000
+layout_mode = 0
+offset_left = 25.0
+offset_top = 260.0
+offset_right = 25.0
+offset_bottom = 260.0
+
 [connection signal="text_changed" from="AnswerBox" to="." method="_on_answer_box_text_changed"]
 [connection signal="pressed" from="RestartRound/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="RestartRound/SettingsButton" to="." method="_on_settings_button_pressed"]
@@ -1017,6 +1044,7 @@ stream = ExtResource("16_svhce")
 [connection signal="text_changed" from="Settings/StudentNameToAdd" to="." method="_on_student_name_to_add_text_changed"]
 [connection signal="text_submitted" from="Settings/StudentNameToAdd" to="." method="_on_student_name_to_add_text_submitted"]
 [connection signal="pressed" from="Settings/DecksMenuFromSettingsButton" to="." method="_on_decks_menu_from_settings_button_pressed"]
+[connection signal="pressed" from="Settings/SeqMenuFromSettingsButton" to="." method="_on_seq_menu_from_settings_button_pressed"]
 [connection signal="item_selected" from="Statistics/StudentStatistics" to="." method="_on_student_statistics_item_selected"]
 [connection signal="pressed" from="Statistics/GoBackButton" to="." method="_on_go_back_button_pressed"]
 [connection signal="item_selected" from="Statistics/Filter" to="." method="_on_filter_item_selected"]
