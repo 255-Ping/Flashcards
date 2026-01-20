@@ -19,9 +19,11 @@ var commands: Dictionary = {
 	"open_folder":"",
 	"ui_open":"String",
 	"ui_close":"String",
+	"window_mode":"String",
 	"website":"",
 	"docs":"",
 	"system_perfs":"",
+	"set_fps_cap":"Float",
 	"close":""
 }
 
@@ -75,6 +77,21 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 			var url = "https://docs.google.com/document/d/1fbUxYh6ffeberwQp6U5fvy9oFO2EHrU73z2c17AO7bc/edit?usp=sharing"
 			OS.shell_open(url)
 			command_panel_text = str("Command: Opened documentation" + "\n" + command_panel_text)
+	
+	#window_mode		
+		elif split_command[0] == "window_mode":
+			var split_args = new_text.split(" ")
+			if split_args.size() < 2:
+				command_panel_text = str("ui_open String(main/settings/stats/decks/sequences)" + "\n" + command_panel_text)
+			elif split_args[1] == "windowed":
+				command_panel_text = str("Command: Window Mode Set to " + split_args[1] + "\n" + command_panel_text)
+				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			elif split_args[1] == "fullscreen":
+				command_panel_text = str("Command: Window Mode Set to " + split_args[1] + "\n" + command_panel_text)
+				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+			else:
+				command_panel_text = str("window_mode String" + "\n" + command_panel_text)
+				
 			
 	#ui_open COMMAND
 		elif split_command[0] == "ui_open":
@@ -93,6 +110,15 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 			else:
 				command_panel_text = str("UI Closed: " + split_args[1] + "\n" + command_panel_text)
 				main.ui_close(split_args[1])
+				
+	#set_fps_cap COMMAND
+		elif split_command[0] == "set_fps_cap":
+			var split_args = new_text.split(" ")
+			if split_args.size() < 2:
+				command_panel_text = str("set_fps_cap Float" + "\n" + command_panel_text)
+			else:
+				command_panel_text = str("Set Fps Cap: " + split_args[1] + "\n" + command_panel_text)
+				main.set_fps_cap(float(split_args[1]))
 				
 	#system_perf COMMAND
 		elif split_command[0] == "system_perfs":

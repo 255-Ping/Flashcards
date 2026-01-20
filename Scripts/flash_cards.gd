@@ -65,6 +65,8 @@ var style: String
 
 var student_to_add: String
 
+var fps_cap: float = 60
+
 #DeckManager Node Variables
 @onready var deck_entry = preload("res://Scenes/deck.tscn")
 @onready var sequence_entry = preload("res://Scenes/sequence.tscn")
@@ -131,6 +133,10 @@ func _ready() -> void:
 	print("Licensed under GPLv3 - https://www.gnu.org/licenses/gpl-3.0.txt")
 	
 	print("Flash cards starting...")
+	
+#Cap FPS to save battery
+	if fps_cap:
+		Engine.max_fps = fps_cap
 	
 #Print USERDATA locations
 	print("USER DATA DIR:", OS.get_user_data_dir())
@@ -983,3 +989,5 @@ func ui_close(ui: String):
 	if ui == "sequences":
 		$SequenceEditor.visible = false
 		
+func set_fps_cap(fps: float):
+	Engine.max_fps = fps
