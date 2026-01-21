@@ -18,9 +18,12 @@ boot_splash/bg_color=Color(0.546928, 0.669833, 1, 1)
 boot_splash/image="uid://dd3nith2r5i0n"
 config/icon="uid://cax33j0lr50c3"
 
+[autoload]
+
+PanelLogger="*res://Scripts/logger.gd"
+
 [display]
 
-window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
 window/vsync/vsync_mode=0

@@ -5,9 +5,14 @@
 extends Node
 class_name RoundManager
 
+#var cmd = CommandPanel.new()
+
 var main
 var save = SaveManager.new()
 var excel = ExcelAPI.new()
+
+@onready var main_node := get_tree().current_scene
+
 
 func _init(_main):
 	main = _main
@@ -35,15 +40,15 @@ func start_round():
 		main.column.visible = true
 	else:
 		push_error("No style selected")
-		main.log_to_command_panel("Error: No card style selected")
+		PanelLogger.log_error("No card style selected")
 		force_end_round("No Style Selected")
 	main._reset_flash_card()
 	main.answer_box.grab_focus()
 	
 func end_round():
 	if !main.playing:
-		main.create_popup("Round cannot end, not currently playing.", -1.0, "error")
-		main.log_to_command_panel("Error: Round cannot end, not currently playing")
+		main_node.create_popup("Round cannot end, not currently playing.", -1.0, "error")
+		PanelLogger.log_error("Round cannot end, not currently playing")
 		push_error("Round cannot end, not currently playing.")
 		return
 	main.answer_box.position = Vector2(1104, 183)
@@ -65,13 +70,13 @@ func end_round():
 
 func force_end_round(reason: String):
 	if !main.playing:
-		main.create_popup("Round cannot end, not currently playing.", -1.0, "error")
+		main_node.create_popup("Round cannot end, not currently playing.", -1.0, "error")
 		push_error("Round cannot end, not currently playing.")
-		main.log_to_command_panel("Error: Round cannot end, not currently playing")
+		PanelLogger.log_error("Round cannot end, not currently playing")
 		return
 	main.playing = false
 	main.answer_box.position = Vector2(1104, 183)
 	main.restart_round_menu.visible = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	main.create_popup(str("Round was force ended: ", reason), -1.0, "error")
-	main.log_to_command_panel(str("Debug: Round was force ended: ", reason))
+	PanelLogger.log_debug(str("Round was force ended: ", reason))

@@ -65,7 +65,7 @@ var style: String
 
 var student_to_add: String
 
-var fps_cap: float = 60
+var fps_cap: int = 60
 
 #DeckManager Node Variables
 @onready var deck_entry = preload("res://Scenes/deck.tscn")
@@ -115,7 +115,7 @@ var fps_cap: float = 60
 @onready var audio = $AudioStreamPlayer2D
 
 #COMMAND PANEL
-@onready var commmand_panel = $CommandPanel
+@onready var command_panel: CommandPanel = $CommandPanel
 
 #SYSTEM PERFS PANEL
 @onready var perfs_panel = $SystemPerfs
@@ -125,9 +125,9 @@ var fps_cap: float = 60
 #------------------------------
 
 func _ready() -> void:
-	log_to_command_panel("Flashcards - Godot Project Version Beta")
-	log_to_command_panel("Copyright (C) 2026 Mr. Winans")
-	log_to_command_panel("Licensed under GPLv3 - https://www.gnu.org/licenses/gpl-3.0.txt")
+	PanelLogger.log("Flashcards - Godot Project Version Beta")
+	PanelLogger.log("Copyright (C) 2026 Mr. Winans")
+	PanelLogger.log("Licensed under GPLv3 - https://www.gnu.org/licenses/gpl-3.0.txt")
 	print("Flashcards - Godot Project Version Beta")
 	print("Copyright (C) 2026 Mr. Winans")
 	print("Licensed under GPLv3 - https://www.gnu.org/licenses/gpl-3.0.txt")
@@ -217,7 +217,7 @@ func _process(delta: float) -> void:
 	var usage = clamp(frame_time_ms / (1000.0 / 60.0) * 100, 0, 100)
 	$SystemPerfs/CPULabel.text = str("CPU %: ", round(usage))
 	$SystemPerfs/FPSLabel.text = str("Fps: ", Engine.get_frames_per_second())
-	$SystemPerfs/DeltaFLabel.text = str("DeltaF: ", round(frame_time_ms))
+	$SystemPerfs/DeltaFLabel.text = str("DeltaF: ", frame_time_ms)
 	$SystemPerfs/StaticMemory.text = str("Memory: ", OS.get_static_memory_usage())
 	#$SystemPerfs/DynamicMemory.text = str("Dynamic Memory: ", OS.get_memory_info())
 	#$SystemPerfs/VideoMemory.text = str("Video Memory: ", OS.get_video_memory_usage())
@@ -272,7 +272,7 @@ func _process(delta: float) -> void:
 
 func close_program(safe: bool):
 	create_popup("Goodbye :)")
-	log_to_command_panel("Goodbye :)")
+	PanelLogger.log("Goodbye :)")
 
 #Save password
 	var password_dict = {
@@ -706,12 +706,12 @@ func _update_graph():
 func _submit_deck():
 	if " " in editing_deck:
 		push_warning("No spaces in deck names")
-		log_to_command_panel("Warning: no spaces in deck names")
+		PanelLogger.log_warning("no spaces in deck names")
 		create_popup("No spaces in deck names", -1.0, "error")
 		return
 	if " " in editing_cards:
 		push_warning("No spaces in card list")
-		log_to_command_panel("Warning: no spaces in card list")
+		PanelLogger.log_warning("no spaces in card list")
 		create_popup("No spaces in card list", -1.0, "error")
 		return
 	var cards = editing_cards.split(",")
@@ -754,7 +754,7 @@ func reload_deck_list():
 		var loaded_deck = save.load_json(str(i, ".deck"))
 		if !loaded_deck:
 			push_error("Data fault, deck_names contains a name with no data")
-			log_to_command_panel("Error: Data fault, deck_names contains a name with no data")
+			PanelLogger.log_error("Data fault, deck_names contains a name with no data")
 			create_popup("Data fault, deck_names contains a name with no data", -1.0, "error")
 			return
 	#Adds the deck to the visual list
@@ -793,7 +793,7 @@ func reload_sequence_list():
 		var loaded_sequence = save.load_json(str(i, ".seq"))
 		if !loaded_sequence:
 			push_warning("Data fault, sequence_names contains a name with no data")
-			log_to_command_panel("Warning: Data fault, sequence_names contains a name with no data")
+			PanelLogger.log_warning("Data fault, sequence_names contains a name with no data")
 			#create_popup("Data fault, deck_names contains a name with no data.", -1.0, "error")
 			#return
 	#Adds the deck to the visual list
@@ -817,7 +817,7 @@ func reload_sequence_deck_list():
 		var loaded_deck = save.load_json(str(i, ".deck"))
 		if !loaded_deck:
 			push_error("Data fault, deck_names contains a name with no data.")
-			log_to_command_panel("Error: Data fault, deck_names contains a name with no data.")
+			PanelLogger.log_error("Data fault, deck_names contains a name with no data.")
 			create_popup("Data fault, deck_names contains a name with no data.", -1.0, "error")
 			return
 	#Adds the deck to the visual list
@@ -863,7 +863,7 @@ func _on_password_correct(menu: String):
 func _on_password_text_submitted(new_text: String) -> void:
 	if new_text == "":
 		create_popup("Password cannot be blank!", -1.0, "error")
-		log_to_command_panel("Error: Password cannot be blank")
+		PanelLogger.log_error("Password cannot be blank")
 		return
 	if new_text == admin_password:
 		return
@@ -882,7 +882,7 @@ func _on_import_dialog_file_selected(path: String) -> void:
 	var file := FileAccess.open(path, FileAccess.READ)
 	if file == null:
 		push_error("Could not open file.")
-		log_to_command_panel("Error: Could not open file")
+		PanelLogger.log_error("Could not open file")
 		create_popup("Could not open file.", -1, "error")
 		return
 
@@ -891,7 +891,7 @@ func _on_import_dialog_file_selected(path: String) -> void:
 	var data = JSON.parse_string(text)
 	if data == null or not data is Dictionary:
 		push_error("Invalid flashcard JSON format.")
-		log_to_command_panel("Error: Invalid flashcard JSON format")
+		PanelLogger.log_error("Invalid flashcard JSON format")
 		create_popup("Invalid flashcard JSON format. This file will not work!", -1, "error")
 		return
 	var filename = path.get_file()
@@ -957,9 +957,6 @@ func open_flashcards_folder():
 	# Open it in the OS file explorer
 	OS.shell_open(path)
 
-
-func log_to_command_panel(text: String):
-	commmand_panel.log_to_command_panel(text)
 	
 #------------------------------
 #UI OPEN AND CLOSE FUNCTION
@@ -968,26 +965,32 @@ func log_to_command_panel(text: String):
 func ui_open(ui: String):
 	if ui == "main":
 		$RestartRound.visible = true
-	if ui == "settings":
+	elif ui == "settings":
 		$Settings.visible = true
-	if ui == "stats":
+	elif ui == "stats":
 		$Statistics.visible = true
-	if ui == "decks":
+	elif ui == "decks":
 		$DeckEditor.visible = true
-	if ui == "sequences":
+	elif ui == "sequences":
 		$SequenceEditor.visible = true
+	else:
+		await get_tree().process_frame
+		PanelLogger.log_error("ui doesnt exist")
 		
 func ui_close(ui: String):
 	if ui == "main":
 		$RestartRound.visible = false
-	if ui == "settings":
+	elif ui == "settings":
 		$Settings.visible = false
-	if ui == "stats":
+	elif ui == "stats":
 		$Statistics.visible = false
-	if ui == "decks":
+	elif ui == "decks":
 		$DeckEditor.visible = false
-	if ui == "sequences":
+	elif ui == "sequences":
 		$SequenceEditor.visible = false
+	else:
+		await get_tree().process_frame
+		PanelLogger.log_error("ui doesnt exist")
 		
-func set_fps_cap(fps: float):
+func set_fps_cap(fps: int):
 	Engine.max_fps = fps
