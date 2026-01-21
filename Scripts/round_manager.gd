@@ -51,6 +51,7 @@ func end_round():
 		PanelLogger.log_error("Round cannot end, not currently playing")
 		push_error("Round cannot end, not currently playing.")
 		return
+	main.emit_signal("wait_for_signal_round_end")
 	main.answer_box.position = Vector2(1104, 183)
 	main.restart_round_menu.visible = true
 	var loaded = save.load_json(main.student_name + ".json")
@@ -74,6 +75,7 @@ func force_end_round(reason: String):
 		push_error("Round cannot end, not currently playing.")
 		PanelLogger.log_error("Round cannot end, not currently playing")
 		return
+	main.emit_signal("wait_for_signal_round_end")
 	main.playing = false
 	main.answer_box.position = Vector2(1104, 183)
 	main.restart_round_menu.visible = true

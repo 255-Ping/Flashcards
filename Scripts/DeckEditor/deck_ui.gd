@@ -89,8 +89,8 @@ func _on_select_button_pressed() -> void:
 
 func _on_deck_name_text_submitted(new_text: String) -> void:
 	if new_text == "":
-		push_error()
 		main.create_popup("Deck name cannot be blank", -1.0, "error")
+		PanelLogger.log_error("Deck name cannot be blank")
 		return
 	deck_manager.rename_deck(deck, new_text)
 	main.reload_deck_list()

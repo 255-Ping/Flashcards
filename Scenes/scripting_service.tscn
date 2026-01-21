@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbg8kw74pgb8k"]
+
+[ext_resource type="Script" uid="uid://0ydj0n0td2gu" path="res://Scripts/scripting_service.gd" id="1_gys74"]
+[ext_resource type="FontFile" uid="uid://dbjakyhm1jh0t" path="res://Fonts/LowresPixel-Regular.otf" id="1_ujkvy"]
+
+[node name="ScriptingService" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_gys74")
+
+[node name="Panel" type="Panel" parent="."]
+z_index = -1
+layout_mode = 0
+offset_right = 879.0
+offset_bottom = 438.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -2
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 878.0
+offset_bottom = 437.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_right = 879.0
+offset_bottom = 401.0
+theme_override_fonts/font = ExtResource("1_ujkvy")
+
+[node name="SaveButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 402.0
+offset_right = 437.0
+offset_bottom = 437.0
+
+[node name="SaveButtonLabel" type="Label" parent="SaveButton"]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 1.0
+offset_right = 333.0
+offset_bottom = 66.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("1_ujkvy")
+theme_override_font_sizes/font_size = 64
+text = "Save"
+
+[node name="CloseButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 439.0
+offset_top = 402.0
+offset_right = 877.0
+offset_bottom = 437.0
+
+[node name="CloseButtonLabel" type="Label" parent="CloseButton"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 1.0
+offset_right = 345.0
+offset_bottom = 66.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("1_ujkvy")
+theme_override_font_sizes/font_size = 64
+text = "Close"
+
+[connection signal="text_changed" from="TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

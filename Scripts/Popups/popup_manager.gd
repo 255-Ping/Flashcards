@@ -13,10 +13,16 @@ class_name PopupManager
 var message: String
 var auto_hide_time: float
 var type: String
+var main: Node
 
 func _ready():
 	await get_tree().process_frame
 	show_message(message, auto_hide_time, type)
+	main = get_tree().current_scene
+	main.close_popups.connect(_on_close_popups)
+	
+func _on_close_popups():
+	queue_free()
 
 func show_message(msg: String, aht: float = -1.0, t: String = "general"):
 	message_label.text = msg

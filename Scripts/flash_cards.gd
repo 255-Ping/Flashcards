@@ -115,10 +115,13 @@ var fps_cap: int = 60
 @onready var audio = $AudioStreamPlayer2D
 
 #COMMAND PANEL
-@onready var command_panel: CommandPanel = $CommandPanel
+@onready var command_panel = $CommandPanel
 
 #SYSTEM PERFS PANEL
 @onready var perfs_panel = $SystemPerfs
+
+signal wait_for_signal_round_end
+signal close_popups
 
 #------------------------------
 #READY FUNCTION

@@ -33,6 +33,7 @@ func _on_select_button_pressed() -> void:
 func _on_sequence_name_text_submitted(new_text: String) -> void:
 	if new_text == "":
 		push_error("Sequence name cannot be blank")
+		PanelLogger.log_error("Sequence name cannot be blank")
 		main.create_popup("Sequence name cannot be blank", -1.0, "error")
 		return
 	sequence_manager.rename_sequence(sequence, new_text)
