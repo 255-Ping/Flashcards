@@ -9,10 +9,21 @@ var save = SaveManager.new()
 func _ready() -> void:
 	main = get_tree().current_scene
 	
+func delete_script(sc: String):
+	if !save.get_files_with_extension("script").has(sc + ".script"):
+		PanelLogger.log_error("Script: script could not be deleted, as it doesn't exist")
+		return
+	save.delete_file(sc + ".script")
+	PanelLogger.log("Script: script successfully deleted")
+	
 func run_script(sc: String):
 	var loaded = save.load_json(sc + ".script")
+	print(loaded)
+	print(sc)
 	if loaded:
+		#print(loaded)
 		for i in loaded:
+			print(loaded[i])
 			if "select_deck" in loaded[i]:
 				print("Script: select_deck")
 				select_deck(loaded[i], int(i))

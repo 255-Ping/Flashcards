@@ -63,12 +63,30 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 	#script COMMAND
 		if split_command[0] == "script":
 			var split_args = new_text.split(" ")
-			if split_args.size() < 3:
+			if split_args.size() < 2:
 				PanelLogger.log("script String String")
 			elif split_args[1] == "open":
+				if split_args.size() < 3:
+					PanelLogger.log("script open String")
 				_open_scripting_window(split_args[2])
 			elif split_args[1] == "run":
-				_run_script(split_args[2])
+				if split_args.size() < 3:
+					PanelLogger.log("script run String")
+				#_run_script(split_args[2])
+				ScriptManager.run_script(split_args[2])
+				#print(split_args[2])
+			elif split_args[1] == "delete":
+				if split_args.size() < 3:
+					PanelLogger.log("script delete String")
+				ScriptManager.delete_script(split_args[2])
+			elif split_args[1] == "list":
+				for i in save.get_files_with_extension("script"):
+					PanelLogger.log(i)
+			elif split_args[1] == "print":
+				var loaded = save.load_json(split_args[2] + ".script")
+				if loaded:
+					for i in loaded:
+						PanelLogger.log(loaded[i])
 				
 		
 	#help COMMAND

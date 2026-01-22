@@ -7,6 +7,27 @@ class_name SaveManager
 
 const SAVE_DIR := "user://FlashCards"
 
+func get_files_with_extension(extension: String) -> Array[String]:
+	var result: Array[String] = []
+	var dir := DirAccess.open(SAVE_DIR)
+
+	if dir == null:
+		push_error("Could not open directory: " + SAVE_DIR)
+		return result
+
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+
+	while file_name != "":
+		if !dir.current_is_dir():
+			if file_name.get_extension() == extension:
+				result.append(file_name)
+		file_name = dir.get_next()
+
+	dir.list_dir_end()
+	return result
+
+
 func _ensure_dir() -> bool:
 	if not DirAccess.dir_exists_absolute(SAVE_DIR):
 		var result = DirAccess.make_dir_recursive_absolute(SAVE_DIR)

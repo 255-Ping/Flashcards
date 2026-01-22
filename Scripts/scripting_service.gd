@@ -12,6 +12,9 @@ func _ready() -> void:
 	if loaded:
 		for i in loaded:
 			$TextEdit.text = $TextEdit.text + loaded[i] + "\n"
+		sc_text = $TextEdit.text.split("\n")
+		for i in sc_text.size():
+			save_dict[i] = sc_text[i]	
 
 
 func _on_text_edit_text_changed() -> void:
