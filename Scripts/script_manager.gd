@@ -18,12 +18,12 @@ func delete_script(sc: String):
 	
 func run_script(sc: String):
 	var loaded = save.load_json(sc + ".script")
-	print(loaded)
-	print(sc)
+	#print(loaded)
+	#print(sc)
 	if loaded:
 		#print(loaded)
 		for i in loaded:
-			print(loaded[i])
+			#print(loaded[i])
 			if "select_deck" in loaded[i]:
 				print("Script: select_deck")
 				select_deck(loaded[i], int(i))
