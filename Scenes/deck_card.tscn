@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://chabdb0glnxnc"]
+[gd_scene format=3 uid="uid://chabdb0glnxnc"]
 
 [ext_resource type="Texture2D" uid="uid://bf5g00s7jx617" path="res://Textures/card.png" id="1_0qqmn"]
 [ext_resource type="Script" uid="uid://x45thbeas74m" path="res://Scripts/DeckEditor/deck_card.gd" id="1_wf8id"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ckfyoxsggc05i" path="res://Textures/Buttons/x_pressed.png" id="5_bnspj"]
 [ext_resource type="Texture2D" uid="uid://c6aa5fwy0i3nc" path="res://Textures/Buttons/x_hover.png" id="6_xnv4g"]
 
-[node name="Card" type="Control"]
+[node name="Card" type="Control" unique_id=2074163085]
 custom_minimum_size = Vector2(56, 76)
 layout_mode = 3
 anchor_right = 0.049000002
@@ -16,12 +16,12 @@ offset_right = -0.44800186
 offset_bottom = 0.18399811
 script = ExtResource("1_wf8id")
 
-[node name="Card" type="Sprite2D" parent="."]
+[node name="Card" type="Sprite2D" parent="." unique_id=14536969]
 position = Vector2(28, 38)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_0qqmn")
 
-[node name="Value1" type="Label" parent="."]
+[node name="Value1" type="Label" parent="." unique_id=1727109995]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.25
@@ -37,7 +37,7 @@ theme_override_font_sizes/font_size = 50
 text = "10"
 horizontal_alignment = 2
 
-[node name="Value2" type="Label" parent="."]
+[node name="Value2" type="Label" parent="." unique_id=1068733799]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.25
@@ -54,7 +54,7 @@ theme_override_font_sizes/font_size = 50
 text = "10"
 horizontal_alignment = 2
 
-[node name="Operator" type="Label" parent="."]
+[node name="Operator" type="Label" parent="." unique_id=569588339]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.21400002
@@ -72,7 +72,7 @@ theme_override_font_sizes/font_size = 50
 text = "+"
 horizontal_alignment = 2
 
-[node name="Answer" type="Label" parent="."]
+[node name="Answer" type="Label" parent="." unique_id=1797392732]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.089
@@ -90,17 +90,18 @@ theme_override_font_sizes/font_size = 50
 text = "100"
 horizontal_alignment = 2
 
-[node name="Bar" type="Sprite2D" parent="."]
+[node name="Bar" type="Sprite2D" parent="." unique_id=1975153306]
 position = Vector2(27.000002, 49)
 scale = Vector2(0.29333338, 0.25)
 texture = ExtResource("3_brehn")
 
-[node name="DeleteCard" type="TextureButton" parent="."]
+[node name="DeleteCard" type="TextureButton" parent="." unique_id=446234340]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 2.0
 offset_right = 20.0
 offset_bottom = 18.0
+tooltip_text = "Click to delete this card from this deck"
 texture_normal = ExtResource("4_eumee")
 texture_pressed = ExtResource("5_bnspj")
 texture_hover = ExtResource("6_xnv4g")

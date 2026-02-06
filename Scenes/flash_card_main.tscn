@@ -187,7 +187,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="QPS" type="Label" parent="." unique_id=325237828]
-visible = false
 layout_mode = 0
 offset_left = 1016.0
 offset_top = 2.0
@@ -433,6 +432,7 @@ offset_top = 182.0
 offset_right = 1186.0
 offset_bottom = 257.0
 scale = Vector2(0.7, 0.7)
+tooltip_text = "The selected operator for random card generation"
 theme_override_font_sizes/font_size = 48
 selected = 0
 item_count = 3
@@ -460,6 +460,7 @@ offset_top = 246.0
 offset_right = 1184.0
 offset_bottom = 321.0
 scale = Vector2(0.7, 0.7)
+tooltip_text = "The required number for random card generation"
 theme_override_font_sizes/font_size = 48
 placeholder_text = "00"
 
@@ -480,6 +481,7 @@ offset_top = 309.0
 offset_right = 1185.0
 offset_bottom = 384.0
 scale = Vector2(0.7, 0.7)
+tooltip_text = "The max questions for random card generation"
 theme_override_font_sizes/font_size = 48
 placeholder_text = "00"
 
@@ -500,6 +502,7 @@ offset_top = 374.00003
 offset_right = 1197.0
 offset_bottom = 449.00003
 scale = Vector2(0.7, 0.7)
+tooltip_text = "The selected card generation"
 theme_override_font_sizes/font_size = 48
 selected = 0
 item_count = 2
@@ -525,6 +528,7 @@ offset_top = 438.0
 offset_right = 1282.0
 offset_bottom = 513.0
 scale = Vector2(0.7, 0.7)
+tooltip_text = "The selected round end function"
 theme_override_font_sizes/font_size = 48
 selected = 0
 item_count = 3
@@ -552,6 +556,7 @@ offset_top = 119.999985
 offset_right = 1265.2858
 offset_bottom = 194.99998
 scale = Vector2(0.7, 0.7)
+tooltip_text = "Selected student, for data input"
 theme_override_font_sizes/font_size = 48
 fit_to_longest_item = false
 
@@ -572,6 +577,7 @@ offset_top = 501.00003
 offset_right = 1236.8572
 offset_bottom = 576.0
 scale = Vector2(0.7, 0.7)
+tooltip_text = "The password set for the program"
 theme_override_font_sizes/font_size = 48
 placeholder_text = "password"
 secret = true
@@ -620,6 +626,7 @@ offset_left = 221.0
 offset_top = 120.0
 offset_right = 321.0
 offset_bottom = 172.0
+tooltip_text = "Click to add new student"
 
 [node name="AddStudentLabel" type="Label" parent="Settings/AddStudentButton" unique_id=1225249302]
 layout_mode = 0
@@ -648,6 +655,7 @@ offset_left = 816.0
 offset_top = 375.0
 offset_right = 966.0
 offset_bottom = 427.0
+tooltip_text = "Click to go to Deck Editor"
 
 [node name="DecksButtonLabel" type="Label" parent="Settings/DecksMenuFromSettingsButton" unique_id=1087007877]
 layout_mode = 0
@@ -664,6 +672,7 @@ offset_left = 661.0
 offset_top = 375.0
 offset_right = 811.0
 offset_bottom = 427.0
+tooltip_text = "Click to go to Sequence Editor"
 
 [node name="SeqMenuFromSettingsButtonLabel" type="Label" parent="Settings/SeqMenuFromSettingsButton" unique_id=435517915]
 layout_mode = 0
@@ -942,6 +951,7 @@ offset_left = 977.0
 offset_top = 561.0
 offset_right = 1127.0
 offset_bottom = 621.0
+tooltip_text = "Click to import decks from your files"
 texture_normal = ExtResource("6_k8tfb")
 texture_pressed = ExtResource("13_nnl2m")
 texture_hover = ExtResource("14_cv30d")
