@@ -120,6 +120,7 @@ var fps_cap: int = 60
 #SYSTEM PERFS PANEL
 @onready var perfs_panel = $SystemPerfs
 
+#They are used... just not in this script
 signal wait_for_signal_round_end
 signal close_popups
 
@@ -190,7 +191,7 @@ func _ready() -> void:
 	max_value_2 = 12
 	style = "column" #flat, column
 	max_questions = 10
-	card_generation = "deck"
+	card_generation = "random"
 	card_number = 0
 	print("Defaults Loaded")
 
@@ -209,7 +210,7 @@ func _ready() -> void:
 	print("Sequence Deck list reloaded")
 
 #Start Popup
-	create_popup("Welcome, press Start to play, Settings to customize, Statistics to view data, and Decks to view, create, or change a deck.", 10)
+	create_popup("Welcome, press Start to play, Settings to customize, Statistics to view data, and Decks to view, create, or change a deck.")
 	
 #------------------------------
 #PROCESS FUNCTION

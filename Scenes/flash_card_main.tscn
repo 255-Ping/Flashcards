@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://4v16l0ldovhh"]
+[gd_scene format=3 uid="uid://4v16l0ldovhh"]
 
 [ext_resource type="Script" uid="uid://ca8oo1whw6s2d" path="res://Scripts/flash_cards.gd" id="1_xyf0l"]
 [ext_resource type="Texture2D" uid="uid://c5crq66joib64" path="res://Textures/Backgrounds/background.png" id="2_80326"]
@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://cv3vu6fmddwph" path="res://Textures/Buttons/GeneralButtons/button_long_hover.png" id="20_iuxwd"]
 [ext_resource type="FontFile" uid="uid://dbjakyhm1jh0t" path="res://Fonts/LowresPixel-Regular.otf" id="23_yalr5"]
 
-[node name="FlashCardControl" type="Control"]
+[node name="FlashCardControl" type="Control" unique_id=1564455396]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,7 +35,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_xyf0l")
 
-[node name="AnswerBox" type="TextEdit" parent="."]
+[node name="AnswerBox" type="TextEdit" parent="." unique_id=270109349]
 z_index = 20
 layout_direction = 3
 layout_mode = 1
@@ -55,38 +55,38 @@ emoji_menu_enabled = false
 shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
-virtual_keyboard_enabled = false
 middle_mouse_paste_enabled = false
+virtual_keyboard_enabled = false
 text_direction = 2
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="." unique_id=451548102]
 position = Vector2(576, 324)
 texture = ExtResource("2_80326")
 
-[node name="Logo" type="Sprite2D" parent="."]
+[node name="Logo" type="Sprite2D" parent="." unique_id=19887875]
 position = Vector2(60, 579)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_nwxjg")
 
-[node name="CheckMark" type="Sprite2D" parent="."]
+[node name="CheckMark" type="Sprite2D" parent="." unique_id=1400645200]
 visible = false
 position = Vector2(963, 301)
 scale = Vector2(15, 15)
 texture = ExtResource("5_wndv7")
 
-[node name="XMark" type="Sprite2D" parent="."]
+[node name="XMark" type="Sprite2D" parent="." unique_id=196370460]
 visible = false
 position = Vector2(997, 404)
 scale = Vector2(15, 15)
 texture = ExtResource("5_drbu0")
 
-[node name="Flat" type="Control" parent="."]
+[node name="Flat" type="Control" parent="." unique_id=1683907503]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="Flat"]
+[node name="Label" type="Label" parent="Flat" unique_id=968713976]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.121
@@ -104,19 +104,19 @@ theme_override_font_sizes/font_size = 50
 text = "0 + 0 ="
 horizontal_alignment = 3
 
-[node name="Column" type="Control" parent="."]
+[node name="Column" type="Control" parent="." unique_id=899128303]
 visible = false
 anchors_preset = 0
 offset_left = 44.0
 offset_right = 84.0
 offset_bottom = 40.0
 
-[node name="Card" type="Sprite2D" parent="Column"]
+[node name="Card" type="Sprite2D" parent="Column" unique_id=157547326]
 position = Vector2(529, 345)
 scale = Vector2(3, 3)
 texture = ExtResource("5_fuemt")
 
-[node name="Value1" type="Label" parent="Column"]
+[node name="Value1" type="Label" parent="Column" unique_id=2017929230]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.121
@@ -134,7 +134,7 @@ theme_override_font_sizes/font_size = 50
 text = "10"
 horizontal_alignment = 2
 
-[node name="Value2" type="Label" parent="Column"]
+[node name="Value2" type="Label" parent="Column" unique_id=2141566129]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.121
@@ -152,7 +152,7 @@ theme_override_font_sizes/font_size = 50
 text = "10"
 horizontal_alignment = 2
 
-[node name="Operator" type="Label" parent="Column"]
+[node name="Operator" type="Label" parent="Column" unique_id=899346281]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.121
@@ -170,12 +170,12 @@ theme_override_font_sizes/font_size = 50
 text = "+"
 horizontal_alignment = 2
 
-[node name="Bar" type="Sprite2D" parent="Column"]
+[node name="Bar" type="Sprite2D" parent="Column" unique_id=1305264764]
 position = Vector2(528, 403)
 scale = Vector2(1.69333, 1)
 texture = ExtResource("5_lur1s")
 
-[node name="Counter" type="Label" parent="."]
+[node name="Counter" type="Label" parent="." unique_id=1326204095]
 layout_mode = 0
 offset_left = 515.0
 offset_top = 2.0
@@ -186,7 +186,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="QPS" type="Label" parent="."]
+[node name="QPS" type="Label" parent="." unique_id=325237828]
 visible = false
 layout_mode = 0
 offset_left = 1016.0
@@ -198,17 +198,18 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RestartRound" type="Control" parent="."]
+[node name="RestartRound" type="Control" parent="." unique_id=48793722]
+visible = false
 z_index = 1000
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="MenuBackground" type="Sprite2D" parent="RestartRound"]
+[node name="MenuBackground" type="Sprite2D" parent="RestartRound" unique_id=1797341099]
 position = Vector2(576, 324)
 texture = ExtResource("8_nwxjg")
 
-[node name="RoundSummaryLabel" type="Label" parent="RestartRound"]
+[node name="RoundSummaryLabel" type="Label" parent="RestartRound" unique_id=205556893]
 layout_mode = 0
 offset_left = 25.0
 offset_top = 12.0
@@ -218,7 +219,7 @@ theme = ExtResource("10_5cpbb")
 theme_override_font_sizes/font_size = 64
 text = "Round Summary"
 
-[node name="QuestionsPerMinuteLabel" type="Label" parent="RestartRound"]
+[node name="QuestionsPerMinuteLabel" type="Label" parent="RestartRound" unique_id=311988167]
 layout_mode = 0
 offset_left = 23.0
 offset_top = 118.0
@@ -229,7 +230,7 @@ theme = ExtResource("11_mpp0x")
 theme_override_font_sizes/font_size = 64
 text = "Questions Per Minute: 0"
 
-[node name="TimesIncorrectLabel" type="Label" parent="RestartRound"]
+[node name="TimesIncorrectLabel" type="Label" parent="RestartRound" unique_id=758133018]
 layout_mode = 0
 offset_left = 22.0
 offset_top = 153.0
@@ -240,7 +241,7 @@ theme = ExtResource("11_mpp0x")
 theme_override_font_sizes/font_size = 64
 text = "Times Incorrect"
 
-[node name="TimeTakenLabel" type="Label" parent="RestartRound"]
+[node name="TimeTakenLabel" type="Label" parent="RestartRound" unique_id=1410754433]
 layout_mode = 0
 offset_left = 23.0
 offset_top = 190.0
@@ -251,17 +252,18 @@ theme = ExtResource("11_mpp0x")
 theme_override_font_sizes/font_size = 64
 text = "Time Taken: 0s"
 
-[node name="StartButton" type="TextureButton" parent="RestartRound"]
+[node name="StartButton" type="TextureButton" parent="RestartRound" unique_id=1870819844]
 layout_mode = 0
 offset_left = 984.0
 offset_top = 565.0
 offset_right = 1134.0
 offset_bottom = 625.0
+tooltip_text = "Click to start the round"
 texture_normal = ExtResource("6_k8tfb")
 texture_pressed = ExtResource("13_nnl2m")
 texture_hover = ExtResource("14_cv30d")
 
-[node name="StartButtonLabel" type="Label" parent="RestartRound/StartButton"]
+[node name="StartButtonLabel" type="Label" parent="RestartRound/StartButton" unique_id=2036095742]
 layout_mode = 0
 offset_left = 39.999996
 offset_top = 11.0
@@ -272,18 +274,18 @@ theme = ExtResource("11_mpp0x")
 theme_override_font_sizes/font_size = 64
 text = "Start"
 
-[node name="SettingsButton" type="TextureButton" parent="RestartRound"]
+[node name="SettingsButton" type="TextureButton" parent="RestartRound" unique_id=1196937385]
 layout_mode = 0
 offset_left = 831.0
 offset_top = 565.0
 offset_right = 981.0
 offset_bottom = 625.0
-theme = ExtResource("11_mpp0x")
+tooltip_text = "Click to view settings(user friendly)"
 texture_normal = ExtResource("6_k8tfb")
 texture_pressed = ExtResource("13_nnl2m")
 texture_hover = ExtResource("14_cv30d")
 
-[node name="SettingsButtonLabel" type="Label" parent="RestartRound/SettingsButton"]
+[node name="SettingsButtonLabel" type="Label" parent="RestartRound/SettingsButton" unique_id=791071842]
 layout_mode = 0
 offset_left = 20.999998
 offset_top = 10.0
@@ -294,17 +296,18 @@ theme = ExtResource("11_mpp0x")
 theme_override_font_sizes/font_size = 64
 text = "Settings"
 
-[node name="StatisticsButton" type="TextureButton" parent="RestartRound"]
+[node name="StatisticsButton" type="TextureButton" parent="RestartRound" unique_id=1992659995]
 layout_mode = 0
 offset_left = 679.0
 offset_top = 565.0
 offset_right = 829.0
 offset_bottom = 625.0
+tooltip_text = "Click to view student statistics(user friendly)"
 texture_normal = ExtResource("6_k8tfb")
 texture_pressed = ExtResource("13_nnl2m")
 texture_hover = ExtResource("14_cv30d")
 
-[node name="StatisticsButtonLabel" type="Label" parent="RestartRound/StatisticsButton"]
+[node name="StatisticsButtonLabel" type="Label" parent="RestartRound/StatisticsButton" unique_id=221338327]
 layout_mode = 0
 offset_left = 10.999998
 offset_top = 10.0
@@ -316,17 +319,18 @@ theme_override_font_sizes/font_size = 64
 text = "Statistics
 "
 
-[node name="DecksButton" type="TextureButton" parent="RestartRound"]
+[node name="DecksButton" type="TextureButton" parent="RestartRound" unique_id=391915661]
 layout_mode = 0
 offset_left = 526.0
 offset_top = 566.0
 offset_right = 676.0
 offset_bottom = 626.0
+tooltip_text = "Click to view and edit decks(advanced user)"
 texture_normal = ExtResource("6_k8tfb")
 texture_pressed = ExtResource("13_nnl2m")
 texture_hover = ExtResource("14_cv30d")
 
-[node name="DeckEditorButtonLabel" type="Label" parent="RestartRound/DecksButton"]
+[node name="DeckEditorButtonLabel" type="Label" parent="RestartRound/DecksButton" unique_id=1493924173]
 layout_mode = 0
 offset_left = 6.9999986
 offset_top = 11.0
@@ -337,17 +341,18 @@ theme = ExtResource("11_mpp0x")
 theme_override_font_sizes/font_size = 64
 text = "Deck Editor"
 
-[node name="SequenceButton" type="TextureButton" parent="RestartRound"]
+[node name="SequenceButton" type="TextureButton" parent="RestartRound" unique_id=916711260]
 layout_mode = 0
 offset_left = 370.0
 offset_top = 566.0
 offset_right = 520.0
 offset_bottom = 626.0
+tooltip_text = "Click to view and edit sequences(advanced user)"
 texture_normal = ExtResource("6_k8tfb")
 texture_pressed = ExtResource("13_nnl2m")
 texture_hover = ExtResource("14_cv30d")
 
-[node name="SeqButtonLabel" type="Label" parent="RestartRound/SequenceButton"]
+[node name="SeqButtonLabel" type="Label" parent="RestartRound/SequenceButton" unique_id=1416183553]
 layout_mode = 0
 offset_left = 15.999998
 offset_top = 10.0
@@ -358,17 +363,18 @@ theme = ExtResource("11_mpp0x")
 theme_override_font_sizes/font_size = 64
 text = "Sequencer"
 
-[node name="OpenFolderButton" type="TextureButton" parent="RestartRound"]
+[node name="OpenFolderButton" type="TextureButton" parent="RestartRound" unique_id=204935200]
 layout_mode = 0
 offset_left = 215.0
 offset_top = 566.0
 offset_right = 365.0
 offset_bottom = 626.0
+tooltip_text = "Click to open the folder containing all program data"
 texture_normal = ExtResource("6_k8tfb")
 texture_pressed = ExtResource("13_nnl2m")
 texture_hover = ExtResource("14_cv30d")
 
-[node name="OpenFolderButtonLabel" type="Label" parent="RestartRound/OpenFolderButton"]
+[node name="OpenFolderButtonLabel" type="Label" parent="RestartRound/OpenFolderButton" unique_id=54638006]
 layout_mode = 0
 offset_left = 3.999999
 offset_top = 9.0
@@ -379,18 +385,17 @@ theme = ExtResource("11_mpp0x")
 theme_override_font_sizes/font_size = 64
 text = "Open Folder"
 
-[node name="Settings" type="Control" parent="."]
-visible = false
+[node name="Settings" type="Control" parent="." unique_id=264487729]
 z_index = 1000
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="MenuBackground" type="Sprite2D" parent="Settings"]
+[node name="MenuBackground" type="Sprite2D" parent="Settings" unique_id=1712635935]
 position = Vector2(576, 324)
 texture = ExtResource("11_mbu2p")
 
-[node name="SettingsLabel" type="Label" parent="Settings"]
+[node name="SettingsLabel" type="Label" parent="Settings" unique_id=1214530388]
 layout_mode = 0
 offset_left = 25.0
 offset_top = 12.0
@@ -400,7 +405,7 @@ theme = ExtResource("10_5cpbb")
 theme_override_font_sizes/font_size = 64
 text = "Settings"
 
-[node name="GoBackButton" type="TextureButton" parent="Settings"]
+[node name="GoBackButton" type="TextureButton" parent="Settings" unique_id=1909032728]
 layout_mode = 0
 offset_left = 22.0
 offset_top = 562.0
@@ -410,7 +415,7 @@ texture_normal = ExtResource("6_k8tfb")
 texture_pressed = ExtResource("13_nnl2m")
 texture_hover = ExtResource("14_cv30d")
 
-[node name="GoBackButtonLabel" type="Label" parent="Settings/GoBackButton"]
+[node name="GoBackButtonLabel" type="Label" parent="Settings/GoBackButton" unique_id=2051422476]
 layout_mode = 0
 offset_left = 26.999998
 offset_top = 10.0
@@ -421,7 +426,7 @@ theme = ExtResource("11_mpp0x")
 theme_override_font_sizes/font_size = 64
 text = "Go back"
 
-[node name="Operator" type="OptionButton" parent="Settings"]
+[node name="Operator" type="OptionButton" parent="Settings" unique_id=1489579874]
 layout_mode = 0
 offset_left = 992.0
 offset_top = 182.0
@@ -438,7 +443,7 @@ popup/item_1/id = 1
 popup/item_2/text = "x"
 popup/item_2/id = 2
 
-[node name="OperatorLabel" type="Label" parent="Settings/Operator"]
+[node name="OperatorLabel" type="Label" parent="Settings/Operator" unique_id=43681919]
 layout_mode = 0
 offset_left = -1385.71
 offset_top = -21.4285
@@ -448,7 +453,7 @@ scale = Vector2(1.5, 1.5)
 theme_override_font_sizes/font_size = 48
 text = "Operator"
 
-[node name="RequiredNumber" type="LineEdit" parent="Settings"]
+[node name="RequiredNumber" type="LineEdit" parent="Settings" unique_id=1654584727]
 layout_mode = 0
 offset_left = 996.0
 offset_top = 246.0
@@ -458,7 +463,7 @@ scale = Vector2(0.7, 0.7)
 theme_override_font_sizes/font_size = 48
 placeholder_text = "00"
 
-[node name="RequiredNumberLabel" type="Label" parent="Settings/RequiredNumber"]
+[node name="RequiredNumberLabel" type="Label" parent="Settings/RequiredNumber" unique_id=1592632052]
 layout_mode = 0
 offset_left = -1391.43
 offset_top = -20.0
@@ -468,7 +473,7 @@ scale = Vector2(1.5, 1.5)
 theme_override_font_sizes/font_size = 48
 text = "Req. #"
 
-[node name="MaxQuestions" type="LineEdit" parent="Settings"]
+[node name="MaxQuestions" type="LineEdit" parent="Settings" unique_id=812038239]
 layout_mode = 0
 offset_left = 997.0
 offset_top = 309.0
@@ -478,7 +483,7 @@ scale = Vector2(0.7, 0.7)
 theme_override_font_sizes/font_size = 48
 placeholder_text = "00"
 
-[node name="MaxQuestionsLabel" type="Label" parent="Settings/MaxQuestions"]
+[node name="MaxQuestionsLabel" type="Label" parent="Settings/MaxQuestions" unique_id=1993411311]
 layout_mode = 0
 offset_left = -1391.43
 offset_top = -17.1429
@@ -488,7 +493,7 @@ scale = Vector2(1.5, 1.5)
 theme_override_font_sizes/font_size = 48
 text = "Max Questions"
 
-[node name="CardGeneration" type="OptionButton" parent="Settings"]
+[node name="CardGeneration" type="OptionButton" parent="Settings" unique_id=762375181]
 layout_mode = 0
 offset_left = 970.99994
 offset_top = 374.00003
@@ -496,14 +501,14 @@ offset_right = 1197.0
 offset_bottom = 449.00003
 scale = Vector2(0.7, 0.7)
 theme_override_font_sizes/font_size = 48
-selected = 1
+selected = 0
 item_count = 2
 popup/item_0/text = "Random"
 popup/item_0/id = 0
 popup/item_1/text = "Deck"
 popup/item_1/id = 1
 
-[node name="CardGenerationLabel" type="Label" parent="Settings/CardGeneration"]
+[node name="CardGenerationLabel" type="Label" parent="Settings/CardGeneration" unique_id=8264463]
 layout_mode = 0
 offset_left = -1352.857
 offset_top = -21.42863
@@ -513,7 +518,7 @@ scale = Vector2(1.5, 1.5)
 theme_override_font_sizes/font_size = 48
 text = "Card Generation"
 
-[node name="Student" type="OptionButton" parent="Settings"]
+[node name="Student" type="OptionButton" parent="Settings" unique_id=122845966]
 layout_mode = 0
 offset_left = 807.0
 offset_top = 119.999985
@@ -523,7 +528,7 @@ scale = Vector2(0.7, 0.7)
 theme_override_font_sizes/font_size = 48
 fit_to_longest_item = false
 
-[node name="StudentLabel" type="Label" parent="Settings/Student"]
+[node name="StudentLabel" type="Label" parent="Settings/Student" unique_id=1170450616]
 layout_mode = 0
 offset_left = -1122.8572
 offset_top = -11.428553
@@ -533,7 +538,7 @@ scale = Vector2(1.5, 1.5)
 theme_override_font_sizes/font_size = 48
 text = "Student"
 
-[node name="Password" type="LineEdit" parent="Settings"]
+[node name="Password" type="LineEdit" parent="Settings" unique_id=532039707]
 layout_mode = 0
 offset_left = 876.0
 offset_top = 501.00003
@@ -544,7 +549,7 @@ theme_override_font_sizes/font_size = 48
 placeholder_text = "password"
 secret = true
 
-[node name="PasswordLabel" type="Label" parent="Settings/Password"]
+[node name="PasswordLabel" type="Label" parent="Settings/Password" unique_id=1181722410]
 layout_mode = 0
 offset_left = -1214.2858
 offset_top = -15.714285
@@ -554,7 +559,7 @@ scale = Vector2(1.5, 1.5)
 theme_override_font_sizes/font_size = 48
 text = "Password"
 
-[node name="PasswordVisionButton" type="TextureButton" parent="Settings/Password"]
+[node name="PasswordVisionButton" type="TextureButton" parent="Settings/Password" unique_id=1353504502]
 layout_mode = 0
 offset_left = -68.57143
 offset_top = 5.7142415
@@ -563,14 +568,14 @@ offset_bottom = 21.714241
 scale = Vector2(4, 4)
 texture_normal = ExtResource("12_fiqhk")
 
-[node name="RemoveStudentButton" type="Button" parent="Settings"]
+[node name="RemoveStudentButton" type="Button" parent="Settings" unique_id=1206910938]
 layout_mode = 0
 offset_left = 605.0
 offset_top = 120.0
 offset_right = 805.0
 offset_bottom = 172.0
 
-[node name="RemoveStudentLabel" type="Label" parent="Settings/RemoveStudentButton"]
+[node name="RemoveStudentLabel" type="Label" parent="Settings/RemoveStudentButton" unique_id=1031174755]
 layout_mode = 0
 offset_left = 29.0
 offset_top = -3.0
@@ -582,14 +587,14 @@ mouse_filter = 1
 theme_override_font_sizes/font_size = 48
 text = "Remove"
 
-[node name="AddStudentButton" type="Button" parent="Settings"]
+[node name="AddStudentButton" type="Button" parent="Settings" unique_id=1430339303]
 layout_mode = 0
 offset_left = 221.0
 offset_top = 120.0
 offset_right = 321.0
 offset_bottom = 172.0
 
-[node name="AddStudentLabel" type="Label" parent="Settings/AddStudentButton"]
+[node name="AddStudentLabel" type="Label" parent="Settings/AddStudentButton" unique_id=1225249302]
 layout_mode = 0
 offset_left = 13.0
 offset_top = -2.0
@@ -601,7 +606,7 @@ mouse_filter = 1
 theme_override_font_sizes/font_size = 48
 text = "Add"
 
-[node name="StudentNameToAdd" type="LineEdit" parent="Settings"]
+[node name="StudentNameToAdd" type="LineEdit" parent="Settings" unique_id=486147085]
 layout_mode = 0
 offset_left = 326.0
 offset_top = 120.0
@@ -610,14 +615,14 @@ offset_bottom = 172.0
 tooltip_text = "Student name to add to student list"
 placeholder_text = "Student Name"
 
-[node name="DecksMenuFromSettingsButton" type="Button" parent="Settings"]
+[node name="DecksMenuFromSettingsButton" type="Button" parent="Settings" unique_id=1354246215]
 layout_mode = 0
 offset_left = 816.0
 offset_top = 375.0
 offset_right = 966.0
 offset_bottom = 427.0
 
-[node name="DecksButtonLabel" type="Label" parent="Settings/DecksMenuFromSettingsButton"]
+[node name="DecksButtonLabel" type="Label" parent="Settings/DecksMenuFromSettingsButton" unique_id=1087007877]
 layout_mode = 0
 offset_left = 22.0
 offset_right = 270.0
@@ -626,14 +631,14 @@ scale = Vector2(0.75, 0.75)
 theme_override_font_sizes/font_size = 48
 text = "Decks"
 
-[node name="SeqMenuFromSettingsButton" type="Button" parent="Settings"]
+[node name="SeqMenuFromSettingsButton" type="Button" parent="Settings" unique_id=507492703]
 layout_mode = 0
 offset_left = 661.0
 offset_top = 375.0
 offset_right = 811.0
 offset_bottom = 427.0
 
-[node name="SeqMenuFromSettingsButtonLabel" type="Label" parent="Settings/SeqMenuFromSettingsButton"]
+[node name="SeqMenuFromSettingsButtonLabel" type="Label" parent="Settings/SeqMenuFromSettingsButton" unique_id=435517915]
 layout_mode = 0
 offset_left = 41.0
 offset_top = -1.0
@@ -643,17 +648,17 @@ scale = Vector2(0.75, 0.75)
 theme_override_font_sizes/font_size = 48
 text = "Seq"
 
-[node name="Statistics" type="Control" parent="."]
+[node name="Statistics" type="Control" parent="." unique_id=1246285845]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="MenuBackground2" type="Sprite2D" parent="Statistics"]
+[node name="MenuBackground2" type="Sprite2D" parent="Statistics" unique_id=1337278746]
 position = Vector2(576, 324)
 texture = ExtResource("8_nwxjg")
 
-[node name="StatisticsLabel" type="Label" parent="Statistics"]
+[node name="StatisticsLabel" type="Label" parent="Statistics" unique_id=1962067064]
 layout_mode = 0
 offset_left = 25.0
 offset_top = 12.0
@@ -663,7 +668,7 @@ theme = ExtResource("10_5cpbb")
 theme_override_font_sizes/font_size = 64
 text = "Statistics"
 
-[node name="StudentStatistics" type="OptionButton" parent="Statistics"]
+[node name="StudentStatistics" type="OptionButton" parent="Statistics" unique_id=311976383]
 layout_mode = 0
 offset_left = 807.0
 offset_top = 119.999985
@@ -672,7 +677,7 @@ offset_bottom = 194.99998
 scale = Vector2(0.7, 0.7)
 theme_override_font_sizes/font_size = 48
 
-[node name="StudentLabel" type="Label" parent="Statistics/StudentStatistics"]
+[node name="StudentLabel" type="Label" parent="Statistics/StudentStatistics" unique_id=240147569]
 layout_mode = 0
 offset_left = -1122.8572
 offset_top = -11.428553
@@ -682,7 +687,7 @@ scale = Vector2(1.5, 1.5)
 theme_override_font_sizes/font_size = 48
 text = "Student"
 
-[node name="LineGraph" parent="Statistics" instance=ExtResource("12_evyry")]
+[node name="LineGraph" parent="Statistics" unique_id=1737764049 instance=ExtResource("12_evyry")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.4
@@ -695,7 +700,7 @@ offset_right = -16.0
 offset_bottom = -65.0
 line_color = Color(0.301961, 0.27451, 1, 1)
 
-[node name="GoBackButton" type="TextureButton" parent="Statistics"]
+[node name="GoBackButton" type="TextureButton" parent="Statistics" unique_id=1798413989]
 layout_mode = 0
 offset_left = 22.0
 offset_top = 562.0
@@ -705,7 +710,7 @@ texture_normal = ExtResource("6_k8tfb")
 texture_pressed = ExtResource("13_nnl2m")
 texture_hover = ExtResource("14_cv30d")
 
-[node name="GoBackButtonLabel" type="Label" parent="Statistics/GoBackButton"]
+[node name="GoBackButtonLabel" type="Label" parent="Statistics/GoBackButton" unique_id=641438113]
 layout_mode = 0
 offset_left = 24.999998
 offset_top = 9.0
@@ -716,7 +721,7 @@ theme = ExtResource("11_mpp0x")
 theme_override_font_sizes/font_size = 64
 text = "Go back"
 
-[node name="FilterLabel" type="Label" parent="Statistics"]
+[node name="FilterLabel" type="Label" parent="Statistics" unique_id=1042500483]
 layout_mode = 0
 offset_left = 517.0
 offset_top = 554.0
@@ -725,7 +730,7 @@ offset_bottom = 642.0
 theme_override_font_sizes/font_size = 48
 text = "Filter"
 
-[node name="Filter" type="OptionButton" parent="Statistics"]
+[node name="Filter" type="OptionButton" parent="Statistics" unique_id=1271715089]
 visible = false
 layout_mode = 0
 offset_left = 982.0
@@ -741,7 +746,7 @@ popup/item_0/id = 0
 popup/item_1/text = "Failures"
 popup/item_1/id = 1
 
-[node name="ShowPointLabels" type="CheckBox" parent="Statistics"]
+[node name="ShowPointLabels" type="CheckBox" parent="Statistics" unique_id=988505335]
 layout_mode = 0
 offset_left = 170.0
 offset_top = 568.0
@@ -751,7 +756,7 @@ scale = Vector2(2, 2)
 tooltip_text = "Show Point Labels"
 button_pressed = true
 
-[node name="ShowAxesLabels" type="CheckBox" parent="Statistics"]
+[node name="ShowAxesLabels" type="CheckBox" parent="Statistics" unique_id=1141009685]
 layout_mode = 0
 offset_left = 221.0
 offset_top = 568.0
@@ -761,7 +766,7 @@ scale = Vector2(2, 2)
 tooltip_text = "Show Axes Labels"
 button_pressed = true
 
-[node name="ShowGrid" type="CheckBox" parent="Statistics"]
+[node name="ShowGrid" type="CheckBox" parent="Statistics" unique_id=335576916]
 layout_mode = 0
 offset_left = 271.0
 offset_top = 568.0
@@ -771,7 +776,7 @@ scale = Vector2(2, 2)
 tooltip_text = "Show Grid"
 button_pressed = true
 
-[node name="ShowLegend" type="CheckBox" parent="Statistics"]
+[node name="ShowLegend" type="CheckBox" parent="Statistics" unique_id=604324320]
 layout_mode = 0
 offset_left = 323.0
 offset_top = 568.0
@@ -781,7 +786,7 @@ scale = Vector2(2, 2)
 tooltip_text = "Show Legend"
 button_pressed = true
 
-[node name="QPMFilter" type="CheckBox" parent="Statistics"]
+[node name="QPMFilter" type="CheckBox" parent="Statistics" unique_id=1316480632]
 layout_mode = 0
 offset_left = 649.0
 offset_top = 568.0
@@ -790,7 +795,7 @@ offset_bottom = 592.0
 scale = Vector2(2, 2)
 tooltip_text = "Filter for QPM"
 
-[node name="FailuresFilter" type="CheckBox" parent="Statistics"]
+[node name="FailuresFilter" type="CheckBox" parent="Statistics" unique_id=1121077753]
 layout_mode = 0
 offset_left = 697.0
 offset_top = 568.0
@@ -799,17 +804,17 @@ offset_bottom = 592.0
 scale = Vector2(2, 2)
 tooltip_text = "Filter for Failures"
 
-[node name="DeckEditor" type="Control" parent="."]
+[node name="DeckEditor" type="Control" parent="." unique_id=1003591300]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="MenuBackground" type="Sprite2D" parent="DeckEditor"]
+[node name="MenuBackground" type="Sprite2D" parent="DeckEditor" unique_id=1393740404]
 position = Vector2(576, 324)
 texture = ExtResource("8_nwxjg")
 
-[node name="DeckEditorLabel" type="Label" parent="DeckEditor"]
+[node name="DeckEditorLabel" type="Label" parent="DeckEditor" unique_id=963232110]
 layout_mode = 0
 offset_left = 25.0
 offset_top = 12.0
@@ -819,7 +824,7 @@ theme = ExtResource("10_5cpbb")
 theme_override_font_sizes/font_size = 64
 text = "Deck Editor"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="DeckEditor"]
+[node name="ScrollContainer" type="ScrollContainer" parent="DeckEditor" unique_id=264418880]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 181.0
@@ -827,12 +832,12 @@ offset_right = 1127.0
 offset_bottom = 563.0
 vertical_scroll_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DeckEditor/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DeckEditor/ScrollContainer" unique_id=1607307664]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="EditingDeck" type="LineEdit" parent="DeckEditor"]
+[node name="EditingDeck" type="LineEdit" parent="DeckEditor" unique_id=936348322]
 layout_mode = 0
 offset_left = 152.0
 offset_top = 118.0
@@ -842,7 +847,7 @@ scale = Vector2(0.7, 0.7)
 tooltip_text = "Name of the Deck, Cannot contain spaces or _"
 theme_override_font_sizes/font_size = 48
 
-[node name="EditingDeckLabel" type="Label" parent="DeckEditor/EditingDeck"]
+[node name="EditingDeckLabel" type="Label" parent="DeckEditor/EditingDeck" unique_id=998807523]
 layout_mode = 0
 offset_left = -188.57143
 offset_top = -14.285706
@@ -852,7 +857,7 @@ scale = Vector2(1.5, 1.5)
 theme_override_font_sizes/font_size = 48
 text = "Deck"
 
-[node name="Cards" type="LineEdit" parent="DeckEditor"]
+[node name="Cards" type="LineEdit" parent="DeckEditor" unique_id=1176890512]
 layout_mode = 0
 offset_left = 526.99994
 offset_top = 117.99999
@@ -862,7 +867,7 @@ scale = Vector2(0.7, 0.7)
 tooltip_text = "Cards to be added to the newly created deck, Example: 1+1,2+2,3+3"
 theme_override_font_sizes/font_size = 48
 
-[node name="CardsLabel" type="Label" parent="DeckEditor/Cards"]
+[node name="CardsLabel" type="Label" parent="DeckEditor/Cards" unique_id=1197415577]
 layout_mode = 0
 offset_left = -208.57133
 offset_top = -14.285706
@@ -872,7 +877,7 @@ scale = Vector2(1.5, 1.5)
 theme_override_font_sizes/font_size = 48
 text = "Cards"
 
-[node name="GoBackButton" type="TextureButton" parent="DeckEditor"]
+[node name="GoBackButton" type="TextureButton" parent="DeckEditor" unique_id=1018164277]
 layout_mode = 0
 offset_left = 22.0
 offset_top = 562.0
@@ -882,7 +887,7 @@ texture_normal = ExtResource("6_k8tfb")
 texture_pressed = ExtResource("13_nnl2m")
 texture_hover = ExtResource("14_cv30d")
 
-[node name="GoBackButtonLabel" type="Label" parent="DeckEditor/GoBackButton"]
+[node name="GoBackButtonLabel" type="Label" parent="DeckEditor/GoBackButton" unique_id=1856909976]
 layout_mode = 0
 offset_left = 26.999998
 offset_top = 10.0
@@ -893,7 +898,7 @@ theme = ExtResource("11_mpp0x")
 theme_override_font_sizes/font_size = 64
 text = "Go back"
 
-[node name="ImportDialog" type="FileDialog" parent="DeckEditor"]
+[node name="ImportDialog" type="FileDialog" parent="DeckEditor" unique_id=287911986]
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
@@ -904,7 +909,7 @@ access = 2
 filters = PackedStringArray("*.deck")
 use_native_dialog = true
 
-[node name="ImportButton" type="TextureButton" parent="DeckEditor"]
+[node name="ImportButton" type="TextureButton" parent="DeckEditor" unique_id=522208270]
 layout_mode = 0
 offset_left = 977.0
 offset_top = 561.0
@@ -914,7 +919,7 @@ texture_normal = ExtResource("6_k8tfb")
 texture_pressed = ExtResource("13_nnl2m")
 texture_hover = ExtResource("14_cv30d")
 
-[node name="ImportButtonLabel" type="Label" parent="DeckEditor/ImportButton"]
+[node name="ImportButtonLabel" type="Label" parent="DeckEditor/ImportButton" unique_id=1668101546]
 layout_mode = 0
 offset_left = 34.999996
 offset_top = 10.0
@@ -925,17 +930,17 @@ theme = ExtResource("11_mpp0x")
 theme_override_font_sizes/font_size = 64
 text = "Import"
 
-[node name="SequenceEditor" type="Control" parent="."]
+[node name="SequenceEditor" type="Control" parent="." unique_id=1774241741]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="MenuBackground" type="Sprite2D" parent="SequenceEditor"]
+[node name="MenuBackground" type="Sprite2D" parent="SequenceEditor" unique_id=1184361889]
 position = Vector2(576, 324)
 texture = ExtResource("8_nwxjg")
 
-[node name="SequenceEditorLabel" type="Label" parent="SequenceEditor"]
+[node name="SequenceEditorLabel" type="Label" parent="SequenceEditor" unique_id=1162627862]
 layout_mode = 0
 offset_left = 25.0
 offset_top = 12.0
@@ -945,7 +950,7 @@ theme = ExtResource("10_5cpbb")
 theme_override_font_sizes/font_size = 64
 text = "Sequence Editor"
 
-[node name="CreateBlankSequenceButton" type="TextureButton" parent="SequenceEditor"]
+[node name="CreateBlankSequenceButton" type="TextureButton" parent="SequenceEditor" unique_id=1047298361]
 layout_mode = 0
 offset_left = 883.0
 offset_top = 558.0
@@ -955,7 +960,7 @@ texture_normal = ExtResource("18_08bwt")
 texture_pressed = ExtResource("19_3fo7u")
 texture_hover = ExtResource("20_iuxwd")
 
-[node name="CreateBlankSequenceButtonLabel" type="Label" parent="SequenceEditor/CreateBlankSequenceButton"]
+[node name="CreateBlankSequenceButtonLabel" type="Label" parent="SequenceEditor/CreateBlankSequenceButton" unique_id=524443752]
 layout_mode = 0
 offset_left = 22.999998
 offset_top = 9.0
@@ -966,7 +971,7 @@ theme = ExtResource("11_mpp0x")
 theme_override_font_sizes/font_size = 64
 text = "Create Blank Seq"
 
-[node name="GoBackButton" type="TextureButton" parent="SequenceEditor"]
+[node name="GoBackButton" type="TextureButton" parent="SequenceEditor" unique_id=1718271317]
 layout_mode = 0
 offset_left = 22.0
 offset_top = 562.0
@@ -976,7 +981,7 @@ texture_normal = ExtResource("6_k8tfb")
 texture_pressed = ExtResource("13_nnl2m")
 texture_hover = ExtResource("14_cv30d")
 
-[node name="GoBackButtonLabel" type="Label" parent="SequenceEditor/GoBackButton"]
+[node name="GoBackButtonLabel" type="Label" parent="SequenceEditor/GoBackButton" unique_id=1423975044]
 layout_mode = 0
 offset_left = 26.999998
 offset_top = 10.0
@@ -987,7 +992,7 @@ theme = ExtResource("11_mpp0x")
 theme_override_font_sizes/font_size = 64
 text = "Go back"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="SequenceEditor"]
+[node name="ScrollContainer" type="ScrollContainer" parent="SequenceEditor" unique_id=40120679]
 z_index = 1
 layout_mode = 0
 offset_left = 28.0
@@ -996,12 +1001,12 @@ offset_right = 1127.0
 offset_bottom = 367.0
 vertical_scroll_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SequenceEditor/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SequenceEditor/ScrollContainer" unique_id=377418544]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ScrollContainerDeck" type="ScrollContainer" parent="SequenceEditor"]
+[node name="ScrollContainerDeck" type="ScrollContainer" parent="SequenceEditor" unique_id=1912743562]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 359.0
@@ -1009,14 +1014,14 @@ offset_right = 1127.0
 offset_bottom = 553.0
 horizontal_scroll_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SequenceEditor/ScrollContainerDeck"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SequenceEditor/ScrollContainerDeck" unique_id=984541719]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2069314069]
 stream = ExtResource("16_svhce")
 
-[node name="CommandPanel" parent="." instance=ExtResource("15_6na03")]
+[node name="CommandPanel" parent="." unique_id=1848880248 instance=ExtResource("15_6na03")]
 visible = false
 z_index = 1000
 layout_mode = 0
@@ -1025,21 +1030,21 @@ offset_top = 260.0
 offset_right = 25.0
 offset_bottom = 260.0
 
-[node name="SystemPerfs" type="Control" parent="."]
+[node name="SystemPerfs" type="Control" parent="." unique_id=1495815148]
 visible = false
 z_index = 1000
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Panel" type="Panel" parent="SystemPerfs"]
+[node name="Panel" type="Panel" parent="SystemPerfs" unique_id=1301244830]
 layout_mode = 0
 offset_left = 969.0
 offset_top = 3.0
 offset_right = 1149.0
 offset_bottom = 72.0
 
-[node name="FPSLabel" type="Label" parent="SystemPerfs"]
+[node name="FPSLabel" type="Label" parent="SystemPerfs" unique_id=1480687977]
 layout_mode = 0
 offset_left = 973.0
 offset_top = 5.0
@@ -1048,7 +1053,7 @@ offset_bottom = 28.0
 theme_override_fonts/font = ExtResource("23_yalr5")
 text = "FPS: 999"
 
-[node name="CPULabel" type="Label" parent="SystemPerfs"]
+[node name="CPULabel" type="Label" parent="SystemPerfs" unique_id=679812833]
 layout_mode = 0
 offset_left = 972.0
 offset_top = 21.0
@@ -1057,7 +1062,7 @@ offset_bottom = 44.0
 theme_override_fonts/font = ExtResource("23_yalr5")
 text = "CPU: "
 
-[node name="DeltaFLabel" type="Label" parent="SystemPerfs"]
+[node name="DeltaFLabel" type="Label" parent="SystemPerfs" unique_id=1633271060]
 layout_mode = 0
 offset_left = 973.0
 offset_top = 38.0
@@ -1066,7 +1071,7 @@ offset_bottom = 61.0
 theme_override_fonts/font = ExtResource("23_yalr5")
 text = "DeltaF: "
 
-[node name="StaticMemory" type="Label" parent="SystemPerfs"]
+[node name="StaticMemory" type="Label" parent="SystemPerfs" unique_id=153631416]
 layout_mode = 0
 offset_left = 973.0
 offset_top = 54.0
@@ -1075,7 +1080,7 @@ offset_bottom = 77.0
 theme_override_fonts/font = ExtResource("23_yalr5")
 text = "DeltaF: "
 
-[node name="DynamicMemory" type="Label" parent="SystemPerfs"]
+[node name="DynamicMemory" type="Label" parent="SystemPerfs" unique_id=1346433173]
 visible = false
 layout_mode = 0
 offset_left = 973.0
@@ -1085,7 +1090,7 @@ offset_bottom = 93.0
 theme_override_fonts/font = ExtResource("23_yalr5")
 text = "DeltaF: "
 
-[node name="VideoMemory" type="Label" parent="SystemPerfs"]
+[node name="VideoMemory" type="Label" parent="SystemPerfs" unique_id=1427123243]
 visible = false
 layout_mode = 0
 offset_left = 973.0
