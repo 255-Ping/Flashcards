@@ -179,7 +179,43 @@ func _ready() -> void:
 	update_student_list_visuals(student_list)
 	
 #Settings Defaults
-	operator = "+"
+	var loaded_defaults = save.load_json("program_settings.json")
+	
+#Load settings from data
+	if loaded_defaults:
+		operator = loaded_defaults["operator"]
+		if operator == "+":
+			$Settings/Operator.select(0)
+		if operator == "-":
+			$Settings/Operator.select(1)
+		if operator == "x":
+			$Settings/Operator.select(2)
+		max_questions = loaded_defaults["max_questions"]
+		if max_questions:
+			$Settings/MaxQuestions.text = str(max_questions)
+		required_number = loaded_defaults["required_number"]
+		if required_number:
+			$Settings/RequiredNumber.text = required_number
+		card_generation = loaded_defaults["card_generation"]
+		if card_generation == "random":
+			$Settings/CardGeneration.select(0)
+		if card_generation == "deck":
+			$Settings/CardGeneration.select(1)
+		round_end_function = loaded_defaults["round_end_function"]
+		if round_end_function == "nothing":
+			$Settings/RoundEndFunction.select(0)
+		if round_end_function == "keybind":
+			$Settings/RoundEndFunction.select(1)
+		if round_end_function == "password":
+			$Settings/RoundEndFunction.select(2)
+#No Loaded Data
+	else:
+		operator = "+"
+		max_questions = 10
+		card_generation = "random"
+		round_end_function = "nothing"
+
+#Unsaved defaults
 	allow_negative_answers = false
 	allow_divided_by_1 = false
 	debug_mode = true
@@ -191,9 +227,6 @@ func _ready() -> void:
 	min_value_2 = 0
 	max_value_2 = 12
 	style = "column" #flat, column
-	max_questions = 10
-	card_generation = "random"
-	round_end_function = "nothing"
 	card_number = 0
 	print("Defaults Loaded")
 
@@ -280,6 +313,17 @@ func _process(delta: float) -> void:
 func close_program(safe: bool):
 	create_popup("Goodbye :)")
 	PanelLogger.log("Goodbye :)")
+	
+#Save Program Settings
+	var program_settings = {
+		"student_name":student_name,
+		"operator":operator,
+		"required_number":required_number,
+		"max_questions":max_questions,
+		"card_generation":card_generation,
+		"round_end_function":round_end_function
+	}
+	save.save_json("program_settings.json", program_settings)
 
 #Save password
 	var password_dict = {
