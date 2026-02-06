@@ -67,6 +67,14 @@ func end_round():
 		
 	main.save_student_data(loaded,new_rounds_completed)
 	main.playing = false
+	if main.round_end_function == "nothing":
+		main.admin_present = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if main.round_end_function == "password":
+		main.admin_present = true
+		main.restart_round_menu.visible = false
+		main.create_password("round_end")
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	main.create_popup("Round Complete! Wait for Help.", -1, "round_complete")
 
 func force_end_round(reason: String):

@@ -54,6 +54,7 @@ var failures: int = 0
 var playing: bool
 var admin_present: bool
 var qpm: float
+var round_end_function: String
 
 #Settings
 var max_questions: int
@@ -192,6 +193,7 @@ func _ready() -> void:
 	style = "column" #flat, column
 	max_questions = 10
 	card_generation = "random"
+	round_end_function = "nothing"
 	card_number = 0
 	print("Defaults Loaded")
 
@@ -244,6 +246,7 @@ func _process(delta: float) -> void:
 	#Debug forcible end round
 	if Input.is_action_just_pressed("end_round") and debug_mode:
 		round_manager.force_end_round("Debug Force End")
+		card_number = 0
 		print("[DEBUG] Round Force Ended")
 	#Enable mouse after round has completed
 	if Input.is_action_just_pressed("complete_round"):
@@ -411,6 +414,7 @@ func _submit_answer():
 			counter.text = str(completed_problems, "/", max_questions)
 			if completed_problems >= max_questions:
 				round_manager.end_round()
+				audio.play()
 				return
 		elif card_generation == "deck":
 			card_number += 1
@@ -453,6 +457,9 @@ func _on_answer_box_text_changed() -> void:
 #------------------------------
 #MAIN MENU BUTTONS
 #------------------------------
+
+func open_round_menu():
+	restart_round_menu.visible = true
 
 #Start Round Button
 func _on_start_button_pressed() -> void:
@@ -521,6 +528,14 @@ func _on_card_generation_item_selected(index: int) -> void:
 		card_generation = "random"
 	if index == 1:
 		card_generation = "deck"
+		
+func _on_round_end_function_item_selected(index: int) -> void:
+	if index == 0:
+		round_end_function = "nothing"
+	if index == 1:
+		round_end_function = "keybind"
+	if index == 2:
+		round_end_function = "password"
 
 #Required Number text checker and submitter
 func _on_required_number_text_changed(_new_text: String) -> void:
@@ -862,6 +877,8 @@ func _on_password_correct(menu: String):
 		open_sequence_menu()
 	if menu == "open_folder":
 		open_flashcards_folder()
+	if menu == "round_end":
+		open_round_menu()
 
 #Update password, sets password to something else in settings ui
 func _on_password_text_submitted(new_text: String) -> void:

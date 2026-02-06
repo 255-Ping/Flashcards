@@ -518,6 +518,33 @@ scale = Vector2(1.5, 1.5)
 theme_override_font_sizes/font_size = 48
 text = "Card Generation"
 
+[node name="RoundEndFunction" type="OptionButton" parent="Settings" unique_id=378167121]
+layout_mode = 0
+offset_left = 772.0
+offset_top = 438.0
+offset_right = 1282.0
+offset_bottom = 513.0
+scale = Vector2(0.7, 0.7)
+theme_override_font_sizes/font_size = 48
+selected = 0
+item_count = 3
+popup/item_0/text = "Nothing"
+popup/item_0/id = 0
+popup/item_1/text = "Keybind Protection"
+popup/item_1/id = 1
+popup/item_2/text = "Password Protection"
+popup/item_2/id = 2
+
+[node name="RoundEndFunctionLabel" type="Label" parent="Settings/RoundEndFunction" unique_id=942512648]
+layout_mode = 0
+offset_left = -1065.7144
+offset_top = -17.142872
+offset_right = -599.71436
+offset_bottom = 70.85713
+scale = Vector2(1.5, 1.5)
+theme_override_font_sizes/font_size = 48
+text = "Round End Function"
+
 [node name="Student" type="OptionButton" parent="Settings" unique_id=122845966]
 layout_mode = 0
 offset_left = 807.0
@@ -1112,6 +1139,7 @@ text = "DeltaF: "
 [connection signal="text_changed" from="Settings/RequiredNumber" to="." method="_on_required_number_text_changed"]
 [connection signal="text_changed" from="Settings/MaxQuestions" to="." method="_on_max_questions_text_changed"]
 [connection signal="item_selected" from="Settings/CardGeneration" to="." method="_on_card_generation_item_selected"]
+[connection signal="item_selected" from="Settings/RoundEndFunction" to="." method="_on_round_end_function_item_selected"]
 [connection signal="item_selected" from="Settings/Student" to="." method="_on_student_item_selected"]
 [connection signal="text_submitted" from="Settings/Password" to="." method="_on_password_text_submitted"]
 [connection signal="pressed" from="Settings/Password/PasswordVisionButton" to="." method="_on_password_vision_button_pressed"]
