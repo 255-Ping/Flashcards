@@ -231,14 +231,15 @@ func _input(event):
 		if !command_history:
 			return
 		if event.keycode == 4194320:
-			selected_command_history += 1
-			if selected_command_history > command_history.size() - 1:
+			if selected_command_history < command_history.size():
+				selected_command_history += 1
+			if selected_command_history >= command_history.size():
 				return
-			$LineEdit.text = command_history[selected_command_history - command_history.size()]
+			$LineEdit.text = command_history[(command_history.size() - 1) - selected_command_history]
 		if event.keycode == 4194322:
 			selected_command_history -= 1
 			if selected_command_history < 0:
 				selected_command_history = -1
 				$LineEdit.text = ""
 				return
-			$LineEdit.text = command_history[selected_command_history - command_history.size()]
+			$LineEdit.text = command_history[(command_history.size() - 1) - selected_command_history]

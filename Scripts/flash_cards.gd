@@ -509,16 +509,11 @@ func _on_answer_box_text_changed() -> void:
 	
 	spam_check += 1
 	if spam_check >= 10:
-		if spam_break < 4:
+		if spam_break < 5:
 			spam_break += 1
 		
-	if spam_break == 1:
-		answer_box.text = ""
-
-	if spam_break == 2:
-		answer_box.text = ""
 	
-	if spam_break >= 3:
+	if spam_break >= 4:
 		answer_box.text = ""
 		#create_popup("3 reached")
 	
@@ -576,6 +571,21 @@ func open_sequence_menu():
 
 func _on_open_folder_button_pressed() -> void:
 	create_password("open_folder")
+	
+
+func _on_command_panel_button_pressed() -> void:
+	if $CommandPanel.visible == true:
+		open_command_panel()
+		return
+	create_password("command_panel")
+	
+func open_command_panel():
+	#create_popup("COmmandpanelopen")
+	$CommandPanel.visible = !$CommandPanel.visible
+	if $CommandPanel.visible == true:
+		$CommandPanel.line_edit.release_focus()
+		await get_tree().create_timer(0.05).timeout
+		$CommandPanel.line_edit.grab_focus()
 
 
 #------------------------------
@@ -955,6 +965,8 @@ func _on_password_correct(menu: String):
 		open_flashcards_folder()
 	if menu == "round_end":
 		open_round_menu()
+	if menu == "command_panel":
+		open_command_panel()
 
 #Update password, sets password to something else in settings ui
 func _on_password_text_submitted(new_text: String) -> void:

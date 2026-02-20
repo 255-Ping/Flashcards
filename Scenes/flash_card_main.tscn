@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dmg8goruip023" path="res://Textures/Buttons/GeneralButtons/button_pressed.png" id="13_nnl2m"]
 [ext_resource type="Texture2D" uid="uid://b7dgn4n3o4o5d" path="res://Textures/Buttons/GeneralButtons/button_hover.png" id="14_cv30d"]
 [ext_resource type="PackedScene" uid="uid://bi1skjtr4j8no" path="res://Scenes/command_panel.tscn" id="15_6na03"]
+[ext_resource type="Texture2D" uid="uid://capx21f4vvgo6" path="res://Textures/settings.png" id="15_55nuk"]
 [ext_resource type="AudioStream" uid="uid://bs1k60tqnmy40" path="res://Sounds/ding-sound-effect_2.mp3" id="16_svhce"]
 [ext_resource type="Texture2D" uid="uid://ifhl71xb05mc" path="res://Textures/Buttons/GeneralButtons/button_long.png" id="18_08bwt"]
 [ext_resource type="Texture2D" uid="uid://fadacekxq7ej" path="res://Textures/Buttons/GeneralButtons/button_long_pressed.png" id="19_3fo7u"]
@@ -198,7 +199,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RestartRound" type="Control" parent="." unique_id=48793722]
-visible = false
 z_index = 1000
 anchors_preset = 0
 offset_right = 40.0
@@ -384,7 +384,18 @@ theme = ExtResource("11_mpp0x")
 theme_override_font_sizes/font_size = 64
 text = "Open Folder"
 
+[node name="CommandPanelButton" type="TextureButton" parent="RestartRound" unique_id=1801211948]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 568.0
+offset_right = 32.0
+offset_bottom = 582.0
+scale = Vector2(4, 4)
+tooltip_text = "Click to open the command panel(Admin/Advanced User)"
+texture_normal = ExtResource("15_55nuk")
+
 [node name="Settings" type="Control" parent="." unique_id=264487729]
+visible = false
 z_index = 1000
 anchors_preset = 0
 offset_right = 40.0
@@ -1145,6 +1156,7 @@ text = "DeltaF: "
 [connection signal="pressed" from="RestartRound/DecksButton" to="." method="_on_decks_button_pressed"]
 [connection signal="pressed" from="RestartRound/SequenceButton" to="." method="_on_sequence_button_pressed"]
 [connection signal="pressed" from="RestartRound/OpenFolderButton" to="." method="_on_open_folder_button_pressed"]
+[connection signal="pressed" from="RestartRound/CommandPanelButton" to="." method="_on_command_panel_button_pressed"]
 [connection signal="pressed" from="Settings/GoBackButton" to="." method="_on_go_back_button_pressed"]
 [connection signal="item_selected" from="Settings/Operator" to="." method="_on_operator_item_selected"]
 [connection signal="text_changed" from="Settings/RequiredNumber" to="." method="_on_required_number_text_changed"]
