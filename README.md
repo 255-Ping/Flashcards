@@ -12,6 +12,12 @@ This program supports studying, review, and progress tracking, and has been acti
 - Designed for use on multiple computers
 - Lightweight and fast
 
+## 🔗 Live Demo
+
+[![View Demo](https://img.shields.io/badge/Live%20Demo-Flashcards-blue?style=for-the-badge&logo=github)](https://255-ping.github.io/Flashcards/)
+
+Click the badge above to open the working demo.
+
 ## 📖 Documentation
 
 Full usage instructions, controls, and explanations are available here:
