@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://4v16l0ldovhh"]
 
-[ext_resource type="Script" uid="uid://ca8oo1whw6s2d" path="res://Scripts/flash_cards.gd" id="1_xyf0l"]
+[ext_resource type="Script" uid="uid://d17ctvpicy6o3" path="res://Scripts/flash_cards.gd" id="1_xyf0l"]
 [ext_resource type="Texture2D" uid="uid://c5crq66joib64" path="res://Textures/Backgrounds/background.png" id="2_80326"]
 [ext_resource type="Theme" uid="uid://cx7d5srujqm4h" path="res://Themes/theme_1.tres" id="3_wndv7"]
 [ext_resource type="Texture2D" uid="uid://cax33j0lr50c3" path="res://Textures/wcslogo.png" id="4_nwxjg"]
@@ -198,6 +198,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RestartRound" type="Control" parent="." unique_id=48793722]
+visible = false
 z_index = 1000
 anchors_preset = 0
 offset_right = 40.0
@@ -384,7 +385,6 @@ theme_override_font_sizes/font_size = 64
 text = "Open Folder"
 
 [node name="Settings" type="Control" parent="." unique_id=264487729]
-visible = false
 z_index = 1000
 anchors_preset = 0
 offset_right = 40.0
@@ -607,6 +607,7 @@ offset_left = 605.0
 offset_top = 120.0
 offset_right = 805.0
 offset_bottom = 172.0
+tooltip_text = "Click to emove selected student from student list"
 
 [node name="RemoveStudentLabel" type="Label" parent="Settings/RemoveStudentButton" unique_id=1031174755]
 layout_mode = 0
@@ -615,7 +616,7 @@ offset_top = -3.0
 offset_right = 277.0
 offset_bottom = 85.0
 scale = Vector2(0.75, 0.75)
-tooltip_text = "Remove selected student name from student list"
+tooltip_text = "Click to emove selected student from student list"
 mouse_filter = 1
 theme_override_font_sizes/font_size = 48
 text = "Remove"
@@ -626,7 +627,7 @@ offset_left = 221.0
 offset_top = 120.0
 offset_right = 321.0
 offset_bottom = 172.0
-tooltip_text = "Click to add new student"
+tooltip_text = "Click to add name to the student list"
 
 [node name="AddStudentLabel" type="Label" parent="Settings/AddStudentButton" unique_id=1225249302]
 layout_mode = 0

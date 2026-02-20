@@ -68,6 +68,11 @@ var student_to_add: String
 
 var fps_cap: int = 60
 
+var spam_check: int = 0
+var spam_break: int = 0
+var spam_break_timer: float = 5.0
+var spam_timer: float = 1.0
+
 #DeckManager Node Variables
 @onready var deck_entry = preload("res://Scenes/deck.tscn")
 @onready var sequence_entry = preload("res://Scenes/sequence.tscn")
@@ -296,6 +301,15 @@ func _process(delta: float) -> void:
 
 #Process tracking and function
 	if playing:
+		spam_timer -= delta
+		spam_break_timer -= delta
+		if spam_timer < 0:
+			spam_timer = 1.0
+			spam_check = 0
+		if spam_break_timer < 0:
+			spam_break_timer = 5.0
+			if spam_break > 0:
+				spam_break -= 1
 		time_passed += delta
 		qpm = float(round(completed_problems/(time_passed / 60)))
 	qps.text = str(qpm)
@@ -491,6 +505,24 @@ func _submit_answer():
 
 #Answer box text checker(Answer box submit check is handled with an Input detection)
 func _on_answer_box_text_changed() -> void:
+	#Spam Detection
+	
+	spam_check += 1
+	if spam_check >= 10:
+		if spam_break < 4:
+			spam_break += 1
+		
+	if spam_break == 1:
+		answer_box.text = ""
+
+	if spam_break == 2:
+		answer_box.text = ""
+	
+	if spam_break >= 3:
+		answer_box.text = ""
+		#create_popup("3 reached")
+	
+	#Regular Check
 	if !answer_box.text.is_valid_float() and not "\n" in answer_box.text and not "-" in answer_box.text:
 		answer_box.text = ""
 	if answer_box.text.length() > 3 and not "\n" in answer_box.text:
