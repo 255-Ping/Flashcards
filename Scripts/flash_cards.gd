@@ -138,6 +138,11 @@ func _ready() -> void:
 	PanelLogger.log("Flashcards - Godot Project Version Beta")
 	PanelLogger.log("Copyright (C) 2026 Mr. Winans")
 	PanelLogger.log("Licensed under GPLv3 - https://www.gnu.org/licenses/gpl-3.0.txt")
+	if OS.has_feature("web"):
+		print("Running in HTML5 / Web export")
+		PanelLogger.log_warning("Running in HTML5, some features may not work")
+	else:
+		print("Running as native build")
 	print("Flashcards - Godot Project Version Beta")
 	print("Copyright (C) 2026 Mr. Winans")
 	print("Licensed under GPLv3 - https://www.gnu.org/licenses/gpl-3.0.txt")
