@@ -23,6 +23,7 @@ Click the badge above to open the working demo.
 Full usage instructions, controls, and explanations are available here:
 
 👉 **[Flashcard Program – User Guide](https://docs.google.com/document/d/1fbUxYh6ffeberwQp6U5fvy9oFO2EHrU73z2c17AO7bc/edit?usp=sharing)**
+Updating documentation to newest version [================/---] 83%
 
 This document explains:
 - How to use the program
