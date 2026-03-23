@@ -14,7 +14,7 @@ var save = SaveManager.new()
 
 @onready var line_edit = $LineEdit
 
-@onready var scripting_service = preload("res://Scenes/scripting_service.tscn")
+@onready var scripting_service = preload("res://Scenes/Scripting/scripting_service.tscn")
 
 var commands: Dictionary = {
 	"help":"",
@@ -38,7 +38,9 @@ var commands: Dictionary = {
 	"deck_list":"",
 	"window_mode":"String",
 	
-	"system_perfs":""
+	"system_perfs":"",
+	
+	"open_blank_window":""
 }
 
 func _ready() -> void:
@@ -197,6 +199,11 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 		elif split_command[0] == "close":
 			main.close_program(true)
 			PanelLogger.log("Command: Goodbye :)")
+			
+	#open_blank_window COMMAND
+		elif split_command[0] == "open_blank_window":
+			main.open_window()
+			PanelLogger.log("Opened window!")
 	
 	#unset COMMANDS
 		else:

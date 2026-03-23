@@ -15,7 +15,7 @@ var main
 
 @onready var scroll_box_1 = $Panel/ScrollContainer/HBoxContainer
 
-@onready var sequence_deck = preload("res://Scenes/sequence_deck.tscn")
+@onready var sequence_deck = preload("res://Scenes/SequenceManager/sequence_deck.tscn")
 
 func _ready() -> void:
 	main = get_tree().current_scene

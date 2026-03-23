@@ -74,9 +74,9 @@ var spam_break_timer: float = 5.0
 var spam_timer: float = 1.0
 
 #DeckManager Node Variables
-@onready var deck_entry = preload("res://Scenes/deck.tscn")
-@onready var sequence_entry = preload("res://Scenes/sequence.tscn")
-@onready var sequence_deck_entry = preload("res://Scenes/sequence_deck.tscn")
+@onready var deck_entry = preload("res://Scenes/DeckManager/deck.tscn")
+@onready var sequence_entry = preload("res://Scenes/SequenceManager/sequence.tscn")
+@onready var sequence_deck_entry = preload("res://Scenes/SequenceManager/sequence_deck.tscn")
 
 #PopUp Node Variables
 @onready var popup = preload("res://Scenes/popup_manager.tscn")
@@ -125,6 +125,10 @@ var spam_timer: float = 1.0
 
 #SYSTEM PERFS PANEL
 @onready var perfs_panel = $SystemPerfs
+
+#WINDOWS NODES
+@onready var windows = $Windows
+@onready var window_node = preload("res://Scenes/WindowManager/window.tscn")
 
 #They are used... just not in this script
 signal wait_for_signal_round_end
@@ -1108,3 +1112,12 @@ func ui_close(ui: String):
 		
 func set_fps_cap(fps: int):
 	Engine.max_fps = fps
+	
+##################
+#WINDOW FUNCTIONS#
+##################
+
+func open_window():
+	var instance = window_node.instantiate()
+	instance.global_position = Vector2(1280/2,720/2)
+	windows.add_child(instance)
