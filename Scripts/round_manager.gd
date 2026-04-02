@@ -9,7 +9,7 @@ class_name RoundManager
 
 var main
 var save = SaveManager.new()
-var excel = ExcelAPI.new()
+#var excel = ExcelAPI.new()
 
 @onready var main_node := get_tree().current_scene
 
