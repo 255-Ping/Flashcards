@@ -10,7 +10,7 @@ var rng = RandomNumberGenerator.new()
 var round_manager: RoundManager
 var save = SaveManager.new()
 var deck = DeckManager.new()
-var excel = ExcelAPI.new()
+#var excel = ExcelAPI.new()
 var sequence = SequenceManager.new()
 
 #Var "Persistent" Data
@@ -1056,8 +1056,8 @@ func save_student_data(loaded, new_rounds_completed):
 			
 	if !student_name == "":
 		save.save_json(str(student_name + ".json"), data)
-		if send_data:
-			excel.send_round_data(student_name, String(operator), required_number, failures, max_questions, qpm, roundf(time_passed))
+		#if send_data:
+		#	excel.send_round_data(student_name, String(operator), required_number, failures, max_questions, qpm, roundf(time_passed))
 
 
 #------------------------------
