@@ -16,6 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="FlashCards"
 config/description="A focused, configurable flashcard application designed for efficient practice and assessment. It supports structured decks, randomized or sequenced card generation, per-student tracking, and real-time performance statistics. Built-in scripting and a command console enable advanced control, automation, and extensibility without leaving the app."
+config/version="Beta_0.2.1"
 run/main_scene="uid://4v16l0ldovhh"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="darcard"
@@ -23,7 +24,7 @@ config/features=PackedStringArray("4.6", "GL Compatibility")
 run/low_processor_mode=true
 boot_splash/bg_color=Color(0.546928, 0.669833, 1, 1)
 boot_splash/use_filter=false
-boot_splash/image="uid://dd3nith2r5i0n"
+boot_splash/image="uid://bf5g00s7jx617"
 config/icon="uid://cax33j0lr50c3"
 
 [autoload]

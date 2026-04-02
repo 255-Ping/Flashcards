@@ -5,12 +5,14 @@
 class_name Main
 extends Control
 
+#Version Variable
+var version: String = "Beta_0.2.1"
+
 #Class Variables
 var rng = RandomNumberGenerator.new()
 var round_manager: RoundManager
 var save = SaveManager.new()
 var deck = DeckManager.new()
-#var excel = ExcelAPI.new()
 var sequence = SequenceManager.new()
 
 #Var "Persistent" Data
@@ -131,7 +133,9 @@ var spam_timer: float = 1.0
 @onready var window_node = preload("res://Scenes/WindowManager/window.tscn")
 
 #They are used... just not in this script
+@warning_ignore("unused_signal")
 signal wait_for_signal_round_end
+@warning_ignore("unused_signal")
 signal close_popups
 
 #------------------------------
@@ -1119,5 +1123,5 @@ func set_fps_cap(fps: int):
 
 func open_window():
 	var instance = window_node.instantiate()
-	instance.global_position = Vector2(1280/2,720/2)
+	instance.global_position = Vector2(1280.0/2,720.0/2)
 	windows.add_child(instance)

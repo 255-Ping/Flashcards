@@ -39,6 +39,7 @@ var commands: Dictionary = {
 	"window_mode":"String",
 	
 	"system_perfs":"",
+	"ver":"",
 	
 	"open_blank_window":""
 }
@@ -194,6 +195,10 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 		elif split_command[0] == "system_perfs":
 			main.perfs_panel.visible = !main.perfs_panel.visible 
 			PanelLogger.log("Command: System perfs toggled")
+			
+	#ver COMMAND
+		elif split_command[0] == "ver":
+			PanelLogger.log("Version: " + main.version)
 			
 	#close COMMAND
 		elif split_command[0] == "close":

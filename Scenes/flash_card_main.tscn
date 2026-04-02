@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://fadacekxq7ej" path="res://Textures/Buttons/GeneralButtons/button_long_pressed.png" id="19_3fo7u"]
 [ext_resource type="Texture2D" uid="uid://cv3vu6fmddwph" path="res://Textures/Buttons/GeneralButtons/button_long_hover.png" id="20_iuxwd"]
 [ext_resource type="FontFile" uid="uid://dbjakyhm1jh0t" path="res://Fonts/LowresPixel-Regular.otf" id="23_yalr5"]
+[ext_resource type="Script" uid="uid://yuxtxjh5dokd" path="res://Scripts/DataManagement/update_checker.gd" id="25_ej36w"]
 
 [node name="FlashCardControl" type="Control" unique_id=1564455396]
 layout_mode = 3
@@ -199,6 +200,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RestartRound" type="Control" parent="." unique_id=48793722]
+visible = false
 z_index = 1000
 anchors_preset = 0
 offset_right = 40.0
@@ -697,7 +699,6 @@ theme_override_font_sizes/font_size = 48
 text = "Seq"
 
 [node name="Statistics" type="Control" parent="." unique_id=1246285845]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -777,22 +778,6 @@ offset_right = 765.0
 offset_bottom = 642.0
 theme_override_font_sizes/font_size = 48
 text = "Filter"
-
-[node name="Filter" type="OptionButton" parent="Statistics" unique_id=1271715089]
-visible = false
-layout_mode = 0
-offset_left = 982.0
-offset_top = 570.0
-offset_right = 1196.0
-offset_bottom = 645.0
-scale = Vector2(0.7, 0.7)
-theme_override_font_sizes/font_size = 48
-selected = 0
-item_count = 2
-popup/item_0/text = "QPM"
-popup/item_0/id = 0
-popup/item_1/text = "Failures"
-popup/item_1/id = 1
 
 [node name="ShowPointLabels" type="CheckBox" parent="Statistics" unique_id=988505335]
 layout_mode = 0
@@ -1154,6 +1139,9 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="UpdateChecker" type="HTTPRequest" parent="." unique_id=2102006098]
+script = ExtResource("25_ej36w")
+
 [connection signal="text_changed" from="AnswerBox" to="." method="_on_answer_box_text_changed"]
 [connection signal="pressed" from="RestartRound/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="RestartRound/SettingsButton" to="." method="_on_settings_button_pressed"]
@@ -1179,7 +1167,6 @@ offset_bottom = 40.0
 [connection signal="pressed" from="Settings/SeqMenuFromSettingsButton" to="." method="_on_seq_menu_from_settings_button_pressed"]
 [connection signal="item_selected" from="Statistics/StudentStatistics" to="." method="_on_student_statistics_item_selected"]
 [connection signal="pressed" from="Statistics/GoBackButton" to="." method="_on_go_back_button_pressed"]
-[connection signal="item_selected" from="Statistics/Filter" to="." method="_on_filter_item_selected"]
 [connection signal="toggled" from="Statistics/ShowPointLabels" to="." method="_on_show_point_labels_toggled"]
 [connection signal="toggled" from="Statistics/ShowAxesLabels" to="." method="_on_show_axes_labels_toggled"]
 [connection signal="toggled" from="Statistics/ShowGrid" to="." method="_on_show_grid_toggled"]
