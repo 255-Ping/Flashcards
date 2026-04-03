@@ -1,17 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://me8l05hfhghp"]
+[gd_scene format=3 uid="uid://me8l05hfhghp"]
 
-[ext_resource type="Script" uid="uid://c6p1rrn1kgmpw" path="res://Scripts/Popups/popup_manager.gd" id="1_78s2k"]
+[ext_resource type="Script" uid="uid://bx20op3hnmcjy" path="res://Scripts/Popups/popup_manager.gd" id="1_78s2k"]
 
-[node name="PopupManager" type="CanvasLayer"]
+[node name="PopupManager" type="CanvasLayer" unique_id=335887826]
 script = ExtResource("1_78s2k")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=252669769]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=2004083574]
 layout_mode = 0
 offset_left = 423.0
 offset_top = 223.0
@@ -19,14 +19,14 @@ offset_right = 724.0
 offset_bottom = 401.0
 color = Color(0.10980392, 0.10980392, 0.10980392, 1)
 
-[node name="Panel" type="Panel" parent="Control"]
+[node name="Panel" type="Panel" parent="Control" unique_id=377270924]
 layout_mode = 0
 offset_left = 420.0
 offset_top = 220.0
 offset_right = 727.001
 offset_bottom = 429.0
 
-[node name="Label" type="Label" parent="Control/Panel"]
+[node name="Label" type="Label" parent="Control/Panel" unique_id=434629971]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 8.0
@@ -34,7 +34,7 @@ offset_right = 298.0
 offset_bottom = 174.0
 autowrap_mode = 3
 
-[node name="Button" type="Button" parent="Control/Panel"]
+[node name="Button" type="Button" parent="Control/Panel" unique_id=1796164111]
 layout_mode = 0
 offset_top = 184.0
 offset_right = 307.0

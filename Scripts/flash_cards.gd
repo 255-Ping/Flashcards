@@ -6,7 +6,7 @@ class_name Main
 extends Control
 
 #Version Variable
-var version: String = "Beta_0.2.1"
+var version: String = "Beta_0.3.0"
 
 #Class Variables
 var rng = RandomNumberGenerator.new()
@@ -143,7 +143,7 @@ signal close_popups
 #------------------------------
 
 func _ready() -> void:
-	PanelLogger.log("Flashcards - Godot Project Version Beta")
+	PanelLogger.log("Flashcards - Godot Project Version " + version)
 	PanelLogger.log("Copyright (C) 2026 Mr. Winans")
 	PanelLogger.log("Licensed under GPLv3 - https://www.gnu.org/licenses/gpl-3.0.txt")
 	if OS.has_feature("web"):
@@ -151,7 +151,7 @@ func _ready() -> void:
 		PanelLogger.log_warning("Running in HTML5, some features may not work")
 	else:
 		print("Running as native build")
-	print("Flashcards - Godot Project Version Beta")
+	print("Flashcards - Godot Project Version " + version)
 	print("Copyright (C) 2026 Mr. Winans")
 	print("Licensed under GPLv3 - https://www.gnu.org/licenses/gpl-3.0.txt")
 	

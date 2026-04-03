@@ -200,7 +200,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RestartRound" type="Control" parent="." unique_id=48793722]
-visible = false
 z_index = 1000
 anchors_preset = 0
 offset_right = 40.0
@@ -699,6 +698,7 @@ theme_override_font_sizes/font_size = 48
 text = "Seq"
 
 [node name="Statistics" type="Control" parent="." unique_id=1246285845]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0

@@ -7,8 +7,9 @@ func log(text: String):
 		await get_tree().process_frame
 	if panel:
 		panel.log_to_command_panel(text)
+		print("Logger: ", text)
 	else:
-		print("Logger:", text)
+		print("Logger: ", text)
 		
 func log_error(text: String):
 	if get_tree():
@@ -16,7 +17,7 @@ func log_error(text: String):
 	if panel:
 		panel.log_to_command_panel(str("[color=#f50100]Error: ",text,"[/color]"))
 	else:
-		print("Logger:", text)
+		print("Logger: ", text)
 		
 func log_warning(text: String):
 	if get_tree():
@@ -24,7 +25,7 @@ func log_warning(text: String):
 	if panel:
 		panel.log_to_command_panel(str("[color=yellow]Warning: ",text,"[/color]"))
 	else:
-		print("Logger:", text)
+		print("Logger: ", text)
 		
 func log_debug(text: String):
 	if get_tree():
@@ -32,4 +33,4 @@ func log_debug(text: String):
 	if panel:
 		panel.log_to_command_panel(str("[color=magenta]Debug: ",text,"[/color]"))
 	else:
-		print("Logger:", text)
+		print("Logger: ", text)

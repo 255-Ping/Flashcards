@@ -19,7 +19,7 @@
 
 FLASHCARDS/
 export/
-build/
+builds/
 
 #################################
 # Temporary & log files
