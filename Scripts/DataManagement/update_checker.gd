@@ -74,7 +74,7 @@ func _find_and_download(json: Variant, extension: String) -> void:
 	main.create_popup("No update file found for your platform.", -1.0, "error")
 	PanelLogger.log_error("Update: No asset found with extension " + extension)
 
-func _on_download_completed(result: int, response_code: int, _headers, _body) -> void:
+func _on_download_completed(result: int, _response_code: int, _headers, _body) -> void:
 	if result != HTTPRequest.RESULT_SUCCESS:
 		main.create_popup("Download failed. (Result: " + str(result) + ")", -1.0, "error")
 		PanelLogger.log_error("Update download failed, result: " + str(result))

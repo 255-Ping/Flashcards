@@ -29,7 +29,7 @@ config/icon="uid://cax33j0lr50c3"
 
 [autoload]
 
-PanelLogger="*res://Scripts/logger.gd"
+PanelLogger="*res://Scripts/CommandPanel/logger.gd"
 ScriptManager="*res://Scripts/script_manager.gd"
 
 [display]
@@ -41,6 +41,7 @@ window/vsync/vsync_mode=0
 [global_group]
 
 password=""
+window=""
 
 [input]
 

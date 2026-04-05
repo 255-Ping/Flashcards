@@ -75,6 +75,8 @@ var spam_break: int = 0
 var spam_break_timer: float = 5.0
 var spam_timer: float = 1.0
 
+var is_window := false
+
 #DeckManager Node Variables
 @onready var deck_entry = preload("res://Scenes/DeckManager/deck.tscn")
 @onready var sequence_entry = preload("res://Scenes/SequenceManager/sequence.tscn")
@@ -124,6 +126,8 @@ var spam_timer: float = 1.0
 
 #COMMAND PANEL
 @onready var command_panel = $CommandPanel
+@onready var command_panels = $CommandPanels
+@onready var command_window = preload("res://Scenes/CommandPanel/command_window.tscn")
 
 #SYSTEM PERFS PANEL
 @onready var perfs_panel = $SystemPerfs
@@ -1125,3 +1129,18 @@ func open_window():
 	var instance = window_node.instantiate()
 	instance.global_position = Vector2(1280.0/2,720.0/2)
 	windows.add_child(instance)
+	
+func open_window_with_content(content: String):
+	var instance = window_node.instantiate()
+	instance.global_position = Vector2(1280.0/2,720.0/2)
+	instance.content = content
+	instance.global_position = Vector2(0,0)
+	windows.add_child(instance)
+
+#########################
+#COMMAND PANEL FUNCTIONS#
+#########################
+
+func open_command_window():
+	var instance = command_window.instantiate()
+	command_panels.add_child(instance)

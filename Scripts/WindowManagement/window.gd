@@ -5,6 +5,9 @@ var resize_margin := 16
 var resize_dir := Vector2.ZERO
 
 var content: String
+var is_window := true
+
+@onready var content_container = $VBoxContainer
 
 
 func _ready():
@@ -14,6 +17,11 @@ func _ready():
 
 
 func _process(_delta):
+	
+	var content_min = content_container.get_combined_minimum_size()
+	print(content_min)
+	custom_minimum_size = content_min
+	
 	var pos := get_global_mouse_position() - global_position
 	var dir := get_resize_direction(pos)
 
@@ -83,11 +91,12 @@ func resize_window(rel: Vector2):
 	size.y = max(size.y, 200)
 
 
+@warning_ignore("shadowed_variable")
 func open_window_with_content(content: String):
 	var parts = content.split(" ")
 	var scene_name = parts[0]
 
-	var path = "res://Scenes/Programs/%s.tscn" % scene_name
+	var path = "res://Scenes/%s.tscn" % scene_name
 	var scene = load(path)
 
 	if scene == null:
@@ -96,5 +105,6 @@ func open_window_with_content(content: String):
 
 	var instance = scene.instantiate()
 	instance.content = content
+	
 
-	$Panel/VBoxContainer.add_child(instance)
+	$VBoxContainer.add_child(instance)

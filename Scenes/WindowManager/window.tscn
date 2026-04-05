@@ -6,11 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://cbs6bnappenkq" path="res://Textures/Buttons/x_2_pressed.png" id="4_sxix5"]
 [ext_resource type="Texture2D" uid="uid://x2vm8203akk3" path="res://Textures/Buttons/x_2_hover.png" id="5_vqha5"]
 
-[node name="Window" type="Control" unique_id=1143205246]
+[node name="Window" type="Control" unique_id=1143205246 groups=["Window"]]
 z_index = 4000
 custom_minimum_size = Vector2(300, 200)
 layout_mode = 3
-anchors_preset = 0
+anchor_right = 0.26000002
+anchor_bottom = 0.30900002
+offset_right = -299.52002
+offset_bottom = -200.23201
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_efths")
@@ -26,33 +29,33 @@ grow_vertical = 2
 size_flags_vertical = 3
 mouse_filter = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1390210121]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1390210121]
 custom_minimum_size = Vector2(290, 190)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 162.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Panel/VBoxContainer" unique_id=899568909]
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer" unique_id=899568909]
 custom_minimum_size = Vector2(290, 28)
 layout_mode = 2
 color = Color(0.06879827, 0.06879828, 0.06879828, 1)
 script = ExtResource("2_0xhjo")
 
-[node name="TextureButton" type="TextureButton" parent="Panel/VBoxContainer/ColorRect" unique_id=1193056713]
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/ColorRect" unique_id=1193056713]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.97
-anchor_top = 0.2
-anchor_right = 0.97
-anchor_bottom = 0.2
-offset_left = -16.0
-offset_bottom = 16.0
-grow_horizontal = 0
+anchor_left = 0.92700005
+anchor_top = 0.179
+anchor_right = 0.98
+anchor_bottom = 0.75000006
+offset_left = -0.1000061
+offset_top = -0.012000084
 texture_normal = ExtResource("3_3olnq")
 texture_pressed = ExtResource("4_sxix5")
 texture_hover = ExtResource("5_vqha5")
 
-[connection signal="pressed" from="Panel/VBoxContainer/ColorRect/TextureButton" to="Panel/VBoxContainer/ColorRect" method="_on_texture_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ColorRect/TextureButton" to="VBoxContainer/ColorRect" method="_on_texture_button_pressed"]

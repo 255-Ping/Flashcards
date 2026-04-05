@@ -10,6 +10,8 @@ var main: Node
 var selected_command_history: int = -1
 var command_history: Array
 
+@export var content: String
+
 var save = SaveManager.new()
 
 @onready var line_edit = $LineEdit
@@ -18,6 +20,7 @@ var save = SaveManager.new()
 
 var commands: Dictionary = {
 	"help":"",
+	"cmd":"",
 	"close":"",
 	"website":"",
 	"docs":"",
@@ -41,12 +44,17 @@ var commands: Dictionary = {
 	"system_perfs":"",
 	"ver":"",
 	
+	"open_stat_ui":"",
+	
 	"open_blank_window":""
 }
 
 func _ready() -> void:
-	main = get_parent()
-	PanelLogger.panel = self
+	main = get_tree().current_scene
+	print(main)
+	if !PanelLogger.main_panel:
+		PanelLogger.main_panel = self
+	PanelLogger.panels.append(self)
 	$ScrollContainer/VBoxContainer/RichTextLabel.bbcode_enabled = true
 	
 func _open_scripting_window(sc: String):
@@ -95,7 +103,16 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 	#help COMMAND
 		elif split_command[0] == "help":
 			for key in commands:
-				PanelLogger.log(key + " " + commands[key])
+				if self != get_tree().current_scene:
+					PanelLogger.log(key + " " + commands[key], self)
+				else:
+					PanelLogger.log(key + " " + commands[key])
+				
+	#cmd COMMAND
+		elif split_command[0] == "cmd":
+			#main.open_command_window()
+			main.open_window_with_content("CommandPanel/command_panel_window")
+			PanelLogger.log("Opened new command window!")
 	
 	#test_popup COMMAND	
 		elif split_command[0] == "test_popup":
@@ -208,6 +225,11 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 	#open_blank_window COMMAND
 		elif split_command[0] == "open_blank_window":
 			main.open_window()
+			PanelLogger.log("Opened window!")
+			
+	#open_stat_ui COMMAND
+		elif split_command[0] == "open_stat_ui":
+			main.open_window_with_content("Programs/stats_ui")
 			PanelLogger.log("Opened window!")
 	
 	#unset COMMANDS

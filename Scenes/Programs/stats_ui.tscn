@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://clc3pmhdr7aod"]
+
+[ext_resource type="Script" uid="uid://b7yidom7vfws" path="res://Scripts/Programs/stats_ui.gd" id="1_uge6u"]
+[ext_resource type="Texture2D" uid="uid://wlsvj7wbjf8c" path="res://Textures/Backgrounds/main_menu_background.png" id="2_6327c"]
+[ext_resource type="Theme" uid="uid://rrawxxlfxo8h" path="res://Themes/title_theme.tres" id="3_jnvky"]
+[ext_resource type="PackedScene" uid="uid://dsvw5fdkdqmr8" path="res://Scenes/Statistics/line_graph.tscn" id="4_tejhb"]
+[ext_resource type="Texture2D" uid="uid://dmqu5f1kpwctv" path="res://Textures/Buttons/GeneralButtons/button.png" id="5_3o3yo"]
+[ext_resource type="Texture2D" uid="uid://dmg8goruip023" path="res://Textures/Buttons/GeneralButtons/button_pressed.png" id="6_eyrsl"]
+[ext_resource type="Texture2D" uid="uid://b7dgn4n3o4o5d" path="res://Textures/Buttons/GeneralButtons/button_hover.png" id="7_5xj4j"]
+[ext_resource type="Theme" uid="uid://76wxr7e03ud3" path="res://Themes/general_theme.tres" id="8_8lj5i"]
+
+[node name="StatsUi" type="Control" unique_id=759400349]
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 3
+anchor_right = 0.43400002
+anchor_bottom = 0.46300003
+offset_right = 0.031982422
+offset_bottom = -0.024017334
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_uge6u")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=527904461]
+visible = false
+layout_mode = 0
+offset_left = 576.0
+offset_top = 324.0
+offset_right = 616.0
+offset_bottom = 364.0
+
+[node name="MenuBackground2" type="Sprite2D" parent="." unique_id=170255720]
+visible = false
+position = Vector2(576, 324)
+texture = ExtResource("2_6327c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1027045308]
+custom_minimum_size = Vector2(442, 234)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StatisticsLabel" type="Label" parent="VBoxContainer" unique_id=1325699341]
+custom_minimum_size = Vector2(442, 88)
+layout_mode = 2
+theme = ExtResource("3_jnvky")
+theme_override_font_sizes/font_size = 64
+text = "Statistics"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1968724556]
+custom_minimum_size = Vector2(442, 67)
+layout_mode = 2
+
+[node name="StudentLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=542585482]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Student"
+
+[node name="StudentStatistics" type="OptionButton" parent="VBoxContainer/HBoxContainer" unique_id=1779846337]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+
+[node name="LineGraph" parent="VBoxContainer" unique_id=643453651 instance=ExtResource("4_tejhb")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+line_color = Color(0.301961, 0.27451, 1, 1)
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1442438513]
+custom_minimum_size = Vector2(442, 67)
+layout_mode = 2
+
+[node name="GoBackButton" type="TextureButton" parent="VBoxContainer/HBoxContainer2" unique_id=1323314848]
+layout_mode = 2
+texture_normal = ExtResource("5_3o3yo")
+texture_pressed = ExtResource("6_eyrsl")
+texture_hover = ExtResource("7_5xj4j")
+
+[node name="GoBackButtonLabel" type="Label" parent="VBoxContainer/HBoxContainer2/GoBackButton" unique_id=198759891]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16700001
+anchor_top = 0.15
+anchor_right = 1.0150001
+anchor_bottom = 1.343
+offset_left = -0.05000305
+offset_right = 190.74998
+offset_bottom = 107.42
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("8_8lj5i")
+theme_override_font_sizes/font_size = 64
+text = "Go back"
+
+[node name="ShowPointLabels" type="CheckBox" parent="VBoxContainer/HBoxContainer2" unique_id=287515718]
+layout_mode = 2
+tooltip_text = "Show Point Labels"
+button_pressed = true
+
+[node name="ShowAxesLabels" type="CheckBox" parent="VBoxContainer/HBoxContainer2" unique_id=2028076460]
+layout_mode = 2
+tooltip_text = "Show Axes Labels"
+button_pressed = true
+
+[node name="ShowGrid" type="CheckBox" parent="VBoxContainer/HBoxContainer2" unique_id=1567235052]
+layout_mode = 2
+tooltip_text = "Show Grid"
+button_pressed = true
+
+[node name="ShowLegend" type="CheckBox" parent="VBoxContainer/HBoxContainer2" unique_id=1118410820]
+layout_mode = 2
+tooltip_text = "Show Legend"
+button_pressed = true
+
+[node name="FilterLabel" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=721042654]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Filter"
+
+[node name="QPMFilter" type="CheckBox" parent="VBoxContainer/HBoxContainer2" unique_id=2106510315]
+layout_mode = 2
+tooltip_text = "Filter for QPM"
+
+[node name="FailuresFilter" type="CheckBox" parent="VBoxContainer/HBoxContainer2" unique_id=751328955]
+layout_mode = 2
+tooltip_text = "Filter for Failures"
