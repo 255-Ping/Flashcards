@@ -6,7 +6,10 @@ class_name Main
 extends Control
 
 #Version Variable
-var version: String = "Beta_0.3.0"
+var version: String = "Beta_0.3.1"
+
+#Program Identification
+var running_id: String
 
 #Class Variables
 var rng = RandomNumberGenerator.new()
@@ -127,7 +130,7 @@ var is_window := false
 #COMMAND PANEL
 @onready var command_panel = $CommandPanel
 @onready var command_panels = $CommandPanels
-@onready var command_window = preload("res://Scenes/CommandPanel/command_window.tscn")
+#@onready var command_window = preload("res://Scenes/CommandPanel/command_window.tscn")
 
 #SYSTEM PERFS PANEL
 @onready var perfs_panel = $SystemPerfs
@@ -150,6 +153,7 @@ func _ready() -> void:
 	PanelLogger.log("Flashcards - Godot Project Version " + version)
 	PanelLogger.log("Copyright (C) 2026 Mr. Winans")
 	PanelLogger.log("Licensed under GPLv3 - https://www.gnu.org/licenses/gpl-3.0.txt")
+	running_id = str(rng.randi_range(100000,999999))
 	if OS.has_feature("web"):
 		print("Running in HTML5 / Web export")
 		PanelLogger.log_warning("Running in HTML5, some features may not work")
@@ -1136,11 +1140,3 @@ func open_window_with_content(content: String):
 	instance.content = content
 	instance.global_position = Vector2(0,0)
 	windows.add_child(instance)
-
-#########################
-#COMMAND PANEL FUNCTIONS#
-#########################
-
-func open_command_window():
-	var instance = command_window.instantiate()
-	command_panels.add_child(instance)

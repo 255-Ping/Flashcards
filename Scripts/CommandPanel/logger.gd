@@ -13,6 +13,7 @@ func log(text: String, panel_node: Node = main_panel):
 			if panel_loop != panel_node:
 				continue
 			panel_loop.log_to_command_panel(text)
+			_write_to_log(text)
 			print("Logger: ", text)
 		
 func log_error(text: String, panel_node: Node = main_panel):
@@ -22,8 +23,9 @@ func log_error(text: String, panel_node: Node = main_panel):
 		for panel_loop in panels:
 			if panel_loop != panel_node:
 				continue
-			panel_loop.log_to_command_panel(text)
+			#panel_loop.log_to_command_panel(text)
 			print("Logger: ", text)
+			_write_to_log(text)
 			panel_loop.log_to_command_panel(str("[color=#f50100]Error: ",text,"[/color]"))
 		
 func log_warning(text: String, panel_node: Node = main_panel):
@@ -33,8 +35,9 @@ func log_warning(text: String, panel_node: Node = main_panel):
 		for panel_loop in panels:
 			if panel_loop != panel_node:
 				continue
-			panel_loop.log_to_command_panel(text)
+			#panel_loop.log_to_command_panel(text)
 			print("Logger: ", text)
+			_write_to_log(text)
 			panel_loop.log_to_command_panel(str("[color=yellow]Warning: ",text,"[/color]"))
 		
 func log_debug(text: String, panel_node: Node = main_panel):
@@ -44,9 +47,20 @@ func log_debug(text: String, panel_node: Node = main_panel):
 		for panel_loop in panels:
 			if panel_loop != panel_node:
 				continue
-			panel_loop.log_to_command_panel(text)
+			#panel_loop.log_to_command_panel(text)
 			print("Logger: ", text)
+			_write_to_log(text)
 			panel_loop.log_to_command_panel(str("[color=magenta]Debug: ",text,"[/color]"))
 			
-#func _write_to_log(text: String):
+func _write_to_log(text: String):
+	var date = Time.get_date_dict_from_system()
+	var date_str = "%d-%02d-%02d" % [date.year, date.month, date.day]
+	if !FileAccess.file_exists("user://FlashCards/logs/" + date_str + ".log"):
+		save.create_file("user://FlashCards/logs/" + date_str + ".log", "")
+	var loaded = save.load_text_file("user://FlashCards/logs/" + date_str + ".log")
+	if loaded:
+		loaded = loaded + "\n" + text
+	else:
+		loaded = text
 	
+	save.save_text_file("user://FlashCards/logs/" + date_str + ".log", loaded)

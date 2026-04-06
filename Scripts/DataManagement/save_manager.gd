@@ -81,3 +81,42 @@ func rename_file(old_name: String, new_name: String) -> bool:
 		return false
 
 	return DirAccess.rename_absolute(old_path, new_path) == OK
+	
+######################
+#TEXT FILE MANAGEMENT#
+######################
+
+#Saves a text file with the given filename
+func save_text_file(path: String, text: String):
+	var file = FileAccess.open(path, FileAccess.WRITE)
+	
+	if file == null:
+		push_error("Could not open file for writing: " + path)
+		return
+	
+	file.store_string(text)
+	file.close()
+	
+#Load text file from the given filename	
+func load_text_file(path: String) -> String:
+	var file = FileAccess.open(path, FileAccess.READ)
+	
+	if file == null:
+		push_error("Could not open file: " + path)
+		return ""
+	
+	var text = file.get_as_text()
+	file.close()
+	return text
+	
+func create_file(path: String, content: String) -> void:
+	var dir = path.get_base_dir()
+	if not DirAccess.dir_exists_absolute(dir):
+		DirAccess.make_dir_recursive_absolute(dir)
+	
+	var file = FileAccess.open(path, FileAccess.WRITE)
+	if file:
+		file.store_string(content)
+		file.close()
+	else:
+		print("Error creating file: ", path)
