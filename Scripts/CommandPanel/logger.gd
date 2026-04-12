@@ -62,9 +62,11 @@ func _write_to_log(text: String):
 	if !FileAccess.file_exists("user://FlashCards/logs/" + date_str + ".log"):
 		save.create_file("user://FlashCards/logs/" + date_str + ".log", "")
 	var loaded = save.load_text_file("user://FlashCards/logs/" + date_str + ".log")
+	var date = Time.get_datetime_dict_from_system()
+	var string_date_str = "%d-%02d-%02d %02d:%02d:%02d" % [date.year, date.month, date.day, date.hour, date.minute, date.second]
 	if loaded:
-		loaded = loaded + "\n" + text
+		loaded = loaded + "\n[" + string_date_str + "] " + text
 	else:
-		loaded = text
+		loaded = "[" + string_date_str + "] " + text
 	
 	save.save_text_file("user://FlashCards/logs/" + date_str + ".log", loaded)
