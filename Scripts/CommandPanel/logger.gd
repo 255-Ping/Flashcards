@@ -31,7 +31,7 @@ func log_error(text: String, panel_node: Node = main_panel):
 				continue
 			#panel_loop.log_to_command_panel(text)
 			print("Logger: ", text)
-			_write_to_log(text)
+			_write_to_log(text, "error")
 			panel_loop.log_to_command_panel(str("[color=#f50100]Error: ",text,"[/color]"))
 		
 func log_warning(text: String, panel_node: Node = main_panel):
@@ -43,7 +43,7 @@ func log_warning(text: String, panel_node: Node = main_panel):
 				continue
 			#panel_loop.log_to_command_panel(text)
 			print("Logger: ", text)
-			_write_to_log(text)
+			_write_to_log(text, "warning")
 			panel_loop.log_to_command_panel(str("[color=yellow]Warning: ",text,"[/color]"))
 		
 func log_debug(text: String, panel_node: Node = main_panel):
@@ -55,15 +55,23 @@ func log_debug(text: String, panel_node: Node = main_panel):
 				continue
 			#panel_loop.log_to_command_panel(text)
 			print("Logger: ", text)
-			_write_to_log(text)
+			_write_to_log(text, "debug")
 			panel_loop.log_to_command_panel(str("[color=magenta]Debug: ",text,"[/color]"))
 			
-func _write_to_log(text: String):
+func _write_to_log(text: String, type: String = "normal"):
 	if !FileAccess.file_exists("user://FlashCards/logs/" + date_str + ".log"):
 		save.create_file("user://FlashCards/logs/" + date_str + ".log", "")
 	var loaded = save.load_text_file("user://FlashCards/logs/" + date_str + ".log")
 	var date = Time.get_datetime_dict_from_system()
 	var string_date_str = "%d-%02d-%02d %02d:%02d:%02d" % [date.year, date.month, date.day, date.hour, date.minute, date.second]
+	if type == "normal":
+		string_date_str = string_date_str + " [LOGGER]"
+	if type == "warning":
+		string_date_str = string_date_str + " [WARNING]"
+	if type == "error":
+		string_date_str = string_date_str + " [ERROR]"
+	if type == "debug":
+		string_date_str = string_date_str + " [DEBUG]"
 	if loaded:
 		loaded = loaded + "\n[" + string_date_str + "] " + text
 	else:
