@@ -26,13 +26,33 @@ config/icon="uid://cax33j0lr50c3"
 [autoload]
 
 PanelLogger="*res://Scripts/CommandPanel/logger.gd"
-ScriptManager="*res://Scripts/script_manager.gd"
+ScriptManager="*res://Scripts/ScriptingService/script_manager.gd"
 
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
 window/vsync/vsync_mode=0
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "teal",
+"res://Assets/Fonts/": "teal",
+"res://Assets/Sounds/": "yellow",
+"res://Assets/Textures/": "orange",
+"res://Assets/Themes/": "teal",
+"res://Scenes/": "blue",
+"res://Scripts/": "red",
+"res://Scripts/CommandPanel/": "pink",
+"res://Scripts/DataManagement/": "purple",
+"res://Scripts/Programs/": "green",
+"res://Scripts/ScriptingService/": "pink",
+"res://Scripts/WindowManagement/": "green",
+"res://_sc/": "gray",
+"res://builds/": "gray",
+"res://docs/": "gray"
+}
 
 [global_group]
 

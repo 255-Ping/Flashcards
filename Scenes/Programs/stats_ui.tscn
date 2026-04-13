@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://clc3pmhdr7aod"]
 
 [ext_resource type="Script" uid="uid://b7yidom7vfws" path="res://Scripts/Programs/stats_ui.gd" id="1_uge6u"]
-[ext_resource type="Texture2D" uid="uid://wlsvj7wbjf8c" path="res://Textures/Backgrounds/main_menu_background.png" id="2_6327c"]
-[ext_resource type="Theme" uid="uid://rrawxxlfxo8h" path="res://Themes/title_theme.tres" id="3_jnvky"]
+[ext_resource type="Texture2D" uid="uid://wlsvj7wbjf8c" path="res://Assets/Textures/Backgrounds/main_menu_background.png" id="2_6327c"]
+[ext_resource type="Theme" uid="uid://rrawxxlfxo8h" path="res://Assets/Themes/title_theme.tres" id="3_jnvky"]
 [ext_resource type="PackedScene" uid="uid://dsvw5fdkdqmr8" path="res://Scenes/Statistics/line_graph.tscn" id="4_tejhb"]
-[ext_resource type="Texture2D" uid="uid://dmqu5f1kpwctv" path="res://Textures/Buttons/GeneralButtons/button.png" id="5_3o3yo"]
-[ext_resource type="Texture2D" uid="uid://dmg8goruip023" path="res://Textures/Buttons/GeneralButtons/button_pressed.png" id="6_eyrsl"]
-[ext_resource type="Texture2D" uid="uid://b7dgn4n3o4o5d" path="res://Textures/Buttons/GeneralButtons/button_hover.png" id="7_5xj4j"]
-[ext_resource type="Theme" uid="uid://76wxr7e03ud3" path="res://Themes/general_theme.tres" id="8_8lj5i"]
+[ext_resource type="Texture2D" uid="uid://dmqu5f1kpwctv" path="res://Assets/Textures/Buttons/GeneralButtons/button.png" id="5_3o3yo"]
+[ext_resource type="Texture2D" uid="uid://dmg8goruip023" path="res://Assets/Textures/Buttons/GeneralButtons/button_pressed.png" id="6_eyrsl"]
+[ext_resource type="Texture2D" uid="uid://b7dgn4n3o4o5d" path="res://Assets/Textures/Buttons/GeneralButtons/button_hover.png" id="7_5xj4j"]
+[ext_resource type="Theme" uid="uid://76wxr7e03ud3" path="res://Assets/Themes/general_theme.tres" id="8_8lj5i"]
 
 [node name="StatsUi" type="Control" unique_id=759400349]
 custom_minimum_size = Vector2(500, 300)

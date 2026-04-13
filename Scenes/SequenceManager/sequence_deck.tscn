@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://d12j77fio77gu"]
 
 [ext_resource type="Script" uid="uid://ptmpkmalcegi" path="res://Scripts/SequenceEditor/sequence_deck.gd" id="1_pqw84"]
-[ext_resource type="Texture2D" uid="uid://b0xqjiyoux18c" path="res://Textures/deck.png" id="2_pqw84"]
-[ext_resource type="Texture2D" uid="uid://c2qws3vie5tnn" path="res://Textures/Buttons/x.png" id="4_56j2a"]
-[ext_resource type="Texture2D" uid="uid://ckfyoxsggc05i" path="res://Textures/Buttons/x_pressed.png" id="5_y1u10"]
-[ext_resource type="Texture2D" uid="uid://c6aa5fwy0i3nc" path="res://Textures/Buttons/x_hover.png" id="6_7kuid"]
-[ext_resource type="Theme" uid="uid://76wxr7e03ud3" path="res://Themes/general_theme.tres" id="6_p1d2y"]
-[ext_resource type="Texture2D" uid="uid://uboxunhwhjg1" path="res://Textures/Buttons/select.png" id="7_56j2a"]
-[ext_resource type="Texture2D" uid="uid://cdy0sxx3cq4yc" path="res://Textures/Buttons/select_pressed.png" id="8_y1u10"]
-[ext_resource type="Texture2D" uid="uid://y37g71f1p6yp" path="res://Textures/Buttons/select_hover.png" id="9_7kuid"]
+[ext_resource type="Texture2D" uid="uid://b0xqjiyoux18c" path="res://Assets/Textures/deck.png" id="2_pqw84"]
+[ext_resource type="Texture2D" uid="uid://c2qws3vie5tnn" path="res://Assets/Textures/Buttons/x.png" id="4_56j2a"]
+[ext_resource type="Texture2D" uid="uid://ckfyoxsggc05i" path="res://Assets/Textures/Buttons/x_pressed.png" id="5_y1u10"]
+[ext_resource type="Texture2D" uid="uid://c6aa5fwy0i3nc" path="res://Assets/Textures/Buttons/x_hover.png" id="6_7kuid"]
+[ext_resource type="Theme" uid="uid://76wxr7e03ud3" path="res://Assets/Themes/general_theme.tres" id="6_p1d2y"]
+[ext_resource type="Texture2D" uid="uid://uboxunhwhjg1" path="res://Assets/Textures/Buttons/select.png" id="7_56j2a"]
+[ext_resource type="Texture2D" uid="uid://cdy0sxx3cq4yc" path="res://Assets/Textures/Buttons/select_pressed.png" id="8_y1u10"]
+[ext_resource type="Texture2D" uid="uid://y37g71f1p6yp" path="res://Assets/Textures/Buttons/select_hover.png" id="9_7kuid"]
 
 [node name="SequenceDeck" type="Control" unique_id=1325456513]
 custom_minimum_size = Vector2(135, 170)

@@ -50,16 +50,16 @@ Future improvements may include:
 ## 📸 Screenshots
 
 ### Main Interface
-![Main Interface](Screenshots/scmainui.png)
+![Main Interface](_sc/scmainui.png)
 
 ### Studying a Flashcard
-![Flashcard Question](Screenshots/scingame.png)
+![Flashcard Question](_sc/scingame.png)
 
 ### Progress Tracking
-![Statistics View](Screenshots/scstatsui2.png)
+![Statistics View](_sc/scstatsui2.png)
 
 ### Creating Decks
-![Decks View](Screenshots/scdeckui.png)
+![Decks View](_sc/scdeckui.png)
 
 ## 📄 License
 

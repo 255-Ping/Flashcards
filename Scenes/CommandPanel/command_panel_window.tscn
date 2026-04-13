@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://52b5cuqd5ueo"]
 
 [ext_resource type="Script" uid="uid://dju4u784rvjo4" path="res://Scripts/CommandPanel/command_panel.gd" id="1_nyddg"]
-[ext_resource type="FontFile" uid="uid://dbjakyhm1jh0t" path="res://Fonts/LowresPixel-Regular.otf" id="2_laefg"]
+[ext_resource type="FontFile" uid="uid://dbjakyhm1jh0t" path="res://Assets/Fonts/LowresPixel-Regular.otf" id="2_laefg"]
 
 [node name="CommandPanel" type="Control" unique_id=193482114]
 z_index = 1

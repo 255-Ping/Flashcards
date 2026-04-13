@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dvblystxg1050" path="res://Scripts/WindowManagement/window.gd" id="1_efths"]
 [ext_resource type="Script" uid="uid://y4yqu75p3x0d" path="res://Scripts/WindowManagement/top_bar.gd" id="2_0xhjo"]
-[ext_resource type="Texture2D" uid="uid://drletyh4idx2i" path="res://Textures/Buttons/x_2.png" id="3_3olnq"]
-[ext_resource type="Texture2D" uid="uid://cbs6bnappenkq" path="res://Textures/Buttons/x_2_pressed.png" id="4_sxix5"]
-[ext_resource type="Texture2D" uid="uid://x2vm8203akk3" path="res://Textures/Buttons/x_2_hover.png" id="5_vqha5"]
+[ext_resource type="Texture2D" uid="uid://drletyh4idx2i" path="res://Assets/Textures/Buttons/x_2.png" id="3_3olnq"]
+[ext_resource type="Texture2D" uid="uid://cbs6bnappenkq" path="res://Assets/Textures/Buttons/x_2_pressed.png" id="4_sxix5"]
+[ext_resource type="Texture2D" uid="uid://x2vm8203akk3" path="res://Assets/Textures/Buttons/x_2_hover.png" id="5_vqha5"]
 
 [node name="Window" type="Control" unique_id=1143205246 groups=["Window"]]
 z_index = 4000
