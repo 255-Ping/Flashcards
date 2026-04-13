@@ -1056,6 +1056,7 @@ size_flags_horizontal = 3
 stream = ExtResource("16_svhce")
 
 [node name="CommandPanel" parent="." unique_id=1848880248 instance=ExtResource("15_6na03")]
+visible = false
 z_index = 1000
 layout_mode = 1
 anchors_preset = 0
