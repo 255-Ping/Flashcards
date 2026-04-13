@@ -6,7 +6,7 @@ class_name Main
 extends Control
 
 #Version Variable
-var version: String = "Beta_0.3.1"
+var version: String = "Beta_0.3.1 UNSTABLE"
 
 #Program Identification
 var running_id: String
