@@ -54,7 +54,7 @@ func end_round():
 	main.emit_signal("wait_for_signal_round_end")
 	main.answer_box.position = Vector2(1104, 183)
 	main.restart_round_menu.visible = true
-	var loaded = save.load_json(main.student_name + ".json")
+	var loaded = save.load_json(save.SAVE_DIR + "/" + main.student_name + ".json")
 	print(loaded)
 	var new_rounds_completed: int
 	if loaded:

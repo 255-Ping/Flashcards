@@ -183,21 +183,21 @@ func _ready() -> void:
 	print("RoundManager Initialized")
 
 #Load password
-	var loaded = save.load_json("password.json")
+	var loaded = save.load_json(save.SAVE_DIR + "/" + "password.json")
 	#Set new password if no password
 	if !loaded:
 		#Create file structure
 		loaded = {
 			"password":"password"
 		}
-		save.save_json("password.json", loaded)
+		save.save_json(save.SAVE_DIR + "/" + "password.json", loaded)
 	#set variable to password from file
 	admin_password = loaded["password"]
 	#Update textbox with password(obsfucated)
 	$Settings/Password.text = admin_password
 	
 #Load student list
-	loaded = save.load_json("student_list.json")
+	loaded = save.load_json(save.SAVE_DIR + "/" + "student_list.json")
 	for i in loaded.size():
 		student_list.append(loaded[str(i + 1)])
 	
@@ -205,7 +205,7 @@ func _ready() -> void:
 	update_student_list_visuals(student_list)
 	
 #Settings Defaults
-	var loaded_defaults = save.load_json("program_settings.json")
+	var loaded_defaults = save.load_json(save.SAVE_DIR + "/" + "program_settings.json")
 	
 #Load settings from data
 	if loaded_defaults:
@@ -358,13 +358,13 @@ func close_program(safe: bool):
 		"card_generation":card_generation,
 		"round_end_function":round_end_function
 	}
-	save.save_json("program_settings.json", program_settings)
+	save.save_json(save.SAVE_DIR + "/" + "program_settings.json", program_settings)
 
 #Save password
 	var password_dict = {
 		"password":admin_password
 	}
-	save.save_json("password.json", password_dict)
+	save.save_json(save.SAVE_DIR + "/" + "password.json", password_dict)
 	
 #Save student list
 	var students_dict: Dictionary
@@ -372,7 +372,7 @@ func close_program(safe: bool):
 	for s in student_list:
 		students_dict[student_counter] = s
 		student_counter += 1
-	save.save_json("student_list.json", students_dict)
+	save.save_json(save.SAVE_DIR + "/" + "student_list.json", students_dict)
 	print("Goodbye :)")
 	if safe:
 		await get_tree().create_timer(0.5).timeout
@@ -448,7 +448,7 @@ func _reset_flash_card():
 		if !selected_deck:
 			round_manager.force_end_round("No deck selected")
 			return
-		var loaded = save.load_json(selected_deck + ".deck")
+		var loaded = save.load_json(save.SAVE_DIR + "/" + selected_deck + ".deck")
 		var parts
 		#for i in loaded:
 		parts = deck.split_card(loaded[str(card_number)])
@@ -497,7 +497,7 @@ func _submit_answer():
 				return
 		elif card_generation == "deck":
 			card_number += 1
-			var loaded = save.load_json(selected_deck + ".deck")
+			var loaded = save.load_json(save.SAVE_DIR + "/" + selected_deck + ".deck")
 			counter.text = str(completed_problems, "/", loaded.size())
 			if card_number >= loaded.size():
 				round_manager.end_round()
@@ -659,7 +659,7 @@ func _on_max_questions_text_changed(_new_text: String) -> void:
 	max_questions = int($Settings/MaxQuestions.text)
 
 func _on_student_item_selected(index: int) -> void:
-	var loaded = save.load_json(student_name + ".json")
+	var loaded = save.load_json(save.SAVE_DIR + "/" + student_name + ".json")
 	print(loaded)
 	var new_rounds_completed: int
 	if loaded:
@@ -717,7 +717,7 @@ func update_password_in_settings(new_password: String):
 	$Settings/Password.text = new_password
 	
 func update_settings_from_data(new_student_name: String):
-	var loaded = save.load_json(new_student_name + ".json")
+	var loaded = save.load_json(save.SAVE_DIR + "/" + new_student_name + ".json")
 	print(loaded)
 	if loaded:
 		if int(loaded["Max Questions"]):
@@ -788,7 +788,7 @@ func _on_show_legend_toggled(toggled_on: bool) -> void:
 #------------------------------
 #Function to update the line graph for Statistics
 func _update_graph():
-	var loaded = save.load_json(graph_lookup + ".json")
+	var loaded = save.load_json(save.SAVE_DIR + "/" + graph_lookup + ".json")
 	
 	graph.clear_datasets()
 
@@ -871,13 +871,13 @@ func reload_deck_list():
 	for child in $DeckEditor/ScrollContainer/VBoxContainer.get_children():
 		child.queue_free()
 #Loads deck names data and checks if it exists
-	var loaded_deck_names = save.load_json("deck_names.deck")
+	var loaded_deck_names = save.load_json(save.SAVE_DIR + "/" + "deck_names.deck")
 	if !loaded_deck_names:
 		return
 #Loops through decks
 	for i in loaded_deck_names:
 	#Creates a deck data var and makes sure it has data
-		var loaded_deck = save.load_json(str(i, ".deck"))
+		var loaded_deck = save.load_json(str(save.SAVE_DIR + "/" + i, ".deck"))
 		if !loaded_deck:
 			push_error("Data fault, deck_names contains a name with no data")
 			PanelLogger.log_error("Data fault, deck_names contains a name with no data")
@@ -910,13 +910,13 @@ func reload_sequence_list():
 	for child in $SequenceEditor/ScrollContainer/VBoxContainer.get_children():
 		child.queue_free()
 #Loads sequence names data and checks if it exists
-	var loaded_sequence_names = save.load_json("sequence_names.seq")
+	var loaded_sequence_names = save.load_json(save.SAVE_DIR + "/" + "sequence_names.seq")
 	if !loaded_sequence_names:
 		return
 #Loops through sequences
 	for i in loaded_sequence_names:
 	#Creates a deck data var and makes sure it has data
-		var loaded_sequence = save.load_json(str(i, ".seq"))
+		var loaded_sequence = save.load_json(str(save.SAVE_DIR + "/" + i + ".seq"))
 		if !loaded_sequence:
 			push_warning("Data fault, sequence_names contains a name with no data")
 			PanelLogger.log_warning("Data fault, sequence_names contains a name with no data")
@@ -934,13 +934,13 @@ func reload_sequence_deck_list():
 	for child in $SequenceEditor/ScrollContainerDeck/HBoxContainer.get_children():
 		child.queue_free()
 #Loads sequence names data and checks if it exists
-	var loaded_deck_names = save.load_json("deck_names.deck")
+	var loaded_deck_names = save.load_json(save.SAVE_DIR + "/" + "deck_names.deck")
 	if !loaded_deck_names:
 		return
 #Loops through sequences
 	for i in loaded_deck_names:
 	#Creates a deck data var and makes sure it has data
-		var loaded_deck = save.load_json(str(i, ".deck"))
+		var loaded_deck = save.load_json(str(save.SAVE_DIR + "/" + i + ".deck"))
 		if !loaded_deck:
 			push_error("Data fault, deck_names contains a name with no data.")
 			PanelLogger.log_error("Data fault, deck_names contains a name with no data.")
@@ -1067,7 +1067,7 @@ func save_student_data(loaded, new_rounds_completed):
 			data[str(i, "deck")] = loaded[str(i, "deck")]
 			
 	if !student_name == "":
-		save.save_json(str(student_name + ".json"), data)
+		save.save_json(str(save.SAVE_DIR + "/" + student_name + ".json"), data)
 		#if send_data:
 		#	excel.send_round_data(student_name, String(operator), required_number, failures, max_questions, qpm, roundf(time_passed))
 

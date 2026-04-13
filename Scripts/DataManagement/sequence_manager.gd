@@ -14,7 +14,7 @@ func create_blank_sequence(filename: String):
 	if FileAccess.file_exists(file_path):
 		push_error("Sequence already exists, aborting creation")
 		return
-	var loaded = save.load_json("sequence_names.seq")
+	var loaded = save.load_json(SAVE_DIR + "/" + "sequence_names.seq")
 	if loaded:
 		loaded[filename] = filename
 	else:
@@ -22,21 +22,21 @@ func create_blank_sequence(filename: String):
 			filename: filename
 		}
 	
-	save.save_json("sequence_names.seq", loaded)
+	save.save_json(SAVE_DIR + "/" + "sequence_names.seq", loaded)
 	var dict: Dictionary
-	save.save_json(str(filename, ".seq"), dict)
+	save.save_json(str(file_path), dict)
 	
 func add_deck_to_sequence(filename: String, deckname: String):
 	var file_path = SAVE_DIR + "/" + filename + ".seq"
 	if !FileAccess.file_exists(file_path):
 		push_error("Sequence does not exist, aborting addition")
 		return
-	var loaded = save.load_json(str(filename, ".seq"))
+	var loaded = save.load_json(str(file_path))
 	if !loaded.has(deckname):
 		loaded[str(loaded.size())] = deckname
 	else:
 		push_error("Sequence already has deck")
-	save.save_json(str(filename, ".seq"), loaded)
+	save.save_json(str(file_path), loaded)
 	
 func delete_sequence(filename: String):
 	var loaded = save.load_json("sequence_names.seq")
@@ -47,7 +47,7 @@ func delete_sequence(filename: String):
 	if !FileAccess.file_exists(file_path):
 		push_error("Sequence doesn't exist aborting deletion")
 		return
-	if save.delete_file(str(filename + ".seq")):
+	if save.delete_file(str(SAVE_DIR + "/" + filename + ".seq")):
 		print("Successfully Deleted Sequence")
 		loaded.erase(filename)
 		if loaded.size() > 0:
@@ -58,20 +58,21 @@ func delete_sequence(filename: String):
 		print("Failed to Delete Sequence")
 		
 func rename_sequence(sequence: String, new_name: String):
-	var sequence_names = save.load_json("sequence_names.seq")
+	var sequence_names = save.load_json(SAVE_DIR + "/" + "sequence_names.seq")
 	if sequence_names.has(new_name):
 		push_error("Sequence with name exists already")
 		return
 	#var loaded = save.load_json("deck_" + deck + ".deck")
 	sequence_names.erase(sequence)
 	sequence_names[new_name] = new_name
-	save.save_json("sequence_names.seq", sequence_names)
+	save.save_json(SAVE_DIR + "/" + "sequence_names.seq", sequence_names)
 	#delete_deck(deck)
 	#save.save_json("deck_" + new_name + ".deck", loaded)
-	save.rename_file(sequence + ".seq", new_name + ".seq")
+	save.rename_file(SAVE_DIR + "/" + sequence + ".seq", SAVE_DIR + "/" + new_name + ".seq")
 	
 func sort_sequence_keys(sequence: String):
-	var loaded = save.load_json(str(sequence, ".seq"))
+	var file_path = SAVE_DIR + "/" + sequence + ".seq"
+	var loaded = save.load_json(str(file_path))
 
 	var new_loaded = {}
 	var keys = loaded.keys()
@@ -85,5 +86,5 @@ func sort_sequence_keys(sequence: String):
 		new_loaded[new_index] = loaded[k]
 		new_index += 1
 		
-	save.save_json(str(sequence, ".seq"), new_loaded)
+	save.save_json(str(file_path), new_loaded)
 	

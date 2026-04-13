@@ -1,3 +1,7 @@
+# Flashcards - Godot Project
+# Copyright (C) 2026 Mr. Winans
+# Licensed under GPLv3 - https://www.gnu.org/licenses/gpl-3.0.txt
+
 extends Control
 
 var save = SaveManager.new()
@@ -9,7 +13,7 @@ var graph_filter: Array
 var content: String
 
 func _update_graph():
-	var loaded = save.load_json(graph_lookup + ".json")
+	var loaded = save.load_json(save.SAVE_DIR + "/" + graph_lookup + ".json")
 	
 	graph.clear_datasets()
 

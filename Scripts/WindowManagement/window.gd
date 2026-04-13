@@ -1,3 +1,7 @@
+# Flashcards - Godot Project
+# Copyright (C) 2026 Mr. Winans
+# Licensed under GPLv3 - https://www.gnu.org/licenses/gpl-3.0.txt
+
 extends Control
 
 var resizing := false
@@ -19,7 +23,7 @@ func _ready():
 func _process(_delta):
 	
 	var content_min = content_container.get_combined_minimum_size()
-	print(content_min)
+	#print(content_min)
 	custom_minimum_size = content_min
 	
 	var pos := get_global_mouse_position() - global_position

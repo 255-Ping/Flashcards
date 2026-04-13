@@ -51,7 +51,7 @@ var commands: Dictionary = {
 
 func _ready() -> void:
 	main = get_tree().current_scene
-	print(main)
+	#print(main)
 	if !PanelLogger.main_panel:
 		PanelLogger.main_panel = self
 	PanelLogger.panels.append(self)
@@ -94,7 +94,7 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 				for i in save.get_files_with_extension("script"):
 					PanelLogger.log(i)
 			elif split_args[1] == "print":
-				var loaded = save.load_json(split_args[2] + ".script")
+				var loaded = save.load_json(save.SAVE_DIR + "/" + split_args[2] + ".script")
 				if loaded:
 					for i in loaded:
 						PanelLogger.log(loaded[i])
@@ -191,7 +191,7 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 				
 	#deck_list COMMAND
 		elif split_command[0] == "deck_list":
-			var loaded = save.load_json("deck_names.deck")
+			var loaded = save.load_json(save.SAVE_DIR + "/" + "deck_names.deck")
 			for d in loaded:
 				PanelLogger.log(loaded[d])
 				

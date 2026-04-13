@@ -1,3 +1,7 @@
+# Flashcards - Godot Project
+# Copyright (C) 2026 Mr. Winans
+# Licensed under GPLv3 - https://www.gnu.org/licenses/gpl-3.0.txt
+
 extends HTTPRequest
 
 var current_version: String
@@ -21,6 +25,9 @@ func _ready() -> void:
 func check_for_update() -> void:
 	if OS.has_feature("editor"):
 		PanelLogger.log("Update: Skipping check, running in editor")
+		return
+	if OS.has_feature("web"):
+		PanelLogger.log("Update: Skipping check, running in HTML5")
 		return
 	request_completed.connect(_on_request_completed)
 	request("https://api.github.com/repos/%s/releases/latest" % REPO)

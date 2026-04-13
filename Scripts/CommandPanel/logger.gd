@@ -1,3 +1,7 @@
+# Flashcards - Godot Project
+# Copyright (C) 2026 Mr. Winans
+# Licensed under GPLv3 - https://www.gnu.org/licenses/gpl-3.0.txt
+
 extends Node
 
 var save = SaveManager.new()
@@ -10,6 +14,7 @@ var date_str: String
 func _ready() -> void:
 	var date = Time.get_datetime_dict_from_system()
 	date_str = "%d-%02d-%02d %02d:%02d:%02d" % [date.year, date.month, date.day, date.hour, date.minute, date.second]
+	print("Logger initialized")
 
 func log(text: String, panel_node: Node = main_panel):
 	if get_tree():

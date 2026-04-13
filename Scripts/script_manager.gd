@@ -1,5 +1,8 @@
-extends Node
+# Flashcards - Godot Project
+# Copyright (C) 2026 Mr. Winans
+# Licensed under GPLv3 - https://www.gnu.org/licenses/gpl-3.0.txt
 
+extends Node
 
 var main: Node = null
 
@@ -13,11 +16,11 @@ func delete_script(sc: String):
 	if !save.get_files_with_extension("script").has(sc + ".script"):
 		PanelLogger.log_error("Script: script could not be deleted, as it doesn't exist")
 		return
-	save.delete_file(sc + ".script")
+	save.delete_file(save.SAVE_DIR + "/" + sc + ".script")
 	PanelLogger.log("Script: script successfully deleted")
 	
 func run_script(sc: String):
-	var loaded = save.load_json(sc + ".script")
+	var loaded = save.load_json(save.SAVE_DIR + "/" + sc + ".script")
 	#print(loaded)
 	#print(sc)
 	if loaded:
@@ -49,7 +52,7 @@ func run_script(sc: String):
 				
 func select_deck(syntax: String, line: int):
 	var split = syntax.split(" ")
-	var decks = save.load_json("deck_names.deck")
+	var decks = save.load_json(save.SAVE_DIR + "/" + "deck_names.deck")
 	if !decks.has(split[1]):
 		PanelLogger.log_error("Script: Deck does not exist LINE: " + str(line))
 		return

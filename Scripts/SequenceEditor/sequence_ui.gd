@@ -41,7 +41,7 @@ func _on_sequence_name_text_submitted(new_text: String) -> void:
 	
 func reload_deck_list():
 	sequence_manager.sort_sequence_keys(sequence)
-	decks = save.load_json(str(sequence, ".seq"))
+	decks = save.load_json(str(save.SAVE_DIR + "/" + sequence, ".seq"))
 	$Panel/SequenceName.text = sequence
 	for child in $Panel/ScrollContainer/HBoxContainer.get_children():
 		child.queue_free()

@@ -1,3 +1,7 @@
+# Flashcards - Godot Project
+# Copyright (C) 2026 Mr. Winans
+# Licensed under GPLv3 - https://www.gnu.org/licenses/gpl-3.0.txt
+
 extends Control
 
 var sc: String
@@ -8,7 +12,7 @@ var save_dict: Dictionary
 var save = SaveManager.new()
 
 func _ready() -> void:
-	var loaded = save.load_json(sc + ".script")
+	var loaded = save.load_json(save.SAVE_DIR + "/" + sc + ".script")
 	if loaded:
 		for i in loaded:
 			$TextEdit.text = $TextEdit.text + loaded[i] + "\n"
@@ -28,4 +32,4 @@ func _on_close_button_pressed() -> void:
 
 
 func _on_save_button_pressed() -> void:
-	save.save_json(sc + ".script", save_dict)
+	save.save_json(save.SAVE_DIR + "/" + sc + ".script", save_dict)

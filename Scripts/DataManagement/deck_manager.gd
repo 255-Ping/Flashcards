@@ -14,7 +14,7 @@ func create_deck(deck: Dictionary, filename: String):
 	if FileAccess.file_exists(file_path):
 		push_error("Deck already exists, aborting creation")
 		return
-	var loaded = save.load_json("deck_names.deck")
+	var loaded = save.load_json(SAVE_DIR + "/" + "deck_names.deck")
 	if loaded:
 		loaded[filename] = filename
 	else:
@@ -39,13 +39,14 @@ func create_deck(deck: Dictionary, filename: String):
 			#main.create_popup("Non-Number detected", -1.0, "error")
 			return
 		
-	save.save_json("deck_names.deck", loaded)
-	save.save_json(str(filename, ".deck"), deck)
+	save.save_json(SAVE_DIR + "/" + "deck_names.deck", loaded)
+	save.save_json(str(file_path), deck)
 	print("Deck ", filename, " created")
 	
 	
 func edit_card(deck: String, index: int, new_problem: String):
-	var loaded = save.load_json(str(deck, ".deck"))
+	var file_path = SAVE_DIR + "/" + deck + ".deck"
+	var loaded = save.load_json(str(file_path))
 	if !loaded:
 		push_error("Deck does not exist, aborting edit")
 		return
@@ -53,11 +54,12 @@ func edit_card(deck: String, index: int, new_problem: String):
 		push_error("Index not found, aborting edit")
 		return
 	loaded[index] = new_problem
-	save.save_json(str(deck, ".deck"), loaded)
+	save.save_json(str(file_path), loaded)
 	print("Card ", index, " changed to ", new_problem)
 	
 func add_card(deck: String, new_problem: String) -> void:
-	var loaded = save.load_json(deck + ".deck")
+	var file_path = SAVE_DIR + "/" + deck + ".deck"
+	var loaded = save.load_json(file_path)
 	if !loaded:
 		push_error("Deck does not exist, aborting add")
 		return
@@ -65,11 +67,12 @@ func add_card(deck: String, new_problem: String) -> void:
 	var new_index = loaded.size()
 	loaded[new_index] = new_problem
 	
-	save.save_json(deck + ".deck", loaded)
+	save.save_json(file_path, loaded)
 	print("Added new card at index ", new_index, ": ", new_problem)
 	
 func remove_card(deck: String, index: int):
-	var loaded = save.load_json(str(deck, ".deck"))
+	var file_path = SAVE_DIR + "/" + deck + ".deck"
+	var loaded = save.load_json(str(file_path))
 	if !loaded:
 		push_error("Deck does not exist, aborting edit")
 		return
@@ -88,12 +91,13 @@ func remove_card(deck: String, index: int):
 		new_index += 1
 	
 	if new_loaded.size() > 0:
-		save.save_json(str(deck, ".deck"), new_loaded)
+		save.save_json(str(file_path, ".deck"), new_loaded)
 	else:
 		delete_deck(str(deck))
 		
 func sort_deck_keys(deck: String):
-	var loaded = save.load_json(str(deck, ".deck"))
+	var file_path = SAVE_DIR + "/" + deck + ".deck"
+	var loaded = save.load_json(str(file_path))
 
 	var new_loaded = {}
 	var keys = loaded.keys()
@@ -107,38 +111,39 @@ func sort_deck_keys(deck: String):
 		new_loaded[new_index] = loaded[k]
 		new_index += 1
 		
-	save.save_json(str(deck, ".deck"), new_loaded)
+	save.save_json(str(file_path), new_loaded)
 	
 func delete_deck(filename: String):
-	var loaded = save.load_json("deck_names.deck")
+	var file_path = SAVE_DIR + "/" + filename + ".deck"
+	var loaded = save.load_json(SAVE_DIR + "/" + "deck_names.deck")
 	if !loaded:
 		push_error("No decks loaded, aborting deletion")
 		return
 	if !loaded.has(filename):
 		push_error("No deck by the name ", filename, ", aborting deletion")
 		return
-	if save.delete_file(filename + ".deck"):
+	if save.delete_file(file_path):
 		print("Successfully Deleted Deck")
 		loaded.erase(filename)
 		if loaded.size() > 0:
-			save.save_json("deck_names.deck", loaded)
+			save.save_json(SAVE_DIR + "/" + "deck_names.deck", loaded)
 		else:
-			save.delete_file("deck_names.deck")
+			save.delete_file(SAVE_DIR + "/" + "deck_names.deck")
 	else:
 		print("Failed to Delete Deck")
 		
 func rename_deck(deck: String, new_name: String):
-	var deck_names = save.load_json("deck_names.deck")
+	var deck_names = save.load_json(SAVE_DIR + "/" + "deck_names.deck")
 	#var loaded = save.load_json("deck_" + deck + ".deck")
 	if deck_names.has(new_name):
 		push_error("Deck with name exists already")
 		return
 	deck_names.erase(deck)
 	deck_names[new_name] = new_name
-	save.save_json("deck_names.deck", deck_names)
+	save.save_json(SAVE_DIR + "/" + "deck_names.deck", deck_names)
 	#delete_deck(deck)
 	#save.save_json("deck_" + new_name + ".deck", loaded)
-	save.rename_file(deck + ".deck", new_name + ".deck")
+	save.rename_file(SAVE_DIR + "/" + deck + ".deck", SAVE_DIR + "/" + new_name + ".deck")
 		
 func find_card_answer(value_1: int, value_2: int, operator: String) -> int:
 	if operator == "+":

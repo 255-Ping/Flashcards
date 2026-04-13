@@ -30,7 +30,7 @@ func _ready() -> void:
 
 
 func _on_delete_card_pressed() -> void:
-	var loaded = save.load_json(deck + ".deck")
+	var loaded = save.load_json(save.SAVE_DIR + "/" + deck + ".deck")
 	if loaded.size() > 1:
 		deck_manager.remove_card(deck, card)
 		deck_ui.reload_card_list()

@@ -25,7 +25,7 @@ func _ready() -> void:
 	
 func reload_card_list():
 	deck_manager.sort_deck_keys(deck)
-	cards = save.load_json(str(deck, ".deck"))
+	cards = save.load_json(str(save.SAVE_DIR + "/" + deck, ".deck"))
 	$Panel/DeckName.text = deck
 	for child in $Panel/ScrollContainer/HBoxContainer.get_children():
 		child.queue_free()
