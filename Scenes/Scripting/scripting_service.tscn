@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dbg8kw74pgb8k"]
 
-[ext_resource type="Script" uid="uid://0ydj0n0td2gu" path="res://Scripts/scripting_service.gd" id="1_gys74"]
+[ext_resource type="Script" uid="uid://btl1ny8elw7q4" path="res://Scripts/scripting_service.gd" id="1_gys74"]
 [ext_resource type="FontFile" uid="uid://dbjakyhm1jh0t" path="res://Fonts/LowresPixel-Regular.otf" id="1_ujkvy"]
 [ext_resource type="Texture2D" uid="uid://cqfmc3uoensyd" path="res://Textures/black_box.png" id="2_3cs6w"]
 

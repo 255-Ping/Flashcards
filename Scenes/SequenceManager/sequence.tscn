@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cuhvts7q5kw12"]
+[gd_scene format=3 uid="uid://cuhvts7q5kw12"]
 
-[ext_resource type="Script" uid="uid://lhx7lmygj1wo" path="res://Scripts/SequenceEditor/sequence_ui.gd" id="1_pec0k"]
+[ext_resource type="Script" uid="uid://b74xrd8f2d7g0" path="res://Scripts/SequenceEditor/sequence_ui.gd" id="1_pec0k"]
 [ext_resource type="Texture2D" uid="uid://dwss8wp8sp0cd" path="res://Textures/Buttons/delete.png" id="2_txpqf"]
 [ext_resource type="Texture2D" uid="uid://b3vpgo8qy7odw" path="res://Textures/Buttons/delete_pressed.png" id="3_mai06"]
 [ext_resource type="Texture2D" uid="uid://btnjxoo5sjc4u" path="res://Textures/Buttons/delete_hover.png" id="4_4idx5"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cdy0sxx3cq4yc" path="res://Textures/Buttons/select_pressed.png" id="9_t4fva"]
 [ext_resource type="Texture2D" uid="uid://y37g71f1p6yp" path="res://Textures/Buttons/select_hover.png" id="10_se0cs"]
 
-[node name="Sequence" type="Control"]
+[node name="Sequence" type="Control" unique_id=286243232]
 custom_minimum_size = Vector2(1140, 200)
 layout_mode = 3
 anchor_right = 1.0
@@ -17,7 +17,7 @@ offset_right = -12.0
 offset_bottom = -0.23200989
 script = ExtResource("1_pec0k")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=506986501]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -28,7 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.2509804, 0.2509804, 0.2509804, 0.47843137)
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=242176761]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.961
@@ -38,7 +38,7 @@ offset_bottom = -112.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel" unique_id=1880357894]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.998
@@ -46,12 +46,12 @@ anchor_bottom = 0.8
 offset_left = 2.0
 offset_bottom = 20.399994
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer" unique_id=138310227]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="DeleteButton" type="TextureButton" parent="Panel"]
+[node name="DeleteButton" type="TextureButton" parent="Panel" unique_id=433155425]
 layout_mode = 0
 offset_left = 1027.0
 offset_top = 184.0
@@ -61,7 +61,7 @@ texture_normal = ExtResource("2_txpqf")
 texture_pressed = ExtResource("3_mai06")
 texture_hover = ExtResource("4_4idx5")
 
-[node name="SelectButton" type="TextureButton" parent="Panel"]
+[node name="SelectButton" type="TextureButton" parent="Panel" unique_id=986352107]
 layout_mode = 0
 offset_left = 958.0
 offset_top = 184.0
@@ -71,7 +71,7 @@ texture_normal = ExtResource("8_ro2pu")
 texture_pressed = ExtResource("9_t4fva")
 texture_hover = ExtResource("10_se0cs")
 
-[node name="SequenceName" type="LineEdit" parent="Panel"]
+[node name="SequenceName" type="LineEdit" parent="Panel" unique_id=391400812]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 185.0

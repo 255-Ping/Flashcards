@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://btcww6voi61dv"]
 
-[ext_resource type="Script" uid="uid://bk3njdsomp3xo" path="res://Scripts/DeckEditor/deck_ui.gd" id="1_ukesx"]
+[ext_resource type="Script" uid="uid://duwknr7nbexyr" path="res://Scripts/DeckEditor/deck_ui.gd" id="1_ukesx"]
 [ext_resource type="Texture2D" uid="uid://dwss8wp8sp0cd" path="res://Textures/Buttons/delete.png" id="2_io7pv"]
 [ext_resource type="Texture2D" uid="uid://dtkkmu5a67lm3" path="res://Textures/Buttons/add.png" id="3_nlncs"]
 [ext_resource type="Texture2D" uid="uid://b3vpgo8qy7odw" path="res://Textures/Buttons/delete_pressed.png" id="3_t5ebn"]
