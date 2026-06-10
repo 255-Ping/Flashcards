@@ -39,7 +39,7 @@ This document explains:
 
 ## 📂 Project Status
 
-This project is **actively used in a classroom environment** and has been tested on multiple laptops simultaneously with no major bugs or crashes encountered.
+This project is **actively used at [Winslow Christian School](https://www.winslowchristianschool.org/)** and has been tested on multiple laptops simultaneously with no major bugs or crashes encountered.
 
 Future improvements may include:
 - Additional study modes
